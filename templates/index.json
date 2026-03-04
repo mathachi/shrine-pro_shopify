@@ -57,42 +57,6 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
-    "ss_scrolling_announcement_bar_GetBgG": {
-      "type": "ss-scrolling-announcement-bar",
-      "blocks": {
-        "text_Qnqhmp": {
-          "type": "text",
-          "settings": {
-            "text": "Free Shipping"
-          }
-        },
-        "text_iFam3w": {
-          "type": "text",
-          "settings": {
-            "text": "Free Returns"
-          }
-        }
-      },
-      "block_order": [
-        "text_Qnqhmp",
-        "text_iFam3w"
-      ],
-      "name": "SS - Scrolling Announcement Bar",
-      "settings": {
-        "insert_css_class_target": ".header, .pageheader, .section-header, #announcement, .toolbar, .header__wrapper, .onboarding-header",
-        "text_size": 12,
-        "ss_font_family": "montserrat_n4",
-        "link": "",
-        "animation_duration": 44,
-        "animation_direction": "right",
-        "pause_hover": false,
-        "bg": "#000000",
-        "text_color": "#ffffff",
-        "hover_opacity": 90,
-        "padding_horizontal": 2,
-        "padding_vertical": 1.5
-      }
-    },
     "ss_scrolling_logo_cloud_GMaCKN": {
       "type": "ss-scrolling-logo-cloud",
       "blocks": {
@@ -431,7 +395,6 @@
   },
   "order": [
     "cfca4268-6358-426c-98ab-d292aeef11e5",
-    "ss_scrolling_announcement_bar_GetBgG",
     "ss_scrolling_logo_cloud_GMaCKN",
     "d2d3417b-e92f-428c-b221-5bceffb552be",
     "6aa09428-a417-429d-9159-a4e8afd49590",
