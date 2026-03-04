@@ -87,63 +87,89 @@
         "animation_direction": "right",
         "pause_hover": false,
         "bg": "#000000",
-        "text_color": "#fff",
+        "text_color": "#ffffff",
         "hover_opacity": 90,
         "padding_horizontal": 2,
         "padding_vertical": 1.5
       }
     },
-    "horizontal_ticker_whmGTX": {
-      "type": "horizontal-ticker",
+    "ss_scrolling_logo_cloud_GMaCKN": {
+      "type": "ss-scrolling-logo-cloud",
       "blocks": {
-        "text_mTpJWH": {
-          "type": "text",
+        "slide_zK8mkt": {
+          "type": "slide",
           "settings": {
-            "title": "Shrine Theme"
+            "link": ""
           }
         },
-        "text_nifRB3": {
-          "type": "text",
+        "slide_LAKcBj": {
+          "type": "slide",
           "settings": {
-            "title": "Shrine Theme"
+            "link": ""
           }
         },
-        "text_WL6FGg": {
-          "type": "text",
+        "slide_6bRReA": {
+          "type": "slide",
           "settings": {
-            "title": "Shrine Theme"
+            "link": ""
+          }
+        },
+        "slide_rHj3EL": {
+          "type": "slide",
+          "settings": {
+            "link": ""
+          }
+        },
+        "slide_TNMpfF": {
+          "type": "slide",
+          "settings": {
+            "link": ""
+          }
+        },
+        "slide_yK6iU3": {
+          "type": "slide",
+          "settings": {
+            "link": ""
           }
         }
       },
       "block_order": [
-        "text_mTpJWH",
-        "text_nifRB3",
-        "text_WL6FGg"
+        "slide_zK8mkt",
+        "slide_LAKcBj",
+        "slide_6bRReA",
+        "slide_rHj3EL",
+        "slide_TNMpfF",
+        "slide_yK6iU3"
       ],
-      "name": "Horizontal Ticker",
+      "name": "SS - Scrolling Logo Cloud",
       "settings": {
-        "visibility": "always-display",
-        "speed": 3,
-        "mobile_spacing": 60,
-        "desktop_spacing": 100,
-        "color_scheme": "background-1",
-        "mobile_text_size": 16,
-        "desktop_text_size": 18,
-        "italic_text": false,
-        "uppercase_text": false,
-        "bold_text": false,
-        "mobile_image_height": 26,
-        "desktop_image_height": 40,
-        "hidden_products": "",
-        "enable_specific_display": false,
-        "displayed_products": "",
-        "mobile_padding_top": 12,
-        "mobile_padding_bottom": 12,
-        "desktop_padding_top": 16,
-        "desktop_padding_bottom": 16,
-        "custom_colors_background": "#FFFFFF",
-        "custom_gradient_background": "",
-        "custom_colors_text": "#2E2A39"
+        "ss-title": "Trusted by",
+        "heading_custom": false,
+        "heading_font": "assistant_n4",
+        "header_size": 30,
+        "header_align": "center",
+        "scrolling_velocity": 10,
+        "pause_hover": false,
+        "shadow": false,
+        "sliders_mt": 16,
+        "logo_padding_top": 0,
+        "logo_padding_bottom": 0,
+        "slider_gap": 30,
+        "slider_gap_mobile": 30,
+        "slider_direction": "left",
+        "icon_width": 200,
+        "header_color": "#121212",
+        "border_color": "#ffffff",
+        "background-color": "#ffffff",
+        "slider-background-color": "#ffffff",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "full_width": true,
+        "content_width": 120,
+        "border_thickness": 0,
+        "lazy": true
       }
     },
     "d2d3417b-e92f-428c-b221-5bceffb552be": {
@@ -406,7 +432,7 @@
   "order": [
     "cfca4268-6358-426c-98ab-d292aeef11e5",
     "ss_scrolling_announcement_bar_GetBgG",
-    "horizontal_ticker_whmGTX",
+    "ss_scrolling_logo_cloud_GMaCKN",
     "d2d3417b-e92f-428c-b221-5bceffb552be",
     "6aa09428-a417-429d-9159-a4e8afd49590",
     "0f1fc9e4-bc4c-4052-9747-62d1f8472caa",

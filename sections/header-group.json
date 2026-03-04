@@ -43,7 +43,7 @@
         "speed": 3,
         "mobile_spacing": 60,
         "desktop_spacing": 100,
-        "color_scheme": "accent-1",
+        "color_scheme": "custom",
         "mobile_text_size": 16,
         "desktop_text_size": 18,
         "italic_text": false,
@@ -58,83 +58,9 @@
         "mobile_padding_bottom": 12,
         "desktop_padding_top": 16,
         "desktop_padding_bottom": 16,
-        "custom_colors_background": "#ffffff",
+        "custom_colors_background": "#e33c9d",
         "custom_gradient_background": "",
-        "custom_colors_text": "#2e2a39"
-      }
-    },
-    "ss_announcement_bar_slider_fpMejx": {
-      "type": "ss-announcement-bar-slider",
-      "blocks": {
-        "slide_JaLEDW": {
-          "type": "slide",
-          "settings": {
-            "text": "<p>Free shipping on $80+ order (Canada & US) 📦</p>"
-          }
-        },
-        "slide_FR9Nq9": {
-          "type": "slide",
-          "settings": {
-            "text": "<p>Free gift with every $130+ & $180+ order* 🎈</p>"
-          }
-        },
-        "slide_jfkLDp": {
-          "type": "slide",
-          "settings": {
-            "text": "<p>2% of our sales are donated to SOS Miss Dolittle 🦫</p>"
-          }
-        }
-      },
-      "block_order": [
-        "slide_JaLEDW",
-        "slide_FR9Nq9",
-        "slide_jfkLDp"
-      ],
-      "name": "SS - Announcement Bar Slider",
-      "settings": {
-        "insert_css_class_target": ".header, .pageheader, .section-header, #announcement, .toolbar, .header__wrapper, .onboarding-header",
-        "slider_view": 1,
-        "slider_view_mobile": 1,
-        "slider_gap": 0,
-        "slider_gap_mobile": 0,
-        "autoplay": true,
-        "autoplay_sec": 3,
-        "slide_border_thickness": 1,
-        "text_custom": false,
-        "text_font": "josefin_sans_n4",
-        "text_size": 12,
-        "text_size_mobile": 12,
-        "text_height": 130,
-        "icon_size": 50,
-        "icon_size_mobile": 50,
-        "icon_margin_right": 10,
-        "arrow_size": 50,
-        "arrow_size_mobile": 36,
-        "arrow_icon_size": 16,
-        "arrow_icon_size_mobile": 14,
-        "arrow_border_thickness": 0,
-        "arrow_show_desktop": false,
-        "arrow_show_mobile": true,
-        "arrow_color": "#000000",
-        "arrow_hover_color": "#000000",
-        "arrow_bg_color": "",
-        "arrow_bg_hover_color": "",
-        "arrow_border_color": "#000000",
-        "arrow_border_hover_color": "#000000",
-        "slide_border_color": "#1A1B18",
-        "text_color": "#1A1B18",
-        "background_color": "#FFFFFF",
-        "background_gradient": "",
-        "border_color": "#000000",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 16,
-        "padding_bottom": 16,
-        "padding_horizontal": 0,
-        "padding_horizontal_mobile": 0,
-        "full_width": true,
-        "content_width": 120,
-        "border_thickness": 0
+        "custom_colors_text": "#ffffff"
       }
     },
     "header": {
@@ -166,7 +92,6 @@
   },
   "order": [
     "2c2ec774-3430-481f-b927-e9c035b9d24e",
-    "ss_announcement_bar_slider_fpMejx",
     "header"
   ]
 }
