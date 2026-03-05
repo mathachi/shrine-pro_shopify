@@ -63,36 +63,42 @@
         "slide_zK8mkt": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Biba-logo.webp",
             "link": ""
           }
         },
         "slide_LAKcBj": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/vogue-logo.webp",
             "link": ""
           }
         },
         "slide_6bRReA": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Glamour-logo.webp",
             "link": ""
           }
         },
         "slide_rHj3EL": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/marie_claire-logo.webp",
             "link": ""
           }
         },
         "slide_TNMpfF": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/cosmopolitan-logo.webp",
             "link": ""
           }
         },
         "slide_yK6iU3": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Elle-logo.webp",
             "link": ""
           }
         }
@@ -121,7 +127,7 @@
         "slider_gap": 30,
         "slider_gap_mobile": 30,
         "slider_direction": "left",
-        "icon_width": 200,
+        "icon_width": 100,
         "header_color": "#121212",
         "border_color": "#ffffff",
         "background-color": "#ffffff",
