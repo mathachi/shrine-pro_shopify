@@ -121,7 +121,7 @@
         "scrolling_velocity": 10,
         "pause_hover": false,
         "shadow": false,
-        "sliders_mt": 0,
+        "sliders_mt": 8,
         "logo_padding_top": 0,
         "logo_padding_bottom": 0,
         "slider_gap": 30,
