@@ -214,6 +214,57 @@
         "padding_top": 80,
         "padding_bottom": 80
       }
+    },
+    "ugc_gallery_Niq7Yb": {
+      "type": "ugc-gallery",
+      "blocks": {
+        "video_item_FwX3mm": {
+          "type": "video_item",
+          "settings": {
+            "video_url": "",
+            "image": "shopify://shop_images/hero_mobile_1.webp",
+            "overlay_text": ""
+          }
+        },
+        "video_item_dBTTLV": {
+          "type": "video_item",
+          "settings": {
+            "video_url": "",
+            "overlay_text": ""
+          }
+        },
+        "video_item_VYJxxH": {
+          "type": "video_item",
+          "settings": {
+            "video_url": "",
+            "overlay_text": ""
+          }
+        },
+        "video_item_pUMWWH": {
+          "type": "video_item",
+          "settings": {
+            "video_url": "",
+            "overlay_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_item_FwX3mm",
+        "video_item_dBTTLV",
+        "video_item_VYJxxH",
+        "video_item_pUMWWH"
+      ],
+      "name": "UGC Galerie Vidéos",
+      "settings": {
+        "title": "Plus de 150 000 femmes l'ont adopté, et vous ?",
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "gap": 16,
+        "bg_color": "#f5f0eb",
+        "title_color": "#1a1a1a",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -221,6 +272,7 @@
     "ss_scrolling_logo_cloud_GMaCKN",
     "rich_text_Vidc94",
     "ss_parallax_banner_UxgtxM",
-    "skin_feature_TJ4jwj"
+    "skin_feature_TJ4jwj",
+    "ugc_gallery_Niq7Yb"
   ]
 }
