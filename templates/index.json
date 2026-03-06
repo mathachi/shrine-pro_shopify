@@ -16,9 +16,9 @@
         "parallax": false,
         "parallax_mobile": false,
         "banner_height": "fixed_height",
-        "banner_fixed_height": 520,
+        "banner_fixed_height": 700,
         "banner_fixed_height_mobile": 600,
-        "image": "shopify://shop_images/logo-lysa.png",
+        "image": "shopify://shop_images/hero_desktop_1.webp",
         "image_mobile": "shopify://shop_images/hero_mobile_1_376b5516-ca11-456a-a139-e208a215b367.webp",
         "overlay": 0,
         "content_maxwidth": 100,
@@ -256,12 +256,70 @@
       ],
       "name": "UGC Galerie Vidéos",
       "settings": {
-        "title": "Plus de 150 000 femmes l'ont adopté, et vous ?",
+        "title": "Plus de 15 000 femmes l'ont adopté, et vous ?",
         "columns_desktop": 4,
         "columns_mobile": 2,
         "gap": 16,
         "bg_color": "#f5f0eb",
         "title_color": "#1a1a1a",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "testimonials_carousel_GVdPdt": {
+      "type": "testimonials-carousel",
+      "blocks": {
+        "testimonial_JVyEXd": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Hair_Removal_Formula.webp",
+            "review": "Ce produit a changé ma routine, je le recommande à toutes mes amies !",
+            "name": "Marie L.",
+            "rating": 5
+          }
+        },
+        "testimonial_VN6jgx": {
+          "type": "testimonial",
+          "settings": {
+            "review": "Ce produit a changé ma routine, je le recommande à toutes mes amies !",
+            "name": "Marie L.",
+            "rating": 5
+          }
+        },
+        "testimonial_nzijiM": {
+          "type": "testimonial",
+          "settings": {
+            "review": "Ce produit a changé ma routine, je le recommande à toutes mes amies !",
+            "name": "Marie L.",
+            "rating": 5
+          }
+        },
+        "testimonial_mYzQBh": {
+          "type": "testimonial",
+          "settings": {
+            "review": "Ce produit a changé ma routine, je le recommande à toutes mes amies !",
+            "name": "Marie L.",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_JVyEXd",
+        "testimonial_VN6jgx",
+        "testimonial_nzijiM",
+        "testimonial_mYzQBh"
+      ],
+      "name": "Testimonials Carousel",
+      "settings": {
+        "badge": "Noté 4.8/5 par plus de 3 000 clientes",
+        "title": "Nos clientes en parlent le mieux",
+        "verified_label": "Verified customer",
+        "visible_cards": 4,
+        "bg_color": "#ffffff",
+        "card_bg": "#f0f7f5",
+        "title_color": "#1a3a33",
+        "badge_bg": "#e6f2ef",
+        "badge_color": "#1a8a6f",
         "padding_top": 64,
         "padding_bottom": 64
       }
@@ -273,6 +331,7 @@
     "rich_text_Vidc94",
     "ss_parallax_banner_UxgtxM",
     "skin_feature_TJ4jwj",
-    "ugc_gallery_Niq7Yb"
+    "ugc_gallery_Niq7Yb",
+    "testimonials_carousel_GVdPdt"
   ]
 }
