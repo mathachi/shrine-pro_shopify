@@ -160,11 +160,48 @@
         "custom_colors_solid_button_text": "#ffffff",
         "custom_colors_outline_button": "#dd1d1d"
       }
+    },
+    "ss_parallax_banner_UxgtxM": {
+      "type": "ss-parallax-banner",
+      "name": "SS - Parallax Banner",
+      "settings": {
+        "parallax": false,
+        "parallax_mobile": false,
+        "banner_height": "adapt_first",
+        "banner_fixed_height": 600,
+        "banner_fixed_height_mobile": 500,
+        "overlay": 0,
+        "content_maxwidth": 65,
+        "content_maxwidth_mobile": 100,
+        "content_horizontal_position": "center",
+        "content_horizontal_position_mobile": "center",
+        "content_vertical_position": "center",
+        "content_vertical_position_mobile": "center",
+        "content_padding_vertical": 32,
+        "content_padding_vertical_mobile": 20,
+        "content_padding_horizontal": 20,
+        "content_padding_horizontal_mobile": 20,
+        "overlay_color": "#000000",
+        "background_color": "#FFFFFF",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": true,
+        "content_width": 120,
+        "border_thickness": 0,
+        "lazy": true
+      }
     }
   },
   "order": [
     "ss_parallax_banner_YPdgz4",
     "ss_scrolling_logo_cloud_GMaCKN",
-    "rich_text_Vidc94"
+    "rich_text_Vidc94",
+    "ss_parallax_banner_UxgtxM"
   ]
 }
