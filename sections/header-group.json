@@ -14,28 +14,63 @@
     "2c2ec774-3430-481f-b927-e9c035b9d24e": {
       "type": "horizontal-ticker",
       "blocks": {
+        "text_fDiptW": {
+          "type": "text",
+          "settings": {
+            "title": "⸱"
+          }
+        },
+        "text_cy7GWg": {
+          "type": "text",
+          "settings": {
+            "title": "Satisfait ou remboursé"
+          }
+        },
+        "text_wHTfbn": {
+          "type": "text",
+          "settings": {
+            "title": "⸱"
+          }
+        },
         "sections--18060430639399__2c2ec774-3430-481f-b927-e9c035b9d24e-1679250655d32e639c-0": {
           "type": "text",
           "settings": {
-            "title": "WELCOME!"
+            "title": "Offre du Printemps :"
+          }
+        },
+        "text_3UitFK": {
+          "type": "text",
+          "settings": {
+            "title": "⸱"
           }
         },
         "sections--18060430639399__2c2ec774-3430-481f-b927-e9c035b9d24e-1679250655d32e639c-1": {
           "type": "text",
           "settings": {
-            "title": "SITEWIDE SALE"
+            "title": "Livraison gratuite à domicile"
+          }
+        },
+        "text_GyGaRP": {
+          "type": "text",
+          "settings": {
+            "title": "⸱"
           }
         },
         "sections--18060430639399__2c2ec774-3430-481f-b927-e9c035b9d24e-1679250655d32e639c-2": {
           "type": "text",
           "settings": {
-            "title": "USE CODE X FOR X% OFF!"
+            "title": "Paiement sécurisé"
           }
         }
       },
       "block_order": [
+        "text_fDiptW",
+        "text_cy7GWg",
+        "text_wHTfbn",
         "sections--18060430639399__2c2ec774-3430-481f-b927-e9c035b9d24e-1679250655d32e639c-0",
+        "text_3UitFK",
         "sections--18060430639399__2c2ec774-3430-481f-b927-e9c035b9d24e-1679250655d32e639c-1",
+        "text_GyGaRP",
         "sections--18060430639399__2c2ec774-3430-481f-b927-e9c035b9d24e-1679250655d32e639c-2"
       ],
       "settings": {
