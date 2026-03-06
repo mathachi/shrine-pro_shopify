@@ -108,7 +108,7 @@
         "heading_font": "assistant_n4",
         "header_size": 16,
         "header_align": "center",
-        "scrolling_velocity": 10,
+        "scrolling_velocity": 6,
         "pause_hover": false,
         "shadow": false,
         "sliders_mt": 8,
