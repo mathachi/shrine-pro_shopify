@@ -18,6 +18,7 @@
         "banner_height": "adapt_first",
         "banner_fixed_height": 600,
         "banner_fixed_height_mobile": 500,
+        "image": "shopify://shop_images/hero_mobile_1.webp",
         "image_mobile": "shopify://shop_images/hero_mobile_1.webp",
         "overlay": 0,
         "content_maxwidth": 65,
