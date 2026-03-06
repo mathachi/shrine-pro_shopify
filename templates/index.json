@@ -15,9 +15,10 @@
       "settings": {
         "parallax": false,
         "parallax_mobile": false,
-        "banner_height": "auto_height",
+        "banner_height": "adapt_first",
         "banner_fixed_height": 520,
-        "banner_fixed_height_mobile": 530,
+        "banner_fixed_height_mobile": 1000,
+        "image": "shopify://shop_images/logo-lysa.png",
         "image_mobile": "shopify://shop_images/hero_mobile_1.webp",
         "overlay": 0,
         "content_maxwidth": 100,
