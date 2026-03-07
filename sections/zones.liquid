@@ -1,0 +1,294 @@
+<section class="zones" id="zones-{{ section.id }}">
+  <div class="zones__container">
+
+    <h2 class="zones__title">{{ section.settings.title }}</h2>
+
+    <div class="zones__grid">
+      {%- for block in section.blocks -%}
+        <div class="zones__item" {{ block.shopify_attributes }}>
+          <div class="zones__img-wrapper">
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 700 }}"
+                alt="{{ block.settings.zone_name }}"
+                class="zones__img"
+                loading="lazy"
+                draggable="false"
+              >
+            {%- else -%}
+              <div class="zones__img-placeholder"></div>
+            {%- endif -%}
+          </div>
+          <div class="zones__info">
+            <h3 class="zones__zone-name">{{ block.settings.zone_name }}</h3>
+            <p class="zones__zone-desc">{{ block.settings.zone_desc }}</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #zones-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  #zones-{{ section.id }} .zones__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  #zones-{{ section.id }} .zones__title {
+    text-align: center;
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 40px;
+    line-height: 1.3;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ══ GRILLE ══ */
+  #zones-{{ section.id }} .zones__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: {{ section.settings.gap }}px;
+  }
+
+  #zones-{{ section.id }} .zones__item {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Image */
+  #zones-{{ section.id }} .zones__img-wrapper {
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: #e5ddd6;
+  }
+
+  #zones-{{ section.id }} .zones__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+
+  #zones-{{ section.id }} .zones__item:hover .zones__img {
+    transform: scale(1.04);
+  }
+
+  #zones-{{ section.id }} .zones__img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #d5cdc5;
+  }
+
+  /* Texte sous l'image */
+  #zones-{{ section.id }} .zones__info {
+    padding: 0 4px;
+  }
+
+  #zones-{{ section.id }} .zones__zone-name {
+    font-size: clamp(15px, 1.3vw, 18px);
+    font-weight: 700;
+    color: {{ section.settings.name_color }};
+    margin: 0 0 6px;
+  }
+
+  #zones-{{ section.id }} .zones__zone-desc {
+    font-size: clamp(12px, 1vw, 14px);
+    line-height: 1.6;
+    color: {{ section.settings.desc_color }};
+    margin: 0;
+  }
+
+  /* ══ MOBILE : 2 colonnes ══ */
+  @media (max-width: 768px) {
+    #zones-{{ section.id }} .zones__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    #zones-{{ section.id }} .zones__title {
+      font-size: 20px;
+      margin-bottom: 28px;
+    }
+
+    #zones-{{ section.id }} .zones__zone-name {
+      font-size: 15px;
+    }
+
+    #zones-{{ section.id }} .zones__zone-desc {
+      font-size: 12px;
+    }
+
+    #zones-{{ section.id }} .zones__container {
+      padding: 0 16px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Zones du corps",
+  "tag": "section",
+  "class": "section-zones",
+  "max_blocks": 9,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Voici les principales zones qui bénéficient des bienfaits de ce produit miracle :"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Arrondi des images",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Espacement entre les cartes",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fond section",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Couleur du titre",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Couleur du nom de zone",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Couleur de la description",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding haut",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bas",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "zone",
+      "name": "Zone du corps",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo de la zone"
+        },
+        {
+          "type": "text",
+          "id": "zone_name",
+          "label": "Nom de la zone",
+          "default": "Ventre"
+        },
+        {
+          "type": "textarea",
+          "id": "zone_desc",
+          "label": "Description",
+          "default": "Apporte une sensation de légèreté après une grossesse ou une perte de poids"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zones du corps",
+      "blocks": [
+        {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Ventre",
+            "zone_desc": "Apporte une sensation de légèreté après une grossesse ou une perte de poids"
+          }
+        },
+        {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Cuisses",
+            "zone_desc": "Élimine la cellulite et laisse la peau ferme et éclatante"
+          }
+        },
+        {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Bras",
+            "zone_desc": "Raffermit la peau et lui donne une apparence lisse et jeune"
+          }
+        },
+        {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Fesses",
+            "zone_desc": "Élimine les vergetures pour une apparence plus ferme"
+          }
+        },
+        {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Décolleté",
+            "zone_desc": "Apporte un aspect frais et revitalisé qui vous fait rayonner"
+          }
+        },
+        {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Genou",
+            "zone_desc": "Donne à la zone une apparence plus hydratée et éclatante"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
