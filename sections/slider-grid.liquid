@@ -1,0 +1,299 @@
+<section class="ingredients" id="ingredients-{{ section.id }}">
+  <div class="ingredients__header">
+    <h2 class="ingredients__title">{{ section.settings.title }}</h2>
+  </div>
+
+  <!-- Desktop : grille -->
+  <div class="ingredients__grid">
+    {%- for block in section.blocks -%}
+      <div class="ingredients__card" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <img
+            src="{{ block.settings.image | image_url: width: 900 }}"
+            alt="{{ block.settings.name }}"
+            class="ingredients__card-img"
+            loading="lazy"
+            draggable="false"
+          >
+        {%- else -%}
+          <div class="ingredients__card-placeholder"></div>
+        {%- endif -%}
+        <div class="ingredients__card-overlay"></div>
+        <div class="ingredients__card-content">
+          <h3 class="ingredients__card-name">{{ block.settings.name }}</h3>
+          <p class="ingredients__card-desc">{{ block.settings.description }}</p>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <!-- Mobile : scroll hint -->
+  <p class="ingredients__scroll-hint">→ Faire défiler →</p>
+</section>
+
+<style>
+  #ingredients-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__title {
+    text-align: center;
+    font-size: clamp(22px, 2.8vw, 34px);
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 40px;
+    line-height: 1.2;
+  }
+
+  /* ══════════════════════
+     DESKTOP : grille 3 col
+  ══════════════════════ */
+  #ingredients-{{ section.id }} .ingredients__grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__card {
+    position: relative;
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    cursor: default;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__card:hover .ingredients__card-img {
+    transform: scale(1.04);
+  }
+
+  /* Gradient overlay sombre en bas */
+  #ingredients-{{ section.id }} .ingredients__card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.35) 45%,
+      rgba(0, 0, 0, 0) 70%
+    );
+    pointer-events: none;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__card-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #d5cfc7;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 20px;
+    z-index: 2;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__card-name {
+    font-size: clamp(18px, 1.6vw, 22px);
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 10px;
+    line-height: 1.2;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__card-desc {
+    font-size: clamp(12px, 1vw, 14px);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0;
+  }
+
+  /* Scroll hint caché sur desktop */
+  #ingredients-{{ section.id }} .ingredients__scroll-hint {
+    display: none;
+  }
+
+  /* ══════════════════════
+     MOBILE : slider scroll
+  ══════════════════════ */
+  @media (max-width: 768px) {
+    #ingredients-{{ section.id }} .ingredients__grid {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      gap: 12px;
+      padding: 0 16px;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #ingredients-{{ section.id }} .ingredients__grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    #ingredients-{{ section.id }} .ingredients__card {
+      flex: 0 0 calc(100vw - 32px - 40px);
+      scroll-snap-align: start;
+      aspect-ratio: 3 / 4;
+    }
+
+    #ingredients-{{ section.id }} .ingredients__title {
+      font-size: 24px;
+      margin-bottom: 28px;
+    }
+
+    #ingredients-{{ section.id }} .ingredients__card-content {
+      padding: 20px 16px;
+    }
+
+    #ingredients-{{ section.id }} .ingredients__card-name {
+      font-size: 20px;
+    }
+
+    #ingredients-{{ section.id }} .ingredients__card-desc {
+      font-size: 13px;
+    }
+
+    #ingredients-{{ section.id }} .ingredients__scroll-hint {
+      display: block;
+      text-align: center;
+      font-size: 13px;
+      color: {{ section.settings.hint_color }};
+      margin-top: 16px;
+      letter-spacing: 0.02em;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Ingrédients",
+  "tag": "section",
+  "class": "section-ingredients",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Ingrédients testés cliniquement"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Arrondi des coins",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fond section",
+      "default": "#f5f0eb"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Couleur du titre",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "hint_color",
+      "label": "Couleur texte 'Faire défiler' (mobile)",
+      "default": "#888888"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding haut",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bas",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingrédient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo de l'ingrédient"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nom de l'ingrédient",
+          "default": "Huile de Jojoba"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingrédients",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": { "name": "Huile de Jojoba", "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable." }
+        },
+        {
+          "type": "ingredient",
+          "settings": { "name": "Patchouli", "description": "Stimule naturellement la production de collagène, redonnant fermeté et tonicité à votre peau pour un effet lifting immédiat." }
+        },
+        {
+          "type": "ingredient",
+          "settings": { "name": "Rose Musquée", "description": "Régénère en profondeur les tissus cutanés abîmés grâce à ses antioxydants et acides gras qui luttent contre les signes du vieillissement." }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
