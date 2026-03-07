@@ -51,7 +51,7 @@
     line-height: 1.2;
   }
 
-  /* ══ DESKTOP : grille 3 colonnes ══ */
+  /* ══ DESKTOP ══ */
   #ingredients-{{ section.id }} .ingredients__grid {
     max-width: 1200px;
     margin: 0 auto;
@@ -70,10 +70,13 @@
   }
 
   #ingredients-{{ section.id }} .ingredients__card-img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    z-index: 0;
     transition: transform 0.5s ease;
   }
 
@@ -81,14 +84,15 @@
     transform: scale(1.04);
   }
 
-  /* Vignette renforcée pour lisibilité */
+  /* Vignette — z-index au dessus de l'image */
   #ingredients-{{ section.id }} .ingredients__card-overlay {
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.88) 0%,
-      rgba(0, 0, 0, 0.60) 35%,
+      rgba(0, 0, 0, 0.90) 0%,
+      rgba(0, 0, 0, 0.65) 35%,
       rgba(0, 0, 0, 0.15) 60%,
       rgba(0, 0, 0, 0) 80%
     );
@@ -96,9 +100,10 @@
   }
 
   #ingredients-{{ section.id }} .ingredients__card-placeholder {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: 0;
     background: #d5cfc7;
+    z-index: 0;
   }
 
   #ingredients-{{ section.id }} .ingredients__card-content {
@@ -129,7 +134,7 @@
     display: none;
   }
 
-  /* ══ MOBILE : slider scroll snap ══ */
+  /* ══ MOBILE ══ */
   @media (max-width: 768px) {
     #ingredients-{{ section.id }} .ingredients__grid {
       display: flex;
@@ -138,10 +143,11 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      gap: 12px;
+      /* Marge visible sur les côtés */
       padding: 0 16px;
+      scroll-padding-left: 16px;
+      gap: 12px;
       max-width: 100%;
-      width: 100%;
       box-sizing: border-box;
     }
 
@@ -150,7 +156,8 @@
     }
 
     #ingredients-{{ section.id }} .ingredients__card {
-      flex: 0 0 calc(100vw - 32px - 40px);
+      /* 100vw - 16px gauche - 16px droite - 32px pour montrer la carte suivante */
+      flex: 0 0 calc(100vw - 64px);
       scroll-snap-align: start;
       aspect-ratio: 1 / 1;
     }
