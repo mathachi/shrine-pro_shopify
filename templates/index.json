@@ -484,7 +484,8 @@
           "settings": {
             "day_label": "JOUR 21",
             "step_title": "Moins de poils visibles.",
-            "step_desc": "La peau paraît plus nette et plus douce."
+            "step_desc": "La peau paraît plus nette et plus douce.",
+            "image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png"
           }
         },
         "step_NGtrY7": {
@@ -492,7 +493,8 @@
           "settings": {
             "day_label": "JOUR 45",
             "step_title": "Poils plus fins.",
-            "step_desc": "La repousse est moins dense et moins épaisse."
+            "step_desc": "La repousse est moins dense et moins épaisse.",
+            "image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png"
           }
         }
       },
@@ -504,13 +506,12 @@
       "name": "Timeline Résultats",
       "settings": {
         "title": "Les résultats jour après jour",
-        "accent_color": "#2563eb",
-        "line_inactive": "#d1d5db",
-        "bg_color": "#ffffff",
-        "title_color": "#111827",
-        "desc_color": "#6b7280",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "accent_color": "#f9d2e8",
+        "bg_color": "#df99c6",
+        "title_color": "#ffffff",
+        "desc_color": "#F5F5F5",
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     }
   },
