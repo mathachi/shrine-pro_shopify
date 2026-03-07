@@ -615,7 +615,8 @@
       "settings": {
         "title": "Pourquoi choisir notre produit ?",
         "product_name": "Huile Anti-Poils LYSA",
-        "product_bg": "#fef9c3",
+        "product_image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png",
+        "product_bg": "#f9d2e8",
         "product_name_color": "#15803d",
         "comp1_name": "Chirurgie esthétique",
         "comp2_name": "Crèmes",
