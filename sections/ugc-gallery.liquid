@@ -1,38 +1,45 @@
 <section class="ugc-gallery" id="ugc-gallery-{{ section.id }}">
-  <div class="ugc-gallery__container">
-
+  <div class="ugc-gallery__header">
     <h2 class="ugc-gallery__title">{{ section.settings.title }}</h2>
-
-    <div class="ugc-gallery__slider-outer">
-      <div class="ugc-gallery__track" id="ugc-track-{{ section.id }}">
-        {%- for block in section.blocks -%}
-          <div class="ugc-gallery__item" {{ block.shopify_attributes }}>
-            <div class="ugc-gallery__media-wrapper">
-              {%- if block.settings.video_url != blank -%}
-                <video autoplay loop muted playsinline preload="auto" class="ugc-gallery__video">
-                  <source src="{{ block.settings.video_url }}" type="video/mp4">
-                </video>
-              {%- elsif block.settings.image != blank -%}
-                <img
-                  src="{{ block.settings.image | image_url: width: 600 }}"
-                  alt="{{ block.settings.image.alt | escape }}"
-                  class="ugc-gallery__image"
-                  loading="lazy"
-                >
-              {%- endif -%}
-
-              {%- if block.settings.overlay_text != blank -%}
-                <div class="ugc-gallery__overlay">
-                  <span class="ugc-gallery__overlay-text">{{ block.settings.overlay_text }}</span>
-                </div>
-              {%- endif -%}
-            </div>
-          </div>
-        {%- endfor -%}
-      </div>
-    </div>
-
   </div>
+
+  <div class="ugc-gallery__track-wrap" id="ugc-track-{{ section.id }}">
+    <div class="ugc-gallery__track">
+      {%- for block in section.blocks -%}
+        <div class="ugc-gallery__item" {{ block.shopify_attributes }}>
+          <div class="ugc-gallery__media-wrapper">
+            {%- if block.settings.video_url != blank -%}
+              <video autoplay loop muted playsinline preload="auto" class="ugc-gallery__video">
+                <source src="{{ block.settings.video_url }}" type="video/mp4">
+              </video>
+            {%- elsif block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 800 }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                class="ugc-gallery__image"
+                loading="lazy"
+                draggable="false"
+              >
+            {%- endif -%}
+
+            {%- if block.settings.overlay_text != blank -%}
+              <div class="ugc-gallery__overlay">
+                <span class="ugc-gallery__overlay-text">{{ block.settings.overlay_text }}</span>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if section.settings.show_dots -%}
+    <div class="ugc-gallery__dots" id="ugc-dots-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        <button class="ugc-gallery__dot {% if forloop.first %}is-active{% endif %}" aria-label="Slide {{ forloop.index }}"></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
 </section>
 
 <style>
@@ -42,7 +49,7 @@
     overflow: hidden;
   }
 
-  #ugc-gallery-{{ section.id }} .ugc-gallery__container {
+  #ugc-gallery-{{ section.id }} .ugc-gallery__header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
@@ -50,39 +57,50 @@
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__title {
     text-align: center;
-    font-size: clamp(20px, 2.5vw, 30px);
+    font-size: clamp(20px, 2.5vw, 32px);
     font-weight: 700;
     color: {{ section.settings.title_color }};
-    margin: 0 0 40px;
-    line-height: 1.3;
+    margin: 0 0 36px;
+    line-height: 1.25;
   }
 
-  #ugc-gallery-{{ section.id }} .ugc-gallery__slider-outer {
-    overflow: hidden;
-    width: 100%;
+  /* ── Track wrapper : scroll snap container ── */
+  #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 24px;
     cursor: grab;
-    user-select: none;
   }
 
-  #ugc-gallery-{{ section.id }} .ugc-gallery__slider-outer:active {
+  #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap:active {
     cursor: grabbing;
+  }
+
+  #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap::-webkit-scrollbar {
+    display: none;
   }
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__track {
     display: flex;
     gap: {{ section.settings.gap }}px;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+    width: max-content;
+    align-items: stretch;
   }
 
+  /* ── Chaque item ── */
   #ugc-gallery-{{ section.id }} .ugc-gallery__item {
-    flex: 0 0 calc((100% - ({{ section.settings.columns_desktop }} - 1) * {{ section.settings.gap }}px) / {{ section.settings.columns_desktop }});
-    min-width: 0;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: calc((100vw - 48px - ({{ section.settings.columns_desktop }} - 1) * {{ section.settings.gap }}px) / {{ section.settings.columns_desktop }});
   }
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__media-wrapper {
     position: relative;
-    border-radius: 16px;
+    border-radius: {{ section.settings.border_radius }}px;
     overflow: hidden;
     aspect-ratio: 9 / 16;
     background: #d9d0c7;
@@ -95,34 +113,64 @@
     object-fit: cover;
     display: block;
     pointer-events: none;
+    draggable: false;
   }
 
+  /* ── Overlay post-it ── */
   #ugc-gallery-{{ section.id }} .ugc-gallery__overlay {
     position: absolute;
-    top: 16px;
+    top: 14px;
     left: 50%;
     transform: translateX(-50%) rotate(-2deg);
     z-index: 2;
     pointer-events: none;
+    width: 85%;
   }
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__overlay-text {
     display: inline-block;
     background: #ffffff;
     color: #1a1a1a;
-    font-size: clamp(11px, 1vw, 14px);
+    font-size: clamp(11px, 0.9vw, 14px);
     font-weight: 600;
     line-height: 1.35;
     padding: 8px 12px;
-    border-radius: 4px;
+    border-radius: 6px;
     text-align: center;
-    max-width: 160px;
-    box-shadow: 1px 2px 6px rgba(0,0,0,0.18);
+    max-width: 100%;
+    box-shadow: 1px 2px 8px rgba(0,0,0,0.2);
   }
 
+  /* ── Dots ── */
+  #ugc-gallery-{{ section.id }} .ugc-gallery__dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 24px;
+    padding: 0 24px;
+  }
+
+  #ugc-gallery-{{ section.id }} .ugc-gallery__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d1d5db;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+    flex-shrink: 0;
+  }
+
+  #ugc-gallery-{{ section.id }} .ugc-gallery__dot.is-active {
+    background: {{ section.settings.dot_color }};
+    transform: scale(1.35);
+  }
+
+  /* ── Mobile ── */
   @media (max-width: 768px) {
     #ugc-gallery-{{ section.id }} .ugc-gallery__item {
-      flex: 0 0 calc((100% - ({{ section.settings.columns_mobile }} - 1) * 12px) / {{ section.settings.columns_mobile }});
+      width: calc((100vw - 48px - ({{ section.settings.columns_mobile }} - 1) * 12px) / {{ section.settings.columns_mobile }});
     }
 
     #ugc-gallery-{{ section.id }} .ugc-gallery__track {
@@ -133,12 +181,6 @@
       font-size: 22px;
       margin-bottom: 24px;
     }
-
-    #ugc-gallery-{{ section.id }} .ugc-gallery__overlay-text {
-      font-size: 10px;
-      max-width: 110px;
-      padding: 6px 8px;
-    }
   }
 </style>
 
@@ -147,71 +189,64 @@
   const section = document.getElementById('ugc-gallery-{{ section.id }}');
   if (!section) return;
 
-  const outer = section.querySelector('.ugc-gallery__slider-outer');
+  const wrap = section.querySelector('.ugc-gallery__track-wrap');
   const track = section.querySelector('.ugc-gallery__track');
-  const items = track.querySelectorAll('.ugc-gallery__item');
+  const dots = section.querySelectorAll('.ugc-gallery__dot');
 
-  let isDragging = false;
-  let startX = 0;
-  let currentTranslate = 0;
-  let prevTranslate = 0;
-  let animationID = null;
-
-  function getMaxTranslate() {
-    return -(track.scrollWidth - outer.offsetWidth);
+  // ── Snap par dot ──
+  function getItemWidth() {
+    const item = track.querySelector('.ugc-gallery__item');
+    if (!item) return 0;
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    return item.offsetWidth + gap;
   }
 
-  function clamp(val) {
-    return Math.max(getMaxTranslate(), Math.min(0, val));
+  function scrollToIndex(index) {
+    wrap.scrollTo({ left: index * getItemWidth(), behavior: 'smooth' });
   }
 
-  function setTranslate(x) {
-    track.style.transform = 'translateX(' + x + 'px)';
-  }
-
-  // ── Mouse events ──
-  outer.addEventListener('mousedown', e => {
-    isDragging = true;
-    startX = e.clientX;
-    prevTranslate = currentTranslate;
-    track.style.transition = 'none';
-    cancelAnimationFrame(animationID);
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => scrollToIndex(i));
   });
 
-  window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    const diff = e.clientX - startX;
-    currentTranslate = clamp(prevTranslate + diff);
-    setTranslate(currentTranslate);
+  // ── Mise à jour des dots au scroll ──
+  function updateDots() {
+    const itemW = getItemWidth();
+    if (!itemW) return;
+    const index = Math.round(wrap.scrollLeft / itemW);
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+  }
+
+  wrap.addEventListener('scroll', updateDots, { passive: true });
+
+  // ── Mouse drag avec momentum ──
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  wrap.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.pageX - wrap.offsetLeft;
+    scrollLeft = wrap.scrollLeft;
+    wrap.style.scrollSnapType = 'none';
   });
 
   window.addEventListener('mouseup', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    track.style.transition = 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+    if (!isDown) return;
+    isDown = false;
+    wrap.style.scrollSnapType = 'x mandatory';
+    // Snap au plus proche
+    const itemW = getItemWidth();
+    const index = Math.round(wrap.scrollLeft / itemW);
+    scrollToIndex(index);
   });
 
-  // ── Touch events ──
-  outer.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    prevTranslate = currentTranslate;
-    track.style.transition = 'none';
-  }, { passive: true });
-
-  outer.addEventListener('touchmove', e => {
-    const diff = e.touches[0].clientX - startX;
-    currentTranslate = clamp(prevTranslate + diff);
-    setTranslate(currentTranslate);
-  }, { passive: true });
-
-  outer.addEventListener('touchend', () => {
-    track.style.transition = 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
-  });
-
-  // Reset on resize
-  window.addEventListener('resize', () => {
-    currentTranslate = clamp(currentTranslate);
-    setTranslate(currentTranslate);
+  window.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - wrap.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    wrap.scrollLeft = scrollLeft - walk;
   });
 })();
 </script>
@@ -227,7 +262,7 @@
       "type": "text",
       "id": "title",
       "label": "Titre",
-      "default": "Plus de 15 000 femmes l'ont adopté, et vous ?"
+      "default": "Plus de 150 000 femmes l'ont adopté, et vous ?"
     },
     {
       "type": "range",
@@ -236,7 +271,7 @@
       "min": 2,
       "max": 6,
       "step": 1,
-      "default": 4
+      "default": 3
     },
     {
       "type": "range",
@@ -254,20 +289,42 @@
       "min": 4,
       "max": 40,
       "step": 2,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Arrondi des coins",
+      "min": 0,
+      "max": 32,
+      "step": 2,
       "default": 16,
       "unit": "px"
     },
     {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Afficher les points de navigation",
+      "default": true
+    },
+    {
       "type": "color",
       "id": "bg_color",
-      "label": "Couleur de fond",
-      "default": "#f5f0eb"
+      "label": "Fond section",
+      "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "title_color",
       "label": "Couleur du titre",
       "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Couleur dot actif",
+      "default": "#e91e8c"
     },
     {
       "type": "range",
