@@ -261,12 +261,10 @@
       "settings": {
         "title": "Plus de 15 000 femmes l'ont adopté, et vous ?",
         "border_radius": 16,
-        "show_dots": true,
         "bg_color": "#ef95c9",
         "title_color": "#ffffff",
-        "dot_color": "#e91e8c",
         "padding_top": 32,
-        "padding_bottom": 24
+        "padding_bottom": 32
       }
     },
     "testimonials_carousel_GVdPdt": {
