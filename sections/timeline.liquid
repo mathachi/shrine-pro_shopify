@@ -1,8 +1,3 @@
-{% comment %}
-  Section: Timeline Résultats
-  Layout: Ligne à gauche | Badge + Titre + Desc | Image 1x1 centrée
-{% endcomment %}
-
 <section class="tl" id="tl-{{ section.id }}">
   <div class="tl__container">
 
@@ -11,37 +6,21 @@
     {%- endif -%}
 
     <div class="tl__track">
-      <!-- Ligne verticale solide -->
-      <div class="tl__line" aria-hidden="true">
-        <div class="tl__line-fill" id="tl-fill-{{ section.id }}"></div>
-      </div>
-
       {%- for block in section.blocks -%}
         <article class="tl__step" {{ block.shopify_attributes }}>
-
-          <!-- Colonne gauche : badge + texte -->
-          <div class="tl__left">
-            <div class="tl__badge">{{ block.settings.day_label }}</div>
-            <div class="tl__text">
-              <h3 class="tl__step-title">{{ block.settings.step_title }}</h3>
-              <p class="tl__step-desc">{{ block.settings.step_desc }}</p>
-            </div>
-          </div>
-
-          <!-- Colonne droite : image optionnelle -->
+          <div class="tl__badge">{{ block.settings.day_label }}</div>
+          <h3 class="tl__step-title">{{ block.settings.step_title }}</h3>
+          <p class="tl__step-desc">{{ block.settings.step_desc }}</p>
           {%- if block.settings.image != blank -%}
-            <div class="tl__right">
-              <div class="tl__img-wrap">
-                <img
-                  src="{{ block.settings.image | image_url: width: 700 }}"
-                  alt="{{ block.settings.step_title | escape }}"
-                  class="tl__img"
-                  loading="lazy"
-                >
-              </div>
+            <div class="tl__img-wrap">
+              <img
+                src="{{ block.settings.image | image_url: width: 700 }}"
+                alt="{{ block.settings.step_title | escape }}"
+                class="tl__img"
+                loading="lazy"
+              >
             </div>
           {%- endif -%}
-
         </article>
       {%- endfor -%}
     </div>
@@ -51,6 +30,8 @@
 
 <style>
   #tl-{{ section.id }} {
+    --badge-w: 92px;
+    --badge-h: 38px;
     background: {{ section.settings.bg_color }};
     padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
   }
@@ -72,58 +53,23 @@
 
   /* ══ TRACK ══ */
   #tl-{{ section.id }} .tl__track {
-    position: relative;
-    /* La ligne est alignée sur le centre des badges */
-    padding-left: calc(var(--badge-w) / 2);
-  }
-
-  /* ══ LIGNE SOLIDE ══ */
-  #tl-{{ section.id }} .tl__line {
-    position: absolute;
-    left: calc(var(--badge-w) / 2 - 1px);
-    top: calc(var(--badge-h) / 2);
-    bottom: calc(var(--badge-h) / 2);
-    width: 2px;
-    background: {{ section.settings.line_inactive }};
-    border-radius: 2px;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  #tl-{{ section.id }} .tl__line-fill {
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 0%;
-    background: {{ section.settings.accent_color }};
-    transition: height .35s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
   }
 
   /* ══ STEP ══ */
   #tl-{{ section.id }} .tl__step {
     display: flex;
-    align-items: center;
-    gap: 32px;
-    padding-bottom: 48px;
-    margin-left: calc(var(--badge-w) / 2 * -1);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
     opacity: .3;
     transition: opacity .4s ease;
   }
 
-  #tl-{{ section.id }} .tl__step:last-child {
-    padding-bottom: 0;
-  }
-
   #tl-{{ section.id }} .tl__step.is-active {
     opacity: 1;
-  }
-
-  /* ══ COLONNE GAUCHE ══ */
-  #tl-{{ section.id }} .tl__left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-width: 0;
   }
 
   /* Badge au-dessus du titre */
@@ -152,7 +98,7 @@
   }
 
   #tl-{{ section.id }} .tl__step-title {
-    margin: 0 0 8px;
+    margin: 0;
     font-size: clamp(17px, 1.8vw, 21px);
     font-weight: 800;
     color: {{ section.settings.title_color }};
@@ -168,13 +114,11 @@
     text-transform: uppercase;
   }
 
-  /* ══ COLONNE DROITE (image) ══ */
-  #tl-{{ section.id }} .tl__right {
-    flex-shrink: 0;
-  }
-
+  /* Image sous le texte */
   #tl-{{ section.id }} .tl__img-wrap {
-    width: 180px;
+    margin-top: 6px;
+    width: 100%;
+    max-width: 280px;
     aspect-ratio: 1 / 1;
     border-radius: 14px;
     overflow: hidden;
@@ -188,35 +132,23 @@
     display: block;
   }
 
-  /* ══ VARIABLES ══ */
-  #tl-{{ section.id }} {
-    --badge-w: 92px;
-    --badge-h: 38px;
+  /* ══ DESKTOP : 2 colonnes ══ */
+  @media (min-width: 769px) {
+    #tl-{{ section.id }} .tl__track {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px 60px;
+    }
+
+    #tl-{{ section.id }} .tl__img-wrap {
+      max-width: 100%;
+    }
   }
 
   /* ══ MOBILE ══ */
   @media (max-width: 768px) {
-    #tl-{{ section.id }} {
-      --badge-w: 86px;
-      --badge-h: 36px;
-    }
-
     #tl-{{ section.id }} .tl__container {
       padding: 0 16px;
-    }
-
-    #tl-{{ section.id }} .tl__step {
-      flex-direction: row;
-      align-items: center;
-      gap: 16px;
-    }
-
-    #tl-{{ section.id }} .tl__img-wrap {
-      width: 110px;
-    }
-
-    #tl-{{ section.id }} .tl__step-title {
-      font-size: 16px;
     }
   }
 </style>
@@ -227,27 +159,17 @@
   if (!root) return;
 
   const steps = Array.from(root.querySelectorAll('.tl__step'));
-  const fill = root.querySelector('#tl-fill-{{ section.id }}');
-  if (!steps.length || !fill) return;
+  if (!steps.length) return;
 
   function update() {
-    let lastActive = -1;
     const trigger = window.innerHeight * 0.68;
-
-    steps.forEach((el, i) => {
+    steps.forEach(el => {
       if (el.getBoundingClientRect().top < trigger) {
         el.classList.add('is-active');
-        lastActive = i;
       } else {
         el.classList.remove('is-active');
       }
     });
-
-    fill.style.height = lastActive < 0
-      ? '0%'
-      : lastActive >= steps.length - 1
-        ? '100%'
-        : (((lastActive + 1) / steps.length) * 100) + '%';
   }
 
   window.addEventListener('scroll', update, { passive: true });
@@ -263,24 +185,23 @@
   "class": "section-tl-results",
   "max_blocks": 8,
   "settings": [
-    { "type": "text",  "id": "title",        "label": "Titre",               "default": "Les résultats jour après jour" },
-    { "type": "color", "id": "accent_color", "label": "Couleur accent",      "default": "#2563eb" },
-    { "type": "color", "id": "line_inactive","label": "Couleur ligne",       "default": "#d1d5db" },
-    { "type": "color", "id": "bg_color",     "label": "Fond section",        "default": "#ffffff" },
-    { "type": "color", "id": "title_color",  "label": "Couleur titres",      "default": "#111827" },
-    { "type": "color", "id": "desc_color",   "label": "Couleur description", "default": "#6b7280" },
-    { "type": "range", "id": "padding_top",  "label": "Padding haut", "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" },
-    { "type": "range", "id": "padding_bottom","label": "Padding bas",  "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" }
+    { "type": "text",  "id": "title",         "label": "Titre",               "default": "Les résultats jour après jour" },
+    { "type": "color", "id": "accent_color",  "label": "Couleur accent",      "default": "#2563eb" },
+    { "type": "color", "id": "bg_color",      "label": "Fond section",        "default": "#ffffff" },
+    { "type": "color", "id": "title_color",   "label": "Couleur titres",      "default": "#111827" },
+    { "type": "color", "id": "desc_color",    "label": "Couleur description", "default": "#6b7280" },
+    { "type": "range", "id": "padding_top",   "label": "Padding haut",  "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" },
+    { "type": "range", "id": "padding_bottom","label": "Padding bas",   "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" }
   ],
   "blocks": [
     {
       "type": "step",
       "name": "Étape",
       "settings": [
-        { "type": "text",     "id": "day_label",  "label": "Badge (ex: JOUR 30)",  "default": "JOUR 30" },
-        { "type": "text",     "id": "step_title", "label": "Titre",                "default": "Les premiers résultats sont visibles." },
-        { "type": "textarea", "id": "step_desc",  "label": "Description",          "default": "La majorité de nos clientes constatent une amélioration en quelques semaines." },
-        { "type": "image_picker", "id": "image",  "label": "Image 1:1 (optionnelle)" }
+        { "type": "text",         "id": "day_label",  "label": "Badge (ex: JOUR 30)", "default": "JOUR 30" },
+        { "type": "text",         "id": "step_title", "label": "Titre",               "default": "Les premiers résultats sont visibles." },
+        { "type": "textarea",     "id": "step_desc",  "label": "Description",         "default": "La majorité de nos clientes constatent une amélioration en quelques semaines." },
+        { "type": "image_picker", "id": "image",      "label": "Image 1:1 (optionnelle)" }
       ]
     }
   ],
@@ -289,9 +210,9 @@
       "name": "Timeline Résultats",
       "blocks": [
         { "type": "step", "settings": { "day_label": "JOUR 7",  "step_title": "La repousse ralentit perceptiblement.", "step_desc": "Les follicules pileux commencent à recevoir moins de stimulation enzymatique." } },
-        { "type": "step", "settings": { "day_label": "JOUR 21", "step_title": "Les poils repoussent moins vite.",       "step_desc": "80 % de nos clientes constatent un intervalle plus long entre deux épilations." } },
-        { "type": "step", "settings": { "day_label": "JOUR 45", "step_title": "Les poils s'affinent visiblement.",     "step_desc": "Le diamètre du poil diminue, la peau est plus douce et homogène." } },
-        { "type": "step", "settings": { "day_label": "JOUR 90", "step_title": "Réduction durable confirmée.",          "step_desc": "91 % des utilisatrices rapportent une réduction significative et durable." } }
+        { "type": "step", "settings": { "day_label": "JOUR 21", "step_title": "Les poils repoussent moins vite.",      "step_desc": "80 % de nos clientes constatent un intervalle plus long entre deux épilations." } },
+        { "type": "step", "settings": { "day_label": "JOUR 45", "step_title": "Les poils s'affinent visiblement.",    "step_desc": "Le diamètre du poil diminue, la peau est plus douce et homogène." } },
+        { "type": "step", "settings": { "day_label": "JOUR 90", "step_title": "Réduction durable confirmée.",         "step_desc": "91 % des utilisatrices rapportent une réduction significative et durable." } }
       ]
     }
   ]
