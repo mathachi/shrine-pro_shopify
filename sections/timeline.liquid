@@ -1,62 +1,67 @@
 {% comment %}
-  Section: Timeline Résultats (scroll active)
-  Mobile: colonne (badge + texte + image)
-  Desktop: badge au centre + texte alterné gauche/droite + image 1x1 optionnelle
+  Section: Timeline Résultats
+  Layout: Ligne à gauche | Badge + Titre + Desc | Image 1x1 centrée
 {% endcomment %}
 
-<section class="timeline" id="timeline-{{ section.id }}">
-  <div class="timeline__container">
+<section class="tl" id="tl-{{ section.id }}">
+  <div class="tl__container">
 
     {%- if section.settings.title != blank -%}
-      <h2 class="timeline__title">{{ section.settings.title }}</h2>
+      <h2 class="tl__title">{{ section.settings.title }}</h2>
     {%- endif -%}
 
-    <div class="timeline__track" id="timeline-track-{{ section.id }}">
-      <div class="timeline__line" aria-hidden="true">
-        <div class="timeline__line-fill" id="timeline-fill-{{ section.id }}"></div>
+    <div class="tl__track">
+      <!-- Ligne verticale solide -->
+      <div class="tl__line" aria-hidden="true">
+        <div class="tl__line-fill" id="tl-fill-{{ section.id }}"></div>
       </div>
 
       {%- for block in section.blocks -%}
-        <article class="timeline__step" {{ block.shopify_attributes }}>
-          <div class="timeline__badge-wrap">
-            <div class="timeline__badge">{{ block.settings.day_label }}</div>
+        <article class="tl__step" {{ block.shopify_attributes }}>
+
+          <!-- Colonne gauche : badge + texte -->
+          <div class="tl__left">
+            <div class="tl__badge">{{ block.settings.day_label }}</div>
+            <div class="tl__text">
+              <h3 class="tl__step-title">{{ block.settings.step_title }}</h3>
+              <p class="tl__step-desc">{{ block.settings.step_desc }}</p>
+            </div>
           </div>
 
-          <div class="timeline__content">
-            <h3 class="timeline__step-title">{{ block.settings.step_title }}</h3>
-            <p class="timeline__step-desc">{{ block.settings.step_desc }}</p>
-
-            {%- if block.settings.image != blank -%}
-              <div class="timeline__img-wrap">
+          <!-- Colonne droite : image optionnelle -->
+          {%- if block.settings.image != blank -%}
+            <div class="tl__right">
+              <div class="tl__img-wrap">
                 <img
                   src="{{ block.settings.image | image_url: width: 700 }}"
                   alt="{{ block.settings.step_title | escape }}"
-                  class="timeline__img"
+                  class="tl__img"
                   loading="lazy"
                 >
               </div>
-            {%- endif -%}
-          </div>
+            </div>
+          {%- endif -%}
+
         </article>
       {%- endfor -%}
-
     </div>
+
   </div>
 </section>
 
 <style>
-  #timeline-{{ section.id }}{
+  #tl-{{ section.id }} {
     background: {{ section.settings.bg_color }};
     padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
   }
 
-  #timeline-{{ section.id }} .timeline__container{
-    max-width: 980px;
+  #tl-{{ section.id }} .tl__container {
+    max-width: 860px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
-  #timeline-{{ section.id }} .timeline__title{
+  #tl-{{ section.id }} .tl__title {
     text-align: center;
     font-size: clamp(22px, 2.8vw, 34px);
     font-weight: 800;
@@ -65,22 +70,64 @@
     margin: 0 0 52px;
   }
 
-  #timeline-{{ section.id }} .timeline__track{
+  /* ══ TRACK ══ */
+  #tl-{{ section.id }} .tl__track {
     position: relative;
+    /* La ligne est alignée sur le centre des badges */
+    padding-left: calc(var(--badge-w) / 2);
   }
 
-  /* =========
-     BADGES (taille fixe)
-  ========= */
-  #timeline-{{ section.id }} .timeline__badge-wrap{
-    width: var(--badge-w);
-    flex: 0 0 var(--badge-w);
+  /* ══ LIGNE SOLIDE ══ */
+  #tl-{{ section.id }} .tl__line {
+    position: absolute;
+    left: calc(var(--badge-w) / 2 - 1px);
+    top: calc(var(--badge-h) / 2);
+    bottom: calc(var(--badge-h) / 2);
+    width: 2px;
+    background: {{ section.settings.line_inactive }};
+    border-radius: 2px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  #tl-{{ section.id }} .tl__line-fill {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 0%;
+    background: {{ section.settings.accent_color }};
+    transition: height .35s ease;
+  }
+
+  /* ══ STEP ══ */
+  #tl-{{ section.id }} .tl__step {
     display: flex;
-    justify-content: center;
     align-items: center;
+    gap: 32px;
+    padding-bottom: 48px;
+    margin-left: calc(var(--badge-w) / 2 * -1);
+    opacity: .3;
+    transition: opacity .4s ease;
   }
 
-  #timeline-{{ section.id }} .timeline__badge{
+  #tl-{{ section.id }} .tl__step:last-child {
+    padding-bottom: 0;
+  }
+
+  #tl-{{ section.id }} .tl__step.is-active {
+    opacity: 1;
+  }
+
+  /* ══ COLONNE GAUCHE ══ */
+  #tl-{{ section.id }} .tl__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  /* Badge au-dessus du titre */
+  #tl-{{ section.id }} .tl__badge {
     width: var(--badge-w);
     height: var(--badge-h);
     display: flex;
@@ -94,92 +141,25 @@
     font-weight: 800;
     letter-spacing: 0.06em;
     white-space: nowrap;
+    flex-shrink: 0;
     transition: background .35s ease, color .35s ease;
     box-sizing: border-box;
   }
 
-  /* =========
-     LIGNE EN TIRETS (au milieu des badges)
-  ========= */
-  #timeline-{{ section.id }} .timeline__line{
-    position: absolute;
-    left: calc(var(--pad-x) + (var(--badge-w) / 2) - 1px);
-    top: calc(var(--badge-h) / 2);
-    bottom: calc(var(--badge-h) / 2);
-    width: 2px;
-    background: repeating-linear-gradient(
-      to bottom,
-      {{ section.settings.line_inactive }} 0px,
-      {{ section.settings.line_inactive }} 7px,
-      transparent 7px,
-      transparent 14px
-    );
-    border-radius: 2px;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  #timeline-{{ section.id }} .timeline__line-fill{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 0%;
-    background: repeating-linear-gradient(
-      to bottom,
-      {{ section.settings.accent_color }} 0px,
-      {{ section.settings.accent_color }} 7px,
-      transparent 7px,
-      transparent 14px
-    );
-    transition: height .35s ease;
-  }
-
-  /* =========
-     STEPS (mobile default)
-  ========= */
-  #timeline-{{ section.id }}{
-    --badge-w: 92px;
-    --badge-h: 38px;
-    --pad-x: 20px; /* doit matcher .timeline__container padding horizontal */
-  }
-
-  #timeline-{{ section.id }} .timeline__step{
-    display: flex;
-    align-items: center;           /* centre badge vs ligne */
-    gap: 22px;
-    padding: 0 0 44px 0;
-    opacity: .35;
-    transition: opacity .35s ease;
-  }
-
-  #timeline-{{ section.id }} .timeline__step:last-child{
-    padding-bottom: 0;
-  }
-
-  #timeline-{{ section.id }} .timeline__step.is-active{
-    opacity: 1;
-  }
-
-  #timeline-{{ section.id }} .timeline__step.is-active .timeline__badge{
+  #tl-{{ section.id }} .tl__step.is-active .tl__badge {
     background: {{ section.settings.accent_color }};
     color: #fff;
   }
 
-  #timeline-{{ section.id }} .timeline__content{
-    flex: 1;
-    min-width: 0;
-  }
-
-  #timeline-{{ section.id }} .timeline__step-title{
+  #tl-{{ section.id }} .tl__step-title {
     margin: 0 0 8px;
-    font-size: clamp(16px, 1.7vw, 20px);
+    font-size: clamp(17px, 1.8vw, 21px);
     font-weight: 800;
     color: {{ section.settings.title_color }};
     line-height: 1.25;
   }
 
-  #timeline-{{ section.id }} .timeline__step-desc{
+  #tl-{{ section.id }} .tl__step-desc {
     margin: 0;
     font-size: clamp(11px, 1.1vw, 13px);
     line-height: 1.65;
@@ -188,118 +168,74 @@
     text-transform: uppercase;
   }
 
-  /* Image 1x1 optionnelle */
-  #timeline-{{ section.id }} .timeline__img-wrap{
-    margin-top: 14px;
+  /* ══ COLONNE DROITE (image) ══ */
+  #tl-{{ section.id }} .tl__right {
+    flex-shrink: 0;
+  }
+
+  #tl-{{ section.id }} .tl__img-wrap {
+    width: 180px;
+    aspect-ratio: 1 / 1;
     border-radius: 14px;
     overflow: hidden;
-    aspect-ratio: 1 / 1;
-    max-width: 280px;
     background: #eee;
   }
 
-  #timeline-{{ section.id }} .timeline__img{
+  #tl-{{ section.id }} .tl__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  /* =========
-     DESKTOP : badge au centre, contenu alterné
-  ========= */
-  @media (min-width: 769px){
-    #timeline-{{ section.id }}{
-      --pad-x: 20px;
-    }
-
-    #timeline-{{ section.id }} .timeline__container{
-      padding: 0 20px;
-    }
-
-    #timeline-{{ section.id }} .timeline__line{
-      left: 50%;
-      transform: translateX(-50%);
-      top: calc(var(--badge-h) / 2);
-      bottom: calc(var(--badge-h) / 2);
-    }
-
-    #timeline-{{ section.id }} .timeline__step{
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 36px;
-      align-items: center;
-      padding-bottom: 56px;
-    }
-
-    #timeline-{{ section.id }} .timeline__badge-wrap{
-      grid-column: 2;
-    }
-
-    /* Alternance texte gauche / droite */
-    #timeline-{{ section.id }} .timeline__step:nth-child(odd) .timeline__content{
-      grid-column: 1;
-      text-align: right;
-      justify-self: end;
-      max-width: 420px;
-    }
-
-    #timeline-{{ section.id }} .timeline__step:nth-child(even) .timeline__content{
-      grid-column: 3;
-      text-align: left;
-      justify-self: start;
-      max-width: 420px;
-    }
-
-    #timeline-{{ section.id }} .timeline__img-wrap{
-      max-width: 260px;
-      margin-left: auto;
-      margin-right: 0;
-    }
-
-    #timeline-{{ section.id }} .timeline__step:nth-child(even) .timeline__img-wrap{
-      margin-left: 0;
-      margin-right: auto;
-    }
+  /* ══ VARIABLES ══ */
+  #tl-{{ section.id }} {
+    --badge-w: 92px;
+    --badge-h: 38px;
   }
 
-  @media (max-width: 480px){
-    #timeline-{{ section.id }}{
+  /* ══ MOBILE ══ */
+  @media (max-width: 768px) {
+    #tl-{{ section.id }} {
       --badge-w: 86px;
       --badge-h: 36px;
-      --pad-x: 16px;
     }
 
-    #timeline-{{ section.id }} .timeline__container{
+    #tl-{{ section.id }} .tl__container {
       padding: 0 16px;
     }
 
-    #timeline-{{ section.id }} .timeline__line{
-      left: calc(var(--pad-x) + (var(--badge-w) / 2) - 1px);
+    #tl-{{ section.id }} .tl__step {
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
     }
 
-    #timeline-{{ section.id }} .timeline__img-wrap{
-      max-width: 100%;
+    #tl-{{ section.id }} .tl__img-wrap {
+      width: 110px;
+    }
+
+    #tl-{{ section.id }} .tl__step-title {
+      font-size: 16px;
     }
   }
 </style>
 
 <script>
 (function() {
-  const root = document.getElementById('timeline-{{ section.id }}');
+  const root = document.getElementById('tl-{{ section.id }}');
   if (!root) return;
 
-  const steps = Array.from(root.querySelectorAll('.timeline__step'));
-  const fill = root.querySelector('#timeline-fill-{{ section.id }}');
+  const steps = Array.from(root.querySelectorAll('.tl__step'));
+  const fill = root.querySelector('#tl-fill-{{ section.id }}');
   if (!steps.length || !fill) return;
 
   function update() {
     let lastActive = -1;
-    const trigger = window.innerHeight * 0.65;
+    const trigger = window.innerHeight * 0.68;
 
     steps.forEach((el, i) => {
-      const r = el.getBoundingClientRect();
-      if (r.top < trigger) {
+      if (el.getBoundingClientRect().top < trigger) {
         el.classList.add('is-active');
         lastActive = i;
       } else {
@@ -307,9 +243,11 @@
       }
     });
 
-    if (lastActive < 0) fill.style.height = '0%';
-    else if (lastActive >= steps.length - 1) fill.style.height = '100%';
-    else fill.style.height = (((lastActive + 1) / steps.length) * 100) + '%';
+    fill.style.height = lastActive < 0
+      ? '0%'
+      : lastActive >= steps.length - 1
+        ? '100%'
+        : (((lastActive + 1) / steps.length) * 100) + '%';
   }
 
   window.addEventListener('scroll', update, { passive: true });
@@ -322,94 +260,27 @@
 {
   "name": "Timeline Résultats",
   "tag": "section",
-  "class": "section-timeline-results",
+  "class": "section-tl-results",
   "max_blocks": 8,
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Titre",
-      "default": "Les résultats jour après jour"
-    },
-    {
-      "type": "color",
-      "id": "accent_color",
-      "label": "Couleur accent",
-      "default": "#2563eb"
-    },
-    {
-      "type": "color",
-      "id": "line_inactive",
-      "label": "Couleur ligne inactive",
-      "default": "#d1d5db"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Fond section",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Couleur titres",
-      "default": "#111827"
-    },
-    {
-      "type": "color",
-      "id": "desc_color",
-      "label": "Couleur description",
-      "default": "#6b7280"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding haut",
-      "min": 0,
-      "max": 120,
-      "step": 4,
-      "default": 64,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding bas",
-      "min": 0,
-      "max": 120,
-      "step": 4,
-      "default": 64,
-      "unit": "px"
-    }
+    { "type": "text",  "id": "title",        "label": "Titre",               "default": "Les résultats jour après jour" },
+    { "type": "color", "id": "accent_color", "label": "Couleur accent",      "default": "#2563eb" },
+    { "type": "color", "id": "line_inactive","label": "Couleur ligne",       "default": "#d1d5db" },
+    { "type": "color", "id": "bg_color",     "label": "Fond section",        "default": "#ffffff" },
+    { "type": "color", "id": "title_color",  "label": "Couleur titres",      "default": "#111827" },
+    { "type": "color", "id": "desc_color",   "label": "Couleur description", "default": "#6b7280" },
+    { "type": "range", "id": "padding_top",  "label": "Padding haut", "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" },
+    { "type": "range", "id": "padding_bottom","label": "Padding bas",  "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" }
   ],
   "blocks": [
     {
       "type": "step",
       "name": "Étape",
       "settings": [
-        {
-          "type": "text",
-          "id": "day_label",
-          "label": "Badge (ex: JOUR 30)",
-          "default": "JOUR 30"
-        },
-        {
-          "type": "text",
-          "id": "step_title",
-          "label": "Titre",
-          "default": "Les premiers résultats sont visibles."
-        },
-        {
-          "type": "textarea",
-          "id": "step_desc",
-          "label": "Description",
-          "default": "La majorité de nos clientes constatent une amélioration en quelques semaines."
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image (optionnelle, 1:1)"
-        }
+        { "type": "text",     "id": "day_label",  "label": "Badge (ex: JOUR 30)",  "default": "JOUR 30" },
+        { "type": "text",     "id": "step_title", "label": "Titre",                "default": "Les premiers résultats sont visibles." },
+        { "type": "textarea", "id": "step_desc",  "label": "Description",          "default": "La majorité de nos clientes constatent une amélioration en quelques semaines." },
+        { "type": "image_picker", "id": "image",  "label": "Image 1:1 (optionnelle)" }
       ]
     }
   ],
@@ -417,30 +288,10 @@
     {
       "name": "Timeline Résultats",
       "blocks": [
-        {
-          "type": "step",
-          "settings": {
-            "day_label": "JOUR 7",
-            "step_title": "La repousse ralentit.",
-            "step_desc": "Les intervalles entre deux épilations s’allongent."
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "day_label": "JOUR 21",
-            "step_title": "Moins de poils visibles.",
-            "step_desc": "La peau paraît plus nette et plus douce."
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "day_label": "JOUR 45",
-            "step_title": "Poils plus fins.",
-            "step_desc": "La repousse est moins dense et moins épaisse."
-          }
-        }
+        { "type": "step", "settings": { "day_label": "JOUR 7",  "step_title": "La repousse ralentit perceptiblement.", "step_desc": "Les follicules pileux commencent à recevoir moins de stimulation enzymatique." } },
+        { "type": "step", "settings": { "day_label": "JOUR 21", "step_title": "Les poils repoussent moins vite.",       "step_desc": "80 % de nos clientes constatent un intervalle plus long entre deux épilations." } },
+        { "type": "step", "settings": { "day_label": "JOUR 45", "step_title": "Les poils s'affinent visiblement.",     "step_desc": "Le diamètre du poil diminue, la peau est plus douce et homogène." } },
+        { "type": "step", "settings": { "day_label": "JOUR 90", "step_title": "Réduction durable confirmée.",          "step_desc": "91 % des utilisatrices rapportent une réduction significative et durable." } }
       ]
     }
   ]
