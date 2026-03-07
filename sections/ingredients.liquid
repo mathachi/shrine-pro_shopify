@@ -3,7 +3,6 @@
     <h2 class="ingredients__title">{{ section.settings.title }}</h2>
   </div>
 
-  <!-- Desktop : grille -->
   <div class="ingredients__grid">
     {%- for block in section.blocks -%}
       <div class="ingredients__card" {{ block.shopify_attributes }}>
@@ -27,7 +26,6 @@
     {%- endfor -%}
   </div>
 
-  <!-- Mobile : scroll hint -->
   <p class="ingredients__scroll-hint">→ Faire défiler →</p>
 </section>
 
@@ -53,9 +51,7 @@
     line-height: 1.2;
   }
 
-  /* ══════════════════════
-     DESKTOP : grille 3 col
-  ══════════════════════ */
+  /* ══ DESKTOP : grille 3 colonnes ══ */
   #ingredients-{{ section.id }} .ingredients__grid {
     max-width: 1200px;
     margin: 0 auto;
@@ -85,19 +81,19 @@
     transform: scale(1.04);
   }
 
-  /* Gradient overlay sombre en bas */
+  /* Vignette renforcée pour lisibilité */
   #ingredients-{{ section.id }} .ingredients__card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.88) 0%,
-    rgba(0, 0, 0, 0.60) 35%,
-    rgba(0, 0, 0, 0.15) 60%,
-    rgba(0, 0, 0, 0) 80%
-  );
-  pointer-events: none;
-}
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.60) 35%,
+      rgba(0, 0, 0, 0.15) 60%,
+      rgba(0, 0, 0, 0) 80%
+    );
+    pointer-events: none;
+  }
 
   #ingredients-{{ section.id }} .ingredients__card-placeholder {
     width: 100%;
@@ -125,18 +121,15 @@
   #ingredients-{{ section.id }} .ingredients__card-desc {
     font-size: clamp(12px, 1vw, 14px);
     line-height: 1.55;
-    color: rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.92);
     margin: 0;
   }
 
-  /* Scroll hint caché sur desktop */
   #ingredients-{{ section.id }} .ingredients__scroll-hint {
     display: none;
   }
 
-  /* ══════════════════════
-     MOBILE : slider scroll
-  ══════════════════════ */
+  /* ══ MOBILE : slider scroll snap ══ */
   @media (max-width: 768px) {
     #ingredients-{{ section.id }} .ingredients__grid {
       display: flex;
@@ -159,7 +152,7 @@
     #ingredients-{{ section.id }} .ingredients__card {
       flex: 0 0 calc(100vw - 32px - 40px);
       scroll-snap-align: start;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 1 / 1;
     }
 
     #ingredients-{{ section.id }} .ingredients__title {
@@ -283,15 +276,24 @@
       "blocks": [
         {
           "type": "ingredient",
-          "settings": { "name": "Huile de Jojoba", "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable." }
+          "settings": {
+            "name": "Huile de Jojoba",
+            "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
+          }
         },
         {
           "type": "ingredient",
-          "settings": { "name": "Patchouli", "description": "Stimule naturellement la production de collagène, redonnant fermeté et tonicité à votre peau pour un effet lifting immédiat." }
+          "settings": {
+            "name": "Patchouli",
+            "description": "Stimule naturellement la production de collagène, redonnant fermeté et tonicité à votre peau pour un effet lifting immédiat."
+          }
         },
         {
           "type": "ingredient",
-          "settings": { "name": "Rose Musquée", "description": "Régénère en profondeur les tissus cutanés abîmés grâce à ses antioxydants et acides gras qui luttent contre les signes du vieillissement." }
+          "settings": {
+            "name": "Rose Musquée",
+            "description": "Régénère en profondeur les tissus cutanés abîmés grâce à ses antioxydants et acides gras qui luttent contre les signes du vieillissement."
+          }
         }
       ]
     }
