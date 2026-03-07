@@ -260,12 +260,12 @@
       "name": "UGC Galerie Vidéos",
       "settings": {
         "title": "Plus de 15 000 femmes l'ont adopté, et vous ?",
-        "columns_desktop": 4,
-        "columns_mobile": 2,
-        "gap": 16,
+        "border_radius": 16,
+        "show_dots": true,
         "bg_color": "#ef95c9",
         "title_color": "#ffffff",
-        "padding_top": 24,
+        "dot_color": "#e91e8c",
+        "padding_top": 32,
         "padding_bottom": 24
       }
     },
