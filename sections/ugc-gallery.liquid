@@ -64,7 +64,6 @@
     line-height: 1.25;
   }
 
-  /* ── Track wrapper : scroll snap container ── */
   #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -72,8 +71,11 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    /* Marge latérale pour ne pas coller au bord */
     padding: 0 24px;
+    scroll-padding-left: 24px;
     cursor: grab;
+    box-sizing: border-box;
   }
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap:active {
@@ -86,16 +88,16 @@
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__track {
     display: flex;
-    gap: {{ section.settings.gap }}px;
+    gap: 14px;
     width: max-content;
     align-items: stretch;
   }
 
-  /* ── Chaque item ── */
+  /* ── Desktop : largeur fixe ~280px par carte ── */
   #ugc-gallery-{{ section.id }} .ugc-gallery__item {
     scroll-snap-align: start;
     flex-shrink: 0;
-    width: calc((100vw - 48px - ({{ section.settings.columns_desktop }} - 1) * {{ section.settings.gap }}px) / {{ section.settings.columns_desktop }});
+    width: 280px;
   }
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__media-wrapper {
@@ -113,10 +115,8 @@
     object-fit: cover;
     display: block;
     pointer-events: none;
-    draggable: false;
   }
 
-  /* ── Overlay post-it ── */
   #ugc-gallery-{{ section.id }} .ugc-gallery__overlay {
     position: absolute;
     top: 14px;
@@ -131,7 +131,7 @@
     display: inline-block;
     background: #ffffff;
     color: #1a1a1a;
-    font-size: clamp(11px, 0.9vw, 14px);
+    font-size: 12px;
     font-weight: 600;
     line-height: 1.35;
     padding: 8px 12px;
@@ -146,7 +146,7 @@
     display: flex;
     justify-content: center;
     gap: 7px;
-    margin-top: 24px;
+    margin-top: 20px;
     padding: 0 24px;
   }
 
@@ -159,7 +159,6 @@
     padding: 0;
     cursor: pointer;
     transition: background 0.25s, transform 0.25s;
-    flex-shrink: 0;
   }
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__dot.is-active {
@@ -167,10 +166,19 @@
     transform: scale(1.35);
   }
 
-  /* ── Mobile ── */
+  /* ── Mobile : 1 carte pleine + 80% de la suivante ── */
   @media (max-width: 768px) {
+    #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap {
+      padding: 0 16px;
+      scroll-padding-left: 16px;
+    }
+
+    /* 
+      100vw - 16px (marge gauche) - 16px (marge droite) = espace utile
+      On veut 1 carte = 85% de cet espace → la 2e carte dépasse de 15% - gap
+    */
     #ugc-gallery-{{ section.id }} .ugc-gallery__item {
-      width: calc((100vw - 48px - ({{ section.settings.columns_mobile }} - 1) * 12px) / {{ section.settings.columns_mobile }});
+      width: calc((100vw - 32px) * 0.82);
     }
 
     #ugc-gallery-{{ section.id }} .ugc-gallery__track {
@@ -193,7 +201,6 @@
   const track = section.querySelector('.ugc-gallery__track');
   const dots = section.querySelectorAll('.ugc-gallery__dot');
 
-  // ── Snap par dot ──
   function getItemWidth() {
     const item = track.querySelector('.ugc-gallery__item');
     if (!item) return 0;
@@ -209,7 +216,6 @@
     dot.addEventListener('click', () => scrollToIndex(i));
   });
 
-  // ── Mise à jour des dots au scroll ──
   function updateDots() {
     const itemW = getItemWidth();
     if (!itemW) return;
@@ -219,7 +225,7 @@
 
   wrap.addEventListener('scroll', updateDots, { passive: true });
 
-  // ── Mouse drag avec momentum ──
+  // Mouse drag
   let isDown = false;
   let startX = 0;
   let scrollLeft = 0;
@@ -235,7 +241,6 @@
     if (!isDown) return;
     isDown = false;
     wrap.style.scrollSnapType = 'x mandatory';
-    // Snap au plus proche
     const itemW = getItemWidth();
     const index = Math.round(wrap.scrollLeft / itemW);
     scrollToIndex(index);
@@ -262,35 +267,7 @@
       "type": "text",
       "id": "title",
       "label": "Titre",
-      "default": "Plus de 150 000 femmes l'ont adopté, et vous ?"
-    },
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "label": "Vidéos visibles (desktop)",
-      "min": 2,
-      "max": 6,
-      "step": 1,
-      "default": 3
-    },
-    {
-      "type": "range",
-      "id": "columns_mobile",
-      "label": "Vidéos visibles (mobile)",
-      "min": 1,
-      "max": 3,
-      "step": 1,
-      "default": 2
-    },
-    {
-      "type": "range",
-      "id": "gap",
-      "label": "Espacement entre vidéos",
-      "min": 4,
-      "max": 40,
-      "step": 2,
-      "default": 14,
-      "unit": "px"
+      "default": "Plus de 15 000 femmes l'ont adopté, et vous ?"
     },
     {
       "type": "range",
