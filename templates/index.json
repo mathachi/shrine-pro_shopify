@@ -238,6 +238,7 @@
           "type": "video_item",
           "settings": {
             "video_url": "",
+            "image": "shopify://shop_images/hero_mobile_1.webp",
             "overlay_text": ""
           }
         },
@@ -245,13 +246,7 @@
           "type": "video_item",
           "settings": {
             "video_url": "",
-            "overlay_text": ""
-          }
-        },
-        "video_item_pUMWWH": {
-          "type": "video_item",
-          "settings": {
-            "video_url": "",
+            "image": "shopify://shop_images/hero_mobile_1.webp",
             "overlay_text": ""
           }
         }
@@ -260,8 +255,7 @@
         "video_item_eWwrer",
         "video_item_FwX3mm",
         "video_item_dBTTLV",
-        "video_item_VYJxxH",
-        "video_item_pUMWWH"
+        "video_item_VYJxxH"
       ],
       "name": "UGC Galerie Vidéos",
       "settings": {
