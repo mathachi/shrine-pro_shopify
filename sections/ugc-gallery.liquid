@@ -3,7 +3,7 @@
     <h2 class="ugc-gallery__title">{{ section.settings.title }}</h2>
   </div>
 
-  <div class="ugc-gallery__track-wrap" id="ugc-track-{{ section.id }}">
+  <div class="ugc-gallery__track-wrap">
     <div class="ugc-gallery__track">
       {%- for block in section.blocks -%}
         <div class="ugc-gallery__item" {{ block.shopify_attributes }}>
@@ -32,14 +32,6 @@
       {%- endfor -%}
     </div>
   </div>
-
-  {%- if section.settings.show_dots -%}
-    <div class="ugc-gallery__dots" id="ugc-dots-{{ section.id }}">
-      {%- for block in section.blocks -%}
-        <button class="ugc-gallery__dot {% if forloop.first %}is-active{% endif %}" aria-label="Slide {{ forloop.index }}"></button>
-      {%- endfor -%}
-    </div>
-  {%- endif -%}
 </section>
 
 <style>
@@ -64,40 +56,28 @@
     line-height: 1.25;
   }
 
+  /* ══════════════════════════════
+     DESKTOP : centré, pas de scroll
+  ══════════════════════════════ */
   #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    /* Marge latérale pour ne pas coller au bord */
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 24px;
-    scroll-padding-left: 24px;
-    cursor: grab;
+    overflow: hidden;
+    cursor: default;
     box-sizing: border-box;
-  }
-
-  #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap:active {
-    cursor: grabbing;
-  }
-
-  #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap::-webkit-scrollbar {
-    display: none;
   }
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__track {
     display: flex;
     gap: 14px;
-    width: max-content;
+    justify-content: center;
     align-items: stretch;
   }
 
-  /* ── Desktop : largeur fixe ~280px par carte ── */
   #ugc-gallery-{{ section.id }} .ugc-gallery__item {
-    scroll-snap-align: start;
     flex-shrink: 0;
-    width: 280px;
+    width: 240px;
   }
 
   #ugc-gallery-{{ section.id }} .ugc-gallery__media-wrapper {
@@ -141,96 +121,66 @@
     box-shadow: 1px 2px 8px rgba(0,0,0,0.2);
   }
 
-  /* ── Dots ── */
-  #ugc-gallery-{{ section.id }} .ugc-gallery__dots {
-    display: flex;
-    justify-content: center;
-    gap: 7px;
-    margin-top: 20px;
-    padding: 0 24px;
-  }
-
-  #ugc-gallery-{{ section.id }} .ugc-gallery__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #d1d5db;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: background 0.25s, transform 0.25s;
-  }
-
-  #ugc-gallery-{{ section.id }} .ugc-gallery__dot.is-active {
-    background: {{ section.settings.dot_color }};
-    transform: scale(1.35);
-  }
-
-  /* ── Mobile : 1 carte pleine + 80% de la suivante ── */
+  /* ══════════════════════════════
+     MOBILE : scroll snap
+  ══════════════════════════════ */
   @media (max-width: 768px) {
     #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap {
+      max-width: 100%;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       padding: 0 16px;
       scroll-padding-left: 16px;
+      cursor: grab;
     }
 
-    /* 
-      100vw - 16px (marge gauche) - 16px (marge droite) = espace utile
-      On veut 1 carte = 85% de cet espace → la 2e carte dépasse de 15% - gap
-    */
-    #ugc-gallery-{{ section.id }} .ugc-gallery__item {
-      width: calc((100vw - 32px) * 0.82);
+    #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap:active {
+      cursor: grabbing;
+    }
+
+    #ugc-gallery-{{ section.id }} .ugc-gallery__track-wrap::-webkit-scrollbar {
+      display: none;
     }
 
     #ugc-gallery-{{ section.id }} .ugc-gallery__track {
+      width: max-content;
+      justify-content: flex-start;
       gap: 12px;
     }
 
+    /* 1 carte = 72% → la 2e dépasse d'environ 20% (hint visuel) */
+    #ugc-gallery-{{ section.id }} .ugc-gallery__item {
+      scroll-snap-align: start;
+      width: calc((100vw - 32px) * 0.72);
+    }
+
     #ugc-gallery-{{ section.id }} .ugc-gallery__title {
-      font-size: 22px;
-      margin-bottom: 24px;
+      font-size: 20px;
+      margin-bottom: 20px;
     }
   }
 </style>
 
 <script>
 (function() {
-  const section = document.getElementById('ugc-gallery-{{ section.id }}');
+  const section = document.querySelector('#ugc-gallery-{{ section.id }}');
   if (!section) return;
 
   const wrap = section.querySelector('.ugc-gallery__track-wrap');
   const track = section.querySelector('.ugc-gallery__track');
-  const dots = section.querySelectorAll('.ugc-gallery__dot');
+  if (!wrap || !track) return;
 
-  function getItemWidth() {
-    const item = track.querySelector('.ugc-gallery__item');
-    if (!item) return 0;
-    const gap = parseFloat(getComputedStyle(track).gap) || 0;
-    return item.offsetWidth + gap;
-  }
-
-  function scrollToIndex(index) {
-    wrap.scrollTo({ left: index * getItemWidth(), behavior: 'smooth' });
-  }
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => scrollToIndex(i));
-  });
-
-  function updateDots() {
-    const itemW = getItemWidth();
-    if (!itemW) return;
-    const index = Math.round(wrap.scrollLeft / itemW);
-    dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
-  }
-
-  wrap.addEventListener('scroll', updateDots, { passive: true });
-
-  // Mouse drag
+  // Mouse drag (desktop)
   let isDown = false;
   let startX = 0;
   let scrollLeft = 0;
 
   wrap.addEventListener('mousedown', e => {
+    if (window.innerWidth <= 768) return;
     isDown = true;
     startX = e.pageX - wrap.offsetLeft;
     scrollLeft = wrap.scrollLeft;
@@ -241,17 +191,18 @@
     if (!isDown) return;
     isDown = false;
     wrap.style.scrollSnapType = 'x mandatory';
-    const itemW = getItemWidth();
+    const item = track.querySelector('.ugc-gallery__item');
+    if (!item) return;
+    const itemW = item.offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
     const index = Math.round(wrap.scrollLeft / itemW);
-    scrollToIndex(index);
+    wrap.scrollTo({ left: index * itemW, behavior: 'smooth' });
   });
 
   window.addEventListener('mousemove', e => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - wrap.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    wrap.scrollLeft = scrollLeft - walk;
+    wrap.scrollLeft = scrollLeft - (x - startX) * 1.4;
   });
 })();
 </script>
@@ -280,12 +231,6 @@
       "unit": "px"
     },
     {
-      "type": "checkbox",
-      "id": "show_dots",
-      "label": "Afficher les points de navigation",
-      "default": true
-    },
-    {
       "type": "color",
       "id": "bg_color",
       "label": "Fond section",
@@ -296,12 +241,6 @@
       "id": "title_color",
       "label": "Couleur du titre",
       "default": "#1a1a1a"
-    },
-    {
-      "type": "color",
-      "id": "dot_color",
-      "label": "Couleur dot actif",
-      "default": "#e91e8c"
     },
     {
       "type": "range",
