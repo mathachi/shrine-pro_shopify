@@ -1,0 +1,246 @@
+<section class="cmp" id="cmp-{{ section.id }}">
+  <div class="cmp__container">
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="cmp__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    <div class="cmp__table-wrap">
+      <table class="cmp__table">
+
+        <thead>
+          <tr>
+            <th class="cmp__th cmp__th--label"></th>
+
+            <th class="cmp__th cmp__th--product">
+              {%- if section.settings.product_image != blank -%}
+                <img src="{{ section.settings.product_image | image_url: width: 160 }}" alt="{{ section.settings.product_name }}" class="cmp__th-img" loading="lazy">
+              {%- endif -%}
+              <span class="cmp__th-name cmp__th-name--product">{{ section.settings.product_name }}</span>
+            </th>
+
+            <th class="cmp__th cmp__th--comp">
+              {%- if section.settings.comp1_image != blank -%}
+                <img src="{{ section.settings.comp1_image | image_url: width: 120 }}" alt="{{ section.settings.comp1_name }}" class="cmp__th-img cmp__th-img--comp" loading="lazy">
+              {%- endif -%}
+              <span class="cmp__th-name">{{ section.settings.comp1_name }}</span>
+            </th>
+
+            <th class="cmp__th cmp__th--comp">
+              {%- if section.settings.comp2_image != blank -%}
+                <img src="{{ section.settings.comp2_image | image_url: width: 120 }}" alt="{{ section.settings.comp2_name }}" class="cmp__th-img cmp__th-img--comp" loading="lazy">
+              {%- endif -%}
+              <span class="cmp__th-name">{{ section.settings.comp2_name }}</span>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr class="cmp__row" {{ block.shopify_attributes }}>
+
+              <td class="cmp__td cmp__td--label">{{ block.settings.label }}</td>
+
+              <!-- Produit -->
+              <td class="cmp__td cmp__td--product">
+                {%- if block.settings.product_text != blank -%}
+                  <span class="cmp__custom-text cmp__custom-text--product">{{ block.settings.product_text }}</span>
+                {%- elsif block.settings.product_icon == 'check' -%}
+                  <span class="cmp__icon">{% render 'cmp-icon-check' %}</span>
+                {%- elsif block.settings.product_icon == 'cross' -%}
+                  <span class="cmp__icon">{% render 'cmp-icon-cross' %}</span>
+                {%- elsif block.settings.product_icon == 'partial' -%}
+                  <span class="cmp__icon">{% render 'cmp-icon-partial' %}</span>
+                {%- endif -%}
+              </td>
+
+              <!-- Concurrent 1 -->
+              <td class="cmp__td cmp__td--comp">
+                {%- if block.settings.comp1_text != blank -%}
+                  <span class="cmp__custom-text cmp__custom-text--comp">{{ block.settings.comp1_text }}</span>
+                {%- elsif block.settings.comp1_icon == 'check' -%}
+                  <span class="cmp__icon">{% render 'cmp-icon-check' %}</span>
+                {%- elsif block.settings.comp1_icon == 'cross' -%}
+                  <span class="cmp__icon">{% render 'cmp-icon-cross' %}</span>
+                {%- elsif block.settings.comp1_icon == 'partial' -%}
+                  <span class="cmp__icon">{% render 'cmp-icon-partial' %}</span>
+                {%- endif -%}
+              </td>
+
+              <!-- Concurrent 2 -->
+              <td class="cmp__td cmp__td--comp">
+                {%- if block.settings.comp2_text != blank -%}
+                  <span class="cmp__custom-text cmp__custom-text--comp">{{ block.settings.comp2_text }}</span>
+                {%- elsif block.settings.comp2_icon == 'check' -%}
+                  <span class="cmp__icon">{% render 'cmp-icon-check' %}</span>
+                {%- elsif block.settings.comp2_icon == 'cross' -%}
+                  <span class="cmp__icon">{% render 'cmp-icon-cross' %}</span>
+                {%- elsif block.settings.comp2_icon == 'partial' -%}
+                  <span class="cmp__icon">{% render 'cmp-icon-partial' %}</span>
+                {%- endif -%}
+              </td>
+
+            </tr>
+          {%- endfor -%}
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  #cmp-{{ section.id }} {
+    background: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+  #cmp-{{ section.id }} .cmp__container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  #cmp-{{ section.id }} .cmp__title {
+    text-align: center;
+    font-size: clamp(22px, 2.8vw, 34px);
+    font-weight: 800;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 40px;
+    line-height: 1.2;
+  }
+  #cmp-{{ section.id }} .cmp__table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  #cmp-{{ section.id }} .cmp__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  #cmp-{{ section.id }} .cmp__th {
+    padding: 16px 12px 24px;
+    text-align: center;
+    vertical-align: bottom;
+    font-weight: 700;
+    font-size: 14px;
+    color: {{ section.settings.title_color }};
+  }
+  #cmp-{{ section.id }} .cmp__th--label { width: 32%; text-align: left; }
+  #cmp-{{ section.id }} .cmp__th--product {
+    background: {{ section.settings.product_bg }};
+    border-radius: 16px 16px 0 0;
+  }
+  #cmp-{{ section.id }} .cmp__th-img {
+    display: block;
+    margin: 0 auto 10px;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+  }
+  #cmp-{{ section.id }} .cmp__th-img--comp {
+    width: 44px;
+    height: 44px;
+    filter: grayscale(1) opacity(0.5);
+  }
+  #cmp-{{ section.id }} .cmp__th-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+  }
+  #cmp-{{ section.id }} .cmp__th-name--product {
+    color: {{ section.settings.product_name_color }};
+    font-size: 15px;
+  }
+  #cmp-{{ section.id }} .cmp__row { border-top: 1px solid {{ section.settings.border_color }}; }
+  #cmp-{{ section.id }} .cmp__td {
+    padding: 16px 12px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    color: {{ section.settings.label_color }};
+  }
+  #cmp-{{ section.id }} .cmp__td--label { text-align: left; padding-left: 0; }
+  #cmp-{{ section.id }} .cmp__td--product { background: {{ section.settings.product_bg }}; }
+  #cmp-{{ section.id }} .cmp__row:last-child .cmp__td--product { border-radius: 0 0 16px 16px; }
+  #cmp-{{ section.id }} .cmp__icon { display: inline-flex; align-items: center; justify-content: center; }
+  #cmp-{{ section.id }} .cmp__icon svg { width: 28px; height: 28px; }
+  #cmp-{{ section.id }} .cmp__custom-text { font-size: 13px; font-weight: 700; line-height: 1.3; }
+  #cmp-{{ section.id }} .cmp__custom-text--product { color: {{ section.settings.product_name_color }}; }
+  #cmp-{{ section.id }} .cmp__custom-text--comp { color: #dc2626; }
+
+  @media (max-width: 600px) {
+    #cmp-{{ section.id }} .cmp__container { padding: 0 12px; }
+    #cmp-{{ section.id }} .cmp__table { min-width: 420px; }
+    #cmp-{{ section.id }} .cmp__icon svg { width: 22px; height: 22px; }
+    #cmp-{{ section.id }} .cmp__td { padding: 12px 8px; font-size: 12px; }
+    #cmp-{{ section.id }} .cmp__th { font-size: 12px; padding: 12px 8px 18px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Tableau Comparatif",
+  "tag": "section",
+  "class": "section-comparison",
+  "max_blocks": 10,
+  "settings": [
+    { "type": "text",  "id": "title",             "label": "Titre",                    "default": "Pourquoi choisir notre produit ?" },
+    { "type": "header","content": "Votre produit" },
+    { "type": "text",  "id": "product_name",      "label": "Nom du produit",           "default": "Huile Anti-Poils LYSA" },
+    { "type": "image_picker", "id": "product_image", "label": "Image du produit" },
+    { "type": "color", "id": "product_bg",        "label": "Fond colonne produit",     "default": "#fef9c3" },
+    { "type": "color", "id": "product_name_color","label": "Couleur nom produit",      "default": "#15803d" },
+    { "type": "header","content": "Concurrent 1" },
+    { "type": "text",  "id": "comp1_name",        "label": "Nom concurrent 1",         "default": "Chirurgie esthétique" },
+    { "type": "image_picker", "id": "comp1_image","label": "Image concurrent 1" },
+    { "type": "header","content": "Concurrent 2" },
+    { "type": "text",  "id": "comp2_name",        "label": "Nom concurrent 2",         "default": "Crèmes" },
+    { "type": "image_picker", "id": "comp2_image","label": "Image concurrent 2" },
+    { "type": "header","content": "Style" },
+    { "type": "color", "id": "bg_color",          "label": "Fond section",             "default": "#ffffff" },
+    { "type": "color", "id": "title_color",       "label": "Couleur titre",            "default": "#111827" },
+    { "type": "color", "id": "label_color",       "label": "Couleur critères",         "default": "#374151" },
+    { "type": "color", "id": "border_color",      "label": "Couleur séparateurs",      "default": "#e5e7eb" },
+    { "type": "range", "id": "padding_top",       "label": "Padding haut", "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" },
+    { "type": "range", "id": "padding_bottom",    "label": "Padding bas",  "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Ligne",
+      "settings": [
+        { "type": "text",   "id": "label",        "label": "Critère",             "default": "Traite le problème en profondeur" },
+        { "type": "header", "content": "Votre produit" },
+        { "type": "select", "id": "product_icon", "label": "Icône produit",
+          "options": [{"value":"check","label":"✅ Oui"},{"value":"cross","label":"❌ Non"},{"value":"partial","label":"🟡 Partiel"}],
+          "default": "check" },
+        { "type": "text",   "id": "product_text", "label": "Texte perso (remplace icône)", "info": "Ex: Dès 29€ / session" },
+        { "type": "header", "content": "Concurrent 1" },
+        { "type": "select", "id": "comp1_icon",   "label": "Icône concurrent 1",
+          "options": [{"value":"check","label":"✅ Oui"},{"value":"cross","label":"❌ Non"},{"value":"partial","label":"🟡 Partiel"}],
+          "default": "cross" },
+        { "type": "text",   "id": "comp1_text",   "label": "Texte perso concurrent 1" },
+        { "type": "header", "content": "Concurrent 2" },
+        { "type": "select", "id": "comp2_icon",   "label": "Icône concurrent 2",
+          "options": [{"value":"check","label":"✅ Oui"},{"value":"cross","label":"❌ Non"},{"value":"partial","label":"🟡 Partiel"}],
+          "default": "cross" },
+        { "type": "text",   "id": "comp2_text",   "label": "Texte perso concurrent 2" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tableau Comparatif",
+      "blocks": [
+        { "type": "row", "settings": { "label": "Traite le problème en profondeur", "product_icon": "check",   "comp1_icon": "cross",   "comp2_icon": "cross" } },
+        { "type": "row", "settings": { "label": "Doux pour la peau",                "product_icon": "check",   "comp1_icon": "partial", "comp2_icon": "partial" } },
+        { "type": "row", "settings": { "label": "Sans douleur",                     "product_icon": "check",   "comp1_icon": "cross",   "comp2_icon": "partial" } },
+        { "type": "row", "settings": { "label": "Sans danger",                      "product_icon": "check",   "comp1_icon": "cross",   "comp2_icon": "cross" } },
+        { "type": "row", "settings": { "label": "Prix",                             "product_text": "Dès 29€ / session", "comp1_text": "400-600€ / session", "comp2_icon": "cross" } },
+        { "type": "row", "settings": { "label": "100% satisfait ou remboursé",      "product_icon": "check",   "comp1_icon": "cross",   "comp2_icon": "cross" } },
+        { "type": "row", "settings": { "label": "Recommandé par les dermatologues", "product_icon": "check",   "comp1_icon": "partial", "comp2_icon": "partial" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
