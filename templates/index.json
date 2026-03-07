@@ -333,6 +333,71 @@
         "padding_top": 64,
         "padding_bottom": 64
       }
+    },
+    "ingredients_KRHMj4": {
+      "type": "ingredients",
+      "blocks": {
+        "ingredient_ApiEkQ": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Huile de Jojoba",
+            "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
+          }
+        },
+        "ingredient_iELKCM": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Huile de Jojoba",
+            "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
+          }
+        },
+        "ingredient_LMEex6": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Huile de Jojoba",
+            "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
+          }
+        },
+        "ingredient_Cw6YC7": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Huile de Jojoba",
+            "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
+          }
+        },
+        "ingredient_mxaFVE": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Patchouli",
+            "description": "Stimule naturellement la production de collagène, redonnant fermeté et tonicité à votre peau pour un effet lifting immédiat."
+          }
+        },
+        "ingredient_mxLki3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Rose Musquée",
+            "description": "Régénère en profondeur les tissus cutanés abîmés grâce à ses antioxydants et acides gras qui luttent contre les signes du vieillissement."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_ApiEkQ",
+        "ingredient_iELKCM",
+        "ingredient_LMEex6",
+        "ingredient_Cw6YC7",
+        "ingredient_mxaFVE",
+        "ingredient_mxLki3"
+      ],
+      "name": "Ingrédients",
+      "settings": {
+        "title": "Ingrédients testés cliniquement",
+        "border_radius": 16,
+        "bg_color": "#df99c6",
+        "title_color": "#ffffff",
+        "hint_color": "#ffffff",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
     }
   },
   "order": [
@@ -342,6 +407,7 @@
     "ss_parallax_banner_UxgtxM",
     "skin_feature_TJ4jwj",
     "ugc_gallery_Niq7Yb",
-    "testimonials_carousel_GVdPdt"
+    "testimonials_carousel_GVdPdt",
+    "ingredients_KRHMj4"
   ]
 }
