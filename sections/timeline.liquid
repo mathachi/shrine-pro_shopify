@@ -37,7 +37,7 @@
   }
 
   #tl-{{ section.id }} .tl__container {
-    max-width: 860px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
   }
@@ -51,18 +51,23 @@
     margin: 0 0 52px;
   }
 
-  /* ══ TRACK ══ */
+  /* ══ TRACK : 1 ligne sur desktop ══ */
   #tl-{{ section.id }} .tl__track {
     display: flex;
-    flex-direction: column;
-    gap: 40px;
+    flex-direction: row;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: center;
   }
 
   /* ══ STEP ══ */
   #tl-{{ section.id }} .tl__step {
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 10px;
     opacity: .3;
     transition: opacity .4s ease;
@@ -72,7 +77,7 @@
     opacity: 1;
   }
 
-  /* Badge au-dessus du titre */
+  /* Badge */
   #tl-{{ section.id }} .tl__badge {
     width: var(--badge-w);
     height: var(--badge-h);
@@ -99,7 +104,7 @@
 
   #tl-{{ section.id }} .tl__step-title {
     margin: 0;
-    font-size: clamp(17px, 1.8vw, 21px);
+    font-size: clamp(16px, 1.5vw, 20px);
     font-weight: 800;
     color: {{ section.settings.title_color }};
     line-height: 1.25;
@@ -107,18 +112,17 @@
 
   #tl-{{ section.id }} .tl__step-desc {
     margin: 0;
-    font-size: clamp(11px, 1.1vw, 13px);
+    font-size: clamp(11px, 1vw, 13px);
     line-height: 1.65;
     color: {{ section.settings.desc_color }};
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
-  /* Image sous le texte */
+  /* Image sous le texte, centrée */
   #tl-{{ section.id }} .tl__img-wrap {
     margin-top: 6px;
     width: 100%;
-    max-width: 280px;
     aspect-ratio: 1 / 1;
     border-radius: 14px;
     overflow: hidden;
@@ -132,23 +136,21 @@
     display: block;
   }
 
-  /* ══ DESKTOP : 2 colonnes ══ */
-  @media (min-width: 769px) {
-    #tl-{{ section.id }} .tl__track {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 48px 60px;
-    }
-
-    #tl-{{ section.id }} .tl__img-wrap {
-      max-width: 100%;
-    }
-  }
-
-  /* ══ MOBILE ══ */
+  /* ══ MOBILE : colonne ══ */
   @media (max-width: 768px) {
     #tl-{{ section.id }} .tl__container {
       padding: 0 16px;
+    }
+
+    #tl-{{ section.id }} .tl__track {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    #tl-{{ section.id }} .tl__step {
+      width: 100%;
+      max-width: 360px;
     }
   }
 </style>
@@ -162,13 +164,9 @@
   if (!steps.length) return;
 
   function update() {
-    const trigger = window.innerHeight * 0.68;
+    const trigger = window.innerHeight * 0.75;
     steps.forEach(el => {
-      if (el.getBoundingClientRect().top < trigger) {
-        el.classList.add('is-active');
-      } else {
-        el.classList.remove('is-active');
-      }
+      el.classList.toggle('is-active', el.getBoundingClientRect().top < trigger);
     });
   }
 
@@ -185,13 +183,13 @@
   "class": "section-tl-results",
   "max_blocks": 8,
   "settings": [
-    { "type": "text",  "id": "title",         "label": "Titre",               "default": "Les résultats jour après jour" },
-    { "type": "color", "id": "accent_color",  "label": "Couleur accent",      "default": "#2563eb" },
-    { "type": "color", "id": "bg_color",      "label": "Fond section",        "default": "#ffffff" },
-    { "type": "color", "id": "title_color",   "label": "Couleur titres",      "default": "#111827" },
-    { "type": "color", "id": "desc_color",    "label": "Couleur description", "default": "#6b7280" },
-    { "type": "range", "id": "padding_top",   "label": "Padding haut",  "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" },
-    { "type": "range", "id": "padding_bottom","label": "Padding bas",   "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" }
+    { "type": "text",  "id": "title",          "label": "Titre",               "default": "Les résultats jour après jour" },
+    { "type": "color", "id": "accent_color",   "label": "Couleur accent",      "default": "#2563eb" },
+    { "type": "color", "id": "bg_color",       "label": "Fond section",        "default": "#ffffff" },
+    { "type": "color", "id": "title_color",    "label": "Couleur titres",      "default": "#111827" },
+    { "type": "color", "id": "desc_color",     "label": "Couleur description", "default": "#6b7280" },
+    { "type": "range", "id": "padding_top",    "label": "Padding haut",  "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bas",   "min": 0, "max": 120, "step": 4, "default": 64, "unit": "px" }
   ],
   "blocks": [
     {
@@ -209,10 +207,10 @@
     {
       "name": "Timeline Résultats",
       "blocks": [
-        { "type": "step", "settings": { "day_label": "JOUR 7",  "step_title": "La repousse ralentit perceptiblement.", "step_desc": "Les follicules pileux commencent à recevoir moins de stimulation enzymatique." } },
-        { "type": "step", "settings": { "day_label": "JOUR 21", "step_title": "Les poils repoussent moins vite.",      "step_desc": "80 % de nos clientes constatent un intervalle plus long entre deux épilations." } },
-        { "type": "step", "settings": { "day_label": "JOUR 45", "step_title": "Les poils s'affinent visiblement.",    "step_desc": "Le diamètre du poil diminue, la peau est plus douce et homogène." } },
-        { "type": "step", "settings": { "day_label": "JOUR 90", "step_title": "Réduction durable confirmée.",         "step_desc": "91 % des utilisatrices rapportent une réduction significative et durable." } }
+        { "type": "step", "settings": { "day_label": "JOUR 7",  "step_title": "La repousse ralentit.",         "step_desc": "Les intervalles entre deux épilations s'allongent." } },
+        { "type": "step", "settings": { "day_label": "JOUR 21", "step_title": "Moins de poils visibles.",      "step_desc": "La peau paraît plus nette et plus douce." } },
+        { "type": "step", "settings": { "day_label": "JOUR 45", "step_title": "Les poils s'affinent.",         "step_desc": "Le diamètre du poil diminue, la peau est plus homogène." } },
+        { "type": "step", "settings": { "day_label": "JOUR 90", "step_title": "Réduction durable confirmée.", "step_desc": "91 % des utilisatrices rapportent une réduction significative." } }
       ]
     }
   ]
