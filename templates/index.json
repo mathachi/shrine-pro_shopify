@@ -513,6 +513,119 @@
         "padding_top": 32,
         "padding_bottom": 32
       }
+    },
+    "container_iyzGBK": {
+      "type": "container",
+      "blocks": {
+        "row_NJFiRn": {
+          "type": "row",
+          "settings": {
+            "label": "Traite le problème en profondeur",
+            "product_icon": "check",
+            "product_text": "",
+            "comp1_icon": "cross",
+            "comp1_text": "",
+            "comp2_icon": "cross",
+            "comp2_text": ""
+          }
+        },
+        "row_8BLn6Y": {
+          "type": "row",
+          "settings": {
+            "label": "Doux pour la peau",
+            "product_icon": "check",
+            "product_text": "",
+            "comp1_icon": "partial",
+            "comp1_text": "",
+            "comp2_icon": "partial",
+            "comp2_text": ""
+          }
+        },
+        "row_gdGAH9": {
+          "type": "row",
+          "settings": {
+            "label": "Sans douleur",
+            "product_icon": "check",
+            "product_text": "",
+            "comp1_icon": "cross",
+            "comp1_text": "",
+            "comp2_icon": "partial",
+            "comp2_text": ""
+          }
+        },
+        "row_WXCtzd": {
+          "type": "row",
+          "settings": {
+            "label": "Sans danger",
+            "product_icon": "check",
+            "product_text": "",
+            "comp1_icon": "cross",
+            "comp1_text": "",
+            "comp2_icon": "cross",
+            "comp2_text": ""
+          }
+        },
+        "row_Nfy6Kg": {
+          "type": "row",
+          "settings": {
+            "label": "Prix",
+            "product_icon": "check",
+            "product_text": "Dès 29€ / session",
+            "comp1_icon": "cross",
+            "comp1_text": "400-600€ / session",
+            "comp2_icon": "cross",
+            "comp2_text": ""
+          }
+        },
+        "row_qmjrhk": {
+          "type": "row",
+          "settings": {
+            "label": "100% satisfait ou remboursé",
+            "product_icon": "check",
+            "product_text": "",
+            "comp1_icon": "cross",
+            "comp1_text": "",
+            "comp2_icon": "cross",
+            "comp2_text": ""
+          }
+        },
+        "row_ji9hMX": {
+          "type": "row",
+          "settings": {
+            "label": "Recommandé par les dermatologues",
+            "product_icon": "check",
+            "product_text": "",
+            "comp1_icon": "partial",
+            "comp1_text": "",
+            "comp2_icon": "partial",
+            "comp2_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_NJFiRn",
+        "row_8BLn6Y",
+        "row_gdGAH9",
+        "row_WXCtzd",
+        "row_Nfy6Kg",
+        "row_qmjrhk",
+        "row_ji9hMX"
+      ],
+      "name": "Tableau Comparatif",
+      "settings": {
+        "title": "Pourquoi choisir notre produit ?",
+        "product_name": "Huile Anti-Poils LYSA",
+        "product_bg": "#fef9c3",
+        "product_name_color": "#15803d",
+        "comp1_name": "Chirurgie esthétique",
+        "comp2_name": "Crèmes",
+        "bg_color": "#ffffff",
+        "title_color": "#111827",
+        "label_color": "#374151",
+        "border_color": "#e5e7eb",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -525,6 +638,7 @@
     "testimonials_carousel_GVdPdt",
     "ingredients_KRHMj4",
     "zones_TrF4wW",
-    "timeline_AJXQLn"
+    "timeline_AJXQLn",
+    "container_iyzGBK"
   ]
 }
