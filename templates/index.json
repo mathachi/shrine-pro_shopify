@@ -340,6 +340,7 @@
         "ingredient_ApiEkQ": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png",
             "name": "Huile de Jojoba",
             "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
           }
