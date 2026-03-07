@@ -398,6 +398,73 @@
         "padding_top": 32,
         "padding_bottom": 32
       }
+    },
+    "zones_TrF4wW": {
+      "type": "zones",
+      "blocks": {
+        "zone_WnfNyk": {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Ventre",
+            "zone_desc": "Apporte une sensation de légèreté après une grossesse ou une perte de poids"
+          }
+        },
+        "zone_ywMYbf": {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Cuisses",
+            "zone_desc": "Élimine la cellulite et laisse la peau ferme et éclatante"
+          }
+        },
+        "zone_Qjx3Lr": {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Bras",
+            "zone_desc": "Raffermit la peau et lui donne une apparence lisse et jeune"
+          }
+        },
+        "zone_Ry9yyc": {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Fesses",
+            "zone_desc": "Élimine les vergetures pour une apparence plus ferme"
+          }
+        },
+        "zone_8ftjNn": {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Décolleté",
+            "zone_desc": "Apporte un aspect frais et revitalisé qui vous fait rayonner"
+          }
+        },
+        "zone_GgqmwA": {
+          "type": "zone",
+          "settings": {
+            "zone_name": "Genou",
+            "zone_desc": "Donne à la zone une apparence plus hydratée et éclatante"
+          }
+        }
+      },
+      "block_order": [
+        "zone_WnfNyk",
+        "zone_ywMYbf",
+        "zone_Qjx3Lr",
+        "zone_Ry9yyc",
+        "zone_8ftjNn",
+        "zone_GgqmwA"
+      ],
+      "name": "Zones du corps",
+      "settings": {
+        "title": "Voici les principales zones qui bénéficient des bienfaits de ce produit miracle :",
+        "border_radius": 16,
+        "gap": 24,
+        "bg_color": "#ffffff",
+        "title_color": "#1a1a1a",
+        "name_color": "#1a1a1a",
+        "desc_color": "#555555",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -408,6 +475,7 @@
     "skin_feature_TJ4jwj",
     "ugc_gallery_Niq7Yb",
     "testimonials_carousel_GVdPdt",
-    "ingredients_KRHMj4"
+    "ingredients_KRHMj4",
+    "zones_TrF4wW"
   ]
 }
