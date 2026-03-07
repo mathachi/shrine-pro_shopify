@@ -265,8 +265,8 @@
         "gap": 16,
         "bg_color": "#ef95c9",
         "title_color": "#ffffff",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "testimonials_carousel_GVdPdt": {
