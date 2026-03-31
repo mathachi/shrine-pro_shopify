@@ -152,10 +152,10 @@
         "text_TKL4j8": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non semper suscipit posuere a pede.</p>",
-            "text_custom": false,
-            "text_font": "assistant_n4",
-            "text_size": 20,
+            "text": "<p>Huiles prouvées par la science aussi efficace que le laser.</p>",
+            "text_custom": true,
+            "text_font": "poppins_n4",
+            "text_size": 18,
             "text_height": 130,
             "text_align": "center",
             "text_mt": 16,
