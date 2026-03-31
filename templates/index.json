@@ -317,7 +317,7 @@
         "testimonial_JVyEXd": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/Hair_Removal_Formula.webp",
+            "image": "shopify://shop_images/avant_apres_2_1080x1080_dd2d9bdd-3ec3-43e2-9893-efd0a5f7ab92.webp",
             "review": "Ce produit a changé ma routine, je le recommande à toutes mes amies !",
             "name": "Marie L.",
             "rating": 5
@@ -326,6 +326,7 @@
         "testimonial_VN6jgx": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/avant_apres_3_1080x1080_966f3f74-5a5c-443d-a002-4d9e2d0ff89e.webp",
             "review": "Ce produit a changé ma routine, je le recommande à toutes mes amies !",
             "name": "Marie L.",
             "rating": 5
@@ -334,6 +335,7 @@
         "testimonial_nzijiM": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/avant_apres_4_1080x1080_65292f30-765e-4d45-a2ce-242a68b844f9.webp",
             "review": "Ce produit a changé ma routine, je le recommande à toutes mes amies !",
             "name": "Marie L.",
             "rating": 5
@@ -342,6 +344,7 @@
         "testimonial_mYzQBh": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/avant_apres_5_1080x1080_6b1f77d8-96f2-4a39-aaeb-eafa4c5dfebb.webp",
             "review": "Ce produit a changé ma routine, je le recommande à toutes mes amies !",
             "name": "Marie L.",
             "rating": 5
