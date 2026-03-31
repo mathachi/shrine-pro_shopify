@@ -308,6 +308,7 @@
         "testimonial_Yp9MMV": {
           "type": "testimonial",
           "settings": {
+            "image": "shopify://shop_images/avant_apres_1_1080x1080_689a11a8-5ae6-4632-94c0-ee1ae6e45d48.webp",
             "review": "Ce produit a changé ma routine, je le recommande à toutes mes amies !",
             "name": "Marie L.",
             "rating": 5
