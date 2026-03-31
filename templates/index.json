@@ -196,37 +196,6 @@
         "border_thickness": 0
       }
     },
-    "rich_text_Vidc94": {
-      "type": "rich-text",
-      "blocks": {
-        "text_Bgkfb3": {
-          "type": "text",
-          "settings": {
-            "text": "<h3>Pourquoi les dermatologues nous conseillent ?</h3>"
-          }
-        }
-      },
-      "block_order": [
-        "text_Bgkfb3"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "display_id": false,
-        "visibility": "always-display",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "full_width": true,
-        "color_scheme": "background-1",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_colors_background": "#ffffff",
-        "custom_gradient_background": "",
-        "custom_colors_text": "#2e2a39",
-        "custom_colors_solid_button_background": "#dd1d1d",
-        "custom_colors_solid_button_text": "#ffffff",
-        "custom_colors_outline_button": "#dd1d1d"
-      }
-    },
     "ss_parallax_banner_UxgtxM": {
       "type": "ss-parallax-banner",
       "name": "SS - Parallax Banner",
@@ -245,8 +214,8 @@
         "content_horizontal_position_mobile": "center",
         "content_vertical_position": "center",
         "content_vertical_position_mobile": "center",
-        "content_padding_vertical": 32,
-        "content_padding_vertical_mobile": 20,
+        "content_padding_vertical": 0,
+        "content_padding_vertical_mobile": 0,
         "content_padding_horizontal": 20,
         "content_padding_horizontal_mobile": 20,
         "overlay_color": "#000000",
@@ -860,7 +829,6 @@
     "ss_parallax_banner_YPdgz4",
     "ss_scrolling_logo_cloud_GMaCKN",
     "ss_text_block_pro_jdJKBM",
-    "rich_text_Vidc94",
     "ss_parallax_banner_UxgtxM",
     "skin_feature_TJ4jwj",
     "ugc_gallery_Niq7Yb",
