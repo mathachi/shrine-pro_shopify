@@ -172,6 +172,8 @@
         "banner_height": "adapt_first",
         "banner_fixed_height": 600,
         "banner_fixed_height_mobile": 500,
+        "image": "shopify://shop_images/Lysa_4_benefices_2800_x_1000_px.webp",
+        "image_mobile": "shopify://shop_images/LYSA_4_benefices_800x_900_px.webp",
         "overlay": 0,
         "content_maxwidth": 65,
         "content_maxwidth_mobile": 100,
