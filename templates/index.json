@@ -203,7 +203,7 @@
         "parallax": false,
         "parallax_mobile": false,
         "banner_height": "fixed_height",
-        "banner_fixed_height": 730,
+        "banner_fixed_height": 800,
         "banner_fixed_height_mobile": 650,
         "image": "shopify://shop_images/Lysa_4_benefices_2800_x_1000_px.webp",
         "image_mobile": "shopify://shop_images/LYSA_4_benefices_800_x_1200_px.webp",
