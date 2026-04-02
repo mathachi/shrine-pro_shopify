@@ -256,32 +256,42 @@
         "video_item_eWwrer": {
           "type": "video_item",
           "settings": {
-            "video_url": "",
-            "image": "shopify://shop_images/hero_mobile_1_376b5516-ca11-456a-a139-e208a215b367.webp",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/0d79c62e43e648429ffeea82657d6501.mp4",
             "overlay_text": ""
           }
         },
         "video_item_FwX3mm": {
           "type": "video_item",
           "settings": {
-            "video_url": "",
-            "image": "shopify://shop_images/hero_mobile_1.webp",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/2d22708c00a846c08126fcfde76a344b.mp4",
             "overlay_text": ""
           }
         },
         "video_item_dBTTLV": {
           "type": "video_item",
           "settings": {
-            "video_url": "",
-            "image": "shopify://shop_images/hero_mobile_1.webp",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/1d89231bd83b478e844a266a86f77512.mp4",
             "overlay_text": ""
           }
         },
-        "video_item_VYJxxH": {
+        "video_item_wEdM9z": {
           "type": "video_item",
           "settings": {
-            "video_url": "",
-            "image": "shopify://shop_images/hero_mobile_1.webp",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/045984b66ba442b192aff0a1fb31cc7f.mp4",
+            "overlay_text": ""
+          }
+        },
+        "video_item_MQNMCb": {
+          "type": "video_item",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/4981fb4b88bc4040b36d86b6af17217c.mp4",
+            "overlay_text": ""
+          }
+        },
+        "video_item_iynraV": {
+          "type": "video_item",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/8ad857bda3e8498fafc2805eaf84821c.mp4",
             "overlay_text": ""
           }
         }
@@ -290,7 +300,9 @@
         "video_item_eWwrer",
         "video_item_FwX3mm",
         "video_item_dBTTLV",
-        "video_item_VYJxxH"
+        "video_item_wEdM9z",
+        "video_item_MQNMCb",
+        "video_item_iynraV"
       ],
       "name": "UGC Galerie Vidéos",
       "settings": {
