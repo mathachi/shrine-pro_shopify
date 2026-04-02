@@ -305,21 +305,21 @@
     "testimonials_carousel_GVdPdt": {
       "type": "testimonials-carousel",
       "blocks": {
-        "testimonial_JVyEXd": {
+        "testimonial_Yp9MMV": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/avant_apres_2_1080x1080_dd2d9bdd-3ec3-43e2-9893-efd0a5f7ab92.webp",
-            "review": "\"On m'avait toujours dit que raser mes poils allait les démultiplier. J'ai quand même tenté Lysa et après 6 semaines, mes poils ont disparus. Je regrette juste de ne pas l'avoir essayé avant.\"",
-            "name": "Louise P.",
+            "image": "shopify://shop_images/avant_apres_1_1080x1080_689a11a8-5ae6-4632-94c0-ee1ae6e45d48.webp",
+            "review": "\"Atteinte du SOPK, je me rasais tous les matins même plus souvent que mon mari. En 1 mois, la repousse a déjà ralenti. La libération est pour bientôt !\"",
+            "name": "Marie L.",
             "rating": 5
           }
         },
-        "testimonial_VN6jgx": {
+        "testimonial_mYzQBh": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/avant_apres_3_1080x1080_966f3f74-5a5c-443d-a002-4d9e2d0ff89e.webp",
-            "review": "\"Après plus de 20 ans de complexes à me raser le menton (sans parler des irritations + boutons), Lysa m'a enfin permis de me sentir féminine après seulement 3 mois d'applications !\"",
-            "name": "Amanda D.",
+            "image": "shopify://shop_images/avant_apres_5_1080x1080_6b1f77d8-96f2-4a39-aaeb-eafa4c5dfebb.webp",
+            "review": "\"C'est littéralement incroyable la différence sur mon maillot après 6 mois, tellement lisse qu'on dirait que je suis imberbe. Finis la l'Amazonie pour moi, j'aurais dû commencer bien plus tôt !\"",
+            "name": "Ana Z.",
             "rating": 5
           }
         },
@@ -332,15 +332,6 @@
             "rating": 5
           }
         },
-        "testimonial_Yp9MMV": {
-          "type": "testimonial",
-          "settings": {
-            "image": "shopify://shop_images/avant_apres_1_1080x1080_689a11a8-5ae6-4632-94c0-ee1ae6e45d48.webp",
-            "review": "\"Atteinte du SOPK, je me rasais tous les matins même plus souvent que mon mari. En 1 mois, la repousse a déjà ralenti. La libération est pour bientôt !\"",
-            "name": "Marie L.",
-            "rating": 5
-          }
-        },
         "testimonial_nzijiM": {
           "type": "testimonial",
           "settings": {
@@ -350,23 +341,32 @@
             "rating": 5
           }
         },
-        "testimonial_mYzQBh": {
+        "testimonial_VN6jgx": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/avant_apres_5_1080x1080_6b1f77d8-96f2-4a39-aaeb-eafa4c5dfebb.webp",
-            "review": "\"C'est littéralement incroyable la différence sur mon maillot après 6 mois, tellement lisse qu'on dirait que je suis imberbe. Finis la l'Amazonie pour moi, j'aurais dû commencer bien plus tôt !\"",
-            "name": "Ana Z.",
+            "image": "shopify://shop_images/avant_apres_3_1080x1080_966f3f74-5a5c-443d-a002-4d9e2d0ff89e.webp",
+            "review": "\"Après plus de 20 ans de complexes à me raser le menton (sans parler des irritations + boutons), Lysa m'a enfin permis de me sentir féminine après seulement 3 mois d'applications !\"",
+            "name": "Amanda D.",
+            "rating": 5
+          }
+        },
+        "testimonial_JVyEXd": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/avant_apres_2_1080x1080_dd2d9bdd-3ec3-43e2-9893-efd0a5f7ab92.webp",
+            "review": "\"On m'avait toujours dit que raser mes poils allait les démultiplier. J'ai quand même tenté Lysa et après 6 semaines, mes poils ont disparus. Je regrette juste de ne pas l'avoir essayé avant.\"",
+            "name": "Louise P.",
             "rating": 5
           }
         }
       },
       "block_order": [
-        "testimonial_JVyEXd",
-        "testimonial_VN6jgx",
-        "testimonial_bXJW98",
         "testimonial_Yp9MMV",
+        "testimonial_mYzQBh",
+        "testimonial_bXJW98",
         "testimonial_nzijiM",
-        "testimonial_mYzQBh"
+        "testimonial_VN6jgx",
+        "testimonial_JVyEXd"
       ],
       "name": "Testimonials Carousel",
       "settings": {
