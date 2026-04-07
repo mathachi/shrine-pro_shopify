@@ -563,42 +563,42 @@
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png",
-            "name": "Huile de Jojoba",
+            "name": "Cyperus Rotundus",
             "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
           }
         },
         "ingredient_iELKCM": {
           "type": "ingredient",
           "settings": {
-            "name": "Huile de Jojoba",
+            "name": "Jojoba",
             "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
           }
         },
         "ingredient_LMEex6": {
           "type": "ingredient",
           "settings": {
-            "name": "Huile de Jojoba",
+            "name": "Amande douce",
             "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
           }
         },
         "ingredient_Cw6YC7": {
           "type": "ingredient",
           "settings": {
-            "name": "Huile de Jojoba",
+            "name": "Rose musquée",
             "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
           }
         },
         "ingredient_mxaFVE": {
           "type": "ingredient",
           "settings": {
-            "name": "Patchouli",
+            "name": "Arbre à thé",
             "description": "Stimule naturellement la production de collagène, redonnant fermeté et tonicité à votre peau pour un effet lifting immédiat."
           }
         },
         "ingredient_mxLki3": {
           "type": "ingredient",
           "settings": {
-            "name": "Rose Musquée",
+            "name": "Extrait d'Aloe Vera",
             "description": "Régénère en profondeur les tissus cutanés abîmés grâce à ses antioxydants et acides gras qui luttent contre les signes du vieillissement."
           }
         }
