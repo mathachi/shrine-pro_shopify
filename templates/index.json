@@ -567,6 +567,13 @@
             "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
           }
         },
+        "ingredient_YJptbx": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Huile de Jojoba",
+            "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
+          }
+        },
         "ingredient_iELKCM": {
           "type": "ingredient",
           "settings": {
@@ -605,6 +612,7 @@
       },
       "block_order": [
         "ingredient_ApiEkQ",
+        "ingredient_YJptbx",
         "ingredient_iELKCM",
         "ingredient_LMEex6",
         "ingredient_Cw6YC7",
