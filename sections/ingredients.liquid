@@ -52,40 +52,36 @@
   }
 
   /* ══ DESKTOP ══ */
-  #ingredients-{{ section.id }} .ingredients__grid {
+  /* Conteneur centré */
+#ingredients-{{ section.id }} .ingredients__grid {
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 0 24px;
   gap: 16px;
   box-sizing: border-box;
+  /* Centrage + débordement visible sur les côtés */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 #ingredients-{{ section.id }} .ingredients__grid::-webkit-scrollbar {
   display: none;
 }
 
+/* 3 cartes visibles + bout de la 4ème */
 #ingredients-{{ section.id }} .ingredients__card {
   position: relative;
   border-radius: {{ section.settings.border_radius }}px;
   overflow: hidden;
-  flex: 0 0 300px;
-  width: 300px;
+  flex: 0 0 calc((100% - 2 * 16px) / 3.2);
   aspect-ratio: 1 / 1;
   scroll-snap-align: start;
   cursor: default;
 }
-
-  #ingredients-{{ section.id }} .ingredients__card {
-    position: relative;
-    border-radius: {{ section.settings.border_radius }}px;
-    overflow: hidden;
-    aspect-ratio: 1 / 1;
-    cursor: default;
-  }
 
   #ingredients-{{ section.id }} .ingredients__card-img {
     position: absolute;
