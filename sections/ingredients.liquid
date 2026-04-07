@@ -53,12 +53,15 @@
 
   /* ══ DESKTOP ══ */
   #ingredients-{{ section.id }} .ingredients__grid {
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   padding: 0 24px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 16px;
+  box-sizing: border-box;
 }
 
   #ingredients-{{ section.id }} .ingredients__card {
