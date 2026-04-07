@@ -592,21 +592,21 @@
           "type": "ingredient",
           "settings": {
             "name": "Rose musquée",
-            "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
+            "description": "Favorise le renouvellement cellulaire pour estomper les taches, cicatrices et uniformiser le teint."
           }
         },
         "ingredient_mxaFVE": {
           "type": "ingredient",
           "settings": {
             "name": "Arbre à thé",
-            "description": "Stimule naturellement la production de collagène, redonnant fermeté et tonicité à votre peau pour un effet lifting immédiat."
+            "description": "Assainit naturellement la peau pour prévenir les poils incarnés, boutons et imperfections post-épilation."
           }
         },
         "ingredient_mxLki3": {
           "type": "ingredient",
           "settings": {
             "name": "Extrait d'Aloe Vera",
-            "description": "Régénère en profondeur les tissus cutanés abîmés grâce à ses antioxydants et acides gras qui luttent contre les signes du vieillissement."
+            "description": "Hydrate et refroidit instantanément la peau pour calmer rougeurs et inflammations après chaque épilation."
           }
         }
       },
