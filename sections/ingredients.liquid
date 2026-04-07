@@ -3,31 +3,42 @@
     <h2 class="ingredients__title">{{ section.settings.title }}</h2>
   </div>
 
-  <div class="ingredients__grid">
-    {%- for block in section.blocks -%}
-      <div class="ingredients__card" {{ block.shopify_attributes }}>
-        {%- if block.settings.image != blank -%}
-          <img
-            src="{{ block.settings.image | image_url: width: 900 }}"
-            alt="{{ block.settings.name }}"
-            class="ingredients__card-img"
-            loading="lazy"
-            draggable="false"
-          >
-        {%- else -%}
-          <div class="ingredients__card-placeholder"></div>
-        {%- endif -%}
-        <div class="ingredients__card-overlay"></div>
-        <div class="ingredients__card-content">
-          <h3 class="ingredients__card-name">{{ block.settings.name }}</h3>
-          <p class="ingredients__card-desc">{{ block.settings.description }}</p>
+  <div class="ingredients__carousel-wrap">
+    <button class="ingredients__arrow ingredients__arrow--prev" aria-label="Précédent">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+
+    <div class="ingredients__grid">
+      {%- for block in section.blocks -%}
+        <div class="ingredients__card" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 900 }}"
+              alt="{{ block.settings.name }}"
+              class="ingredients__card-img"
+              loading="lazy"
+              draggable="false"
+            >
+          {%- else -%}
+            <div class="ingredients__card-placeholder"></div>
+          {%- endif -%}
+          <div class="ingredients__card-overlay"></div>
+          <div class="ingredients__card-content">
+            <h3 class="ingredients__card-name">{{ block.settings.name }}</h3>
+            <p class="ingredients__card-desc">{{ block.settings.description }}</p>
+          </div>
         </div>
-      </div>
-    {%- endfor -%}
+      {%- endfor -%}
+    </div>
+
+    <button class="ingredients__arrow ingredients__arrow--next" aria-label="Suivant">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
 
   <p class="ingredients__scroll-hint">→ Faire défiler →</p>
 </section>
+
 
 <style>
   #ingredients-{{ section.id }} {
@@ -52,36 +63,42 @@
   }
 
   /* ══ DESKTOP ══ */
-  /* Conteneur centré */
-#ingredients-{{ section.id }} .ingredients__grid {
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  gap: 16px;
-  box-sizing: border-box;
-  /* Centrage + débordement visible sur les côtés */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+  #ingredients-{{ section.id }} .ingredients__carousel-wrap {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px;
+  }
 
-#ingredients-{{ section.id }} .ingredients__grid::-webkit-scrollbar {
-  display: none;
-}
+  #ingredients-{{ section.id }} .ingredients__grid {
+    flex: 1;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 16px;
+    box-sizing: border-box;
+    padding: 0;
+  }
 
-/* 3 cartes visibles + bout de la 4ème */
-#ingredients-{{ section.id }} .ingredients__card {
-  position: relative;
-  border-radius: {{ section.settings.border_radius }}px;
-  overflow: hidden;
-  flex: 0 0 calc((100% - 2 * 16px) / 3.2);
-  aspect-ratio: 1 / 1;
-  scroll-snap-align: start;
-  cursor: default;
-}
+  #ingredients-{{ section.id }} .ingredients__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  #ingredients-{{ section.id }} .ingredients__card {
+    position: relative;
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    flex: 0 0 calc((100% - 2 * 16px) / 2.8);
+    aspect-ratio: 1 / 1;
+    scroll-snap-align: start;
+    cursor: default;
+  }
 
   #ingredients-{{ section.id }} .ingredients__card-img {
     position: absolute;
@@ -98,21 +115,20 @@
     transform: scale(1.04);
   }
 
-  /* Vignette — z-index au dessus de l'image */
   #ingredients-{{ section.id }} .ingredients__card-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.95) 0%,
-    rgba(0, 0, 0, 0.85) 25%,
-    rgba(0, 0, 0, 0.50) 50%,
-    rgba(0, 0, 0, 0.10) 70%,
-    rgba(0, 0, 0, 0) 85%
-  );
-  pointer-events: none;
-}
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.85) 25%,
+      rgba(0, 0, 0, 0.50) 50%,
+      rgba(0, 0, 0, 0.10) 70%,
+      rgba(0, 0, 0, 0) 85%
+    );
+    pointer-events: none;
+  }
 
   #ingredients-{{ section.id }} .ingredients__card-placeholder {
     position: absolute;
@@ -145,12 +161,44 @@
     margin: 0;
   }
 
+  /* Flèches */
+  #ingredients-{{ section.id }} .ingredients__arrow {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(0, 0, 0, 0.15);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #333;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  }
+
+  #ingredients-{{ section.id }} .ingredients__arrow:hover {
+    background: #f5f5f5;
+    border-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+  }
+
   #ingredients-{{ section.id }} .ingredients__scroll-hint {
     display: none;
   }
 
   /* ══ MOBILE ══ */
   @media (max-width: 768px) {
+    #ingredients-{{ section.id }} .ingredients__arrow {
+      display: none;
+    }
+
+    #ingredients-{{ section.id }} .ingredients__carousel-wrap {
+      padding: 0;
+    }
+
     #ingredients-{{ section.id }} .ingredients__grid {
       display: flex;
       overflow-x: scroll;
@@ -158,7 +206,6 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      /* Marge visible sur les côtés */
       padding: 0 16px;
       scroll-padding-left: 16px;
       gap: 12px;
@@ -171,8 +218,8 @@
     }
 
     #ingredients-{{ section.id }} .ingredients__card {
-      /* 100vw - 16px gauche - 16px droite - 32px pour montrer la carte suivante */
       flex: 0 0 calc(100vw - 64px);
+      width: calc(100vw - 64px);
       scroll-snap-align: start;
       aspect-ratio: 1 / 1;
     }
@@ -204,6 +251,31 @@
     }
   }
 </style>
+
+<script>
+  (function() {
+    const section = document.getElementById('ingredients-{{ section.id }}');
+    if (!section) return;
+
+    const grid    = section.querySelector('.ingredients__grid');
+    const btnPrev = section.querySelector('.ingredients__arrow--prev');
+    const btnNext = section.querySelector('.ingredients__arrow--next');
+    if (!grid || !btnPrev || !btnNext) return;
+
+    function getScrollAmount() {
+      const card = grid.querySelector('.ingredients__card');
+      return card ? card.offsetWidth + 16 : 300;
+    }
+
+    btnPrev.addEventListener('click', () => {
+      grid.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    });
+
+    btnNext.addEventListener('click', () => {
+      grid.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
+  })();
+</script>
 
 {% schema %}
 {
