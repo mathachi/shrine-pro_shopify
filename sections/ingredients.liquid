@@ -98,6 +98,7 @@
     aspect-ratio: 1 / 1;
     scroll-snap-align: start;
     cursor: default;
+    isolation: isolate;
   }
 
   #ingredients-{{ section.id }} .ingredients__card-img {
@@ -161,7 +162,6 @@
     margin: 0;
   }
 
-  /* Flèches */
   #ingredients-{{ section.id }} .ingredients__arrow {
     flex-shrink: 0;
     width: 44px;
@@ -200,28 +200,15 @@
     }
 
     #ingredients-{{ section.id }} .ingredients__grid {
-      display: flex;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
       padding: 0 16px;
       scroll-padding-left: 16px;
       gap: 12px;
       max-width: 100%;
-      box-sizing: border-box;
-    }
-
-    #ingredients-{{ section.id }} .ingredients__grid::-webkit-scrollbar {
-      display: none;
     }
 
     #ingredients-{{ section.id }} .ingredients__card {
       flex: 0 0 calc(100vw - 64px);
       width: calc(100vw - 64px);
-      scroll-snap-align: start;
-      aspect-ratio: 1 / 1;
     }
 
     #ingredients-{{ section.id }} .ingredients__title {
@@ -352,14 +339,12 @@
         {
           "type": "text",
           "id": "name",
-          "label": "Nom de l'ingrédient",
-          "default": "Huile de Jojoba"
+          "label": "Nom de l'ingrédient"
         },
         {
           "type": "textarea",
           "id": "description",
-          "label": "Description",
-          "default": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
+          "label": "Description"
         }
       ]
     }
@@ -367,29 +352,7 @@
   "presets": [
     {
       "name": "Ingrédients",
-      "blocks": [
-        {
-          "type": "ingredient",
-          "settings": {
-            "name": "Huile de Jojoba",
-            "description": "Équilibre naturellement le sébum de votre peau et pénètre instantanément sans laisser de film gras pour une hydratation légère et durable."
-          }
-        },
-        {
-          "type": "ingredient",
-          "settings": {
-            "name": "Patchouli",
-            "description": "Stimule naturellement la production de collagène, redonnant fermeté et tonicité à votre peau pour un effet lifting immédiat."
-          }
-        },
-        {
-          "type": "ingredient",
-          "settings": {
-            "name": "Rose Musquée",
-            "description": "Régénère en profondeur les tissus cutanés abîmés grâce à ses antioxydants et acides gras qui luttent contre les signes du vieillissement."
-          }
-        }
-      ]
+      "blocks": []
     }
   ]
 }
