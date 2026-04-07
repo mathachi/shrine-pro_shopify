@@ -562,7 +562,7 @@
         "ingredient_ApiEkQ": {
           "type": "ingredient",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png",
+            "image": "shopify://shop_images/cyperus_rotundus.webp",
             "name": "Cyperus Rotundus",
             "description": "Inhibe naturellement l'enzyme responsable de la repousse pour des poils de plus en plus fins, jusqu'à disparition."
           }
@@ -570,6 +570,7 @@
         "ingredient_YJptbx": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/acetyl_tripeptide_1.webp",
             "name": "Acétyl Tripeptide-1",
             "description": "Stimule naturellement le collagène pour régénérer la peau et lui redonner une douceur soyeuse au toucher."
           }
@@ -577,6 +578,7 @@
         "ingredient_iELKCM": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/jojoba.webp",
             "name": "Jojoba",
             "description": "Imite le sébum naturel de la peau pour maintenir une hydratation équilibrée et une douceur de bébé."
           }
@@ -584,6 +586,7 @@
         "ingredient_LMEex6": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/amande_douce.webp",
             "name": "Amande douce",
             "description": "Nourrit et apaise la peau en profondeur pour éliminer les irritations et rougeurs post-épilation."
           }
@@ -591,6 +594,7 @@
         "ingredient_Cw6YC7": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/rose_musquee.webp",
             "name": "Rose musquée",
             "description": "Favorise le renouvellement cellulaire pour estomper les taches, cicatrices et uniformiser le teint."
           }
@@ -598,6 +602,7 @@
         "ingredient_mxaFVE": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/arbre_a_the.webp",
             "name": "Arbre à thé",
             "description": "Assainit naturellement la peau pour prévenir les poils incarnés, boutons et imperfections post-épilation."
           }
@@ -605,6 +610,7 @@
         "ingredient_mxLki3": {
           "type": "ingredient",
           "settings": {
+            "image": "shopify://shop_images/extrait_daloe_vera.webp",
             "name": "Extrait d'Aloe Vera",
             "description": "Hydrate et refroidit instantanément la peau pour calmer rougeurs et inflammations après chaque épilation."
           }
