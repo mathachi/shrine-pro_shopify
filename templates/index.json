@@ -642,6 +642,7 @@
         "zone_WnfNyk": {
           "type": "zone",
           "settings": {
+            "image": "shopify://shop_images/zone_visage.webp",
             "zone_name": "Visage",
             "zone_desc": "Réduit les poils du visage liés aux hormones pour retrouver confiance et se sentir féminine au quotidien."
           }
@@ -649,6 +650,7 @@
         "zone_ywMYbf": {
           "type": "zone",
           "settings": {
+            "image": "shopify://shop_images/zone_aisselles.webp",
             "zone_name": "Aisselles",
             "zone_desc": "Ralentit la repousse pour espacer les épilations et garder la peau lisse plus longtemps."
           }
@@ -656,6 +658,7 @@
         "zone_Qjx3Lr": {
           "type": "zone",
           "settings": {
+            "image": "shopify://shop_images/zone_maillot.webp",
             "zone_name": "Maillot",
             "zone_desc": "Élimine les poils incarnés et les rougeurs pour afficher une peau nette et lisse sans complexe cet été."
           }
