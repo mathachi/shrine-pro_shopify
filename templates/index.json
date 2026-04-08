@@ -674,6 +674,7 @@
         "zone_8ftjNn": {
           "type": "zone",
           "settings": {
+            "image": "shopify://shop_images/zone_bras.webp",
             "zone_name": "Bras",
             "zone_desc": "Rend les poils invisibles pour oser porter ce que vous voulez avec confiance."
           }
@@ -681,6 +682,7 @@
         "zone_GgqmwA": {
           "type": "zone",
           "settings": {
+            "image": "shopify://shop_images/zone_ventre.webp",
             "zone_name": "Ventre",
             "zone_desc": "Stoppe progressivement la repousse pour retrouver une peau lisse et apaisée."
           }
