@@ -734,8 +734,8 @@
           "type": "step",
           "settings": {
             "day_label": "Semaine 8",
-            "step_title": "Poils plus fins.",
-            "step_desc": "La repousse est moins dense et moins épaisse.",
+            "step_title": "Quasiment sans poils",
+            "step_desc": "Les poils autrefois épais et foncés repoussent désormais si fins qu'ils sont à peine visibles. La peau reste lisse plusieurs jours, voire plusieurs semaines, sans presque aucun entretien.",
             "image": "shopify://shop_images/semaine_8.webp"
           }
         }
