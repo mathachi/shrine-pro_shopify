@@ -756,10 +756,10 @@
     "container_iyzGBK": {
       "type": "container",
       "blocks": {
-        "row_NJFiRn": {
+        "row_8BLn6Y": {
           "type": "row",
           "settings": {
-            "label": "Traite le problème en profondeur",
+            "label": "Doux pour la peau",
             "product_icon": "check",
             "product_text": "",
             "comp1_icon": "cross",
@@ -768,15 +768,15 @@
             "comp2_text": ""
           }
         },
-        "row_8BLn6Y": {
+        "row_NJFiRn": {
           "type": "row",
           "settings": {
-            "label": "Doux pour la peau",
+            "label": "Stop à long terme",
             "product_icon": "check",
             "product_text": "",
-            "comp1_icon": "partial",
+            "comp1_icon": "cross",
             "comp1_text": "",
-            "comp2_icon": "partial",
+            "comp2_icon": "cross",
             "comp2_text": ""
           }
         },
@@ -842,8 +842,8 @@
         }
       },
       "block_order": [
-        "row_NJFiRn",
         "row_8BLn6Y",
+        "row_NJFiRn",
         "row_gdGAH9",
         "row_WXCtzd",
         "row_Nfy6Kg",
@@ -857,8 +857,8 @@
         "product_image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png",
         "product_bg": "#f9d2e8",
         "product_name_color": "#15803d",
-        "comp1_name": "Chirurgie esthétique",
-        "comp2_name": "Crèmes",
+        "comp1_name": "Rasage",
+        "comp2_name": "Laser",
         "bg_color": "#ffffff",
         "title_color": "#111827",
         "label_color": "#374151",
