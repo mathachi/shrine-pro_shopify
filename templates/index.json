@@ -642,42 +642,42 @@
         "zone_WnfNyk": {
           "type": "zone",
           "settings": {
-            "zone_name": "Ventre",
+            "zone_name": "Visage",
             "zone_desc": "Apporte une sensation de légèreté après une grossesse ou une perte de poids"
           }
         },
         "zone_ywMYbf": {
           "type": "zone",
           "settings": {
-            "zone_name": "Cuisses",
+            "zone_name": "Aisselles",
             "zone_desc": "Élimine la cellulite et laisse la peau ferme et éclatante"
           }
         },
         "zone_Qjx3Lr": {
           "type": "zone",
           "settings": {
-            "zone_name": "Bras",
+            "zone_name": "Maillot",
             "zone_desc": "Raffermit la peau et lui donne une apparence lisse et jeune"
           }
         },
         "zone_Ry9yyc": {
           "type": "zone",
           "settings": {
-            "zone_name": "Fesses",
+            "zone_name": "Jambes",
             "zone_desc": "Élimine les vergetures pour une apparence plus ferme"
           }
         },
         "zone_8ftjNn": {
           "type": "zone",
           "settings": {
-            "zone_name": "Décolleté",
+            "zone_name": "Bras",
             "zone_desc": "Apporte un aspect frais et revitalisé qui vous fait rayonner"
           }
         },
         "zone_GgqmwA": {
           "type": "zone",
           "settings": {
-            "zone_name": "Genou",
+            "zone_name": "Ventre",
             "zone_desc": "Donne à la zone une apparence plus hydratée et éclatante"
           }
         }
@@ -692,7 +692,7 @@
       ],
       "name": "Zones du corps",
       "settings": {
-        "title": "Voici les principales zones qui bénéficient des bienfaits de ce produit miracle :",
+        "title": "Sur quelles parties du corps l'utiliser ?",
         "border_radius": 16,
         "gap": 24,
         "bg_color": "#ffffff",
