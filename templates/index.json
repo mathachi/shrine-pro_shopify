@@ -666,6 +666,7 @@
         "zone_Ry9yyc": {
           "type": "zone",
           "settings": {
+            "image": "shopify://shop_images/zone_jambes.webp",
             "zone_name": "Jambes",
             "zone_desc": "Affine et réduit progressivement les poils pour des jambes lisses sans épilation hebdomadaire."
           }
@@ -776,67 +777,43 @@
             "product_text": "",
             "comp1_icon": "cross",
             "comp1_text": "",
-            "comp2_icon": "cross",
+            "comp2_icon": "partial",
             "comp2_text": ""
           }
         },
         "row_gdGAH9": {
           "type": "row",
           "settings": {
-            "label": "Sans douleur",
+            "label": "Abordable",
             "product_icon": "check",
             "product_text": "",
-            "comp1_icon": "cross",
+            "comp1_icon": "partial",
             "comp1_text": "",
-            "comp2_icon": "partial",
+            "comp2_icon": "cross",
             "comp2_text": ""
           }
         },
         "row_WXCtzd": {
           "type": "row",
           "settings": {
-            "label": "Sans danger",
+            "label": "Sans poils incarnés",
             "product_icon": "check",
             "product_text": "",
             "comp1_icon": "cross",
-            "comp1_text": "",
-            "comp2_icon": "cross",
-            "comp2_text": ""
-          }
-        },
-        "row_Nfy6Kg": {
-          "type": "row",
-          "settings": {
-            "label": "Prix",
-            "product_icon": "check",
-            "product_text": "Dès 29€ / session",
-            "comp1_icon": "cross",
-            "comp1_text": "400-600€ / session",
-            "comp2_icon": "cross",
-            "comp2_text": ""
-          }
-        },
-        "row_qmjrhk": {
-          "type": "row",
-          "settings": {
-            "label": "100% satisfait ou remboursé",
-            "product_icon": "check",
-            "product_text": "",
-            "comp1_icon": "cross",
-            "comp1_text": "",
-            "comp2_icon": "cross",
-            "comp2_text": ""
-          }
-        },
-        "row_ji9hMX": {
-          "type": "row",
-          "settings": {
-            "label": "Recommandé par les dermatologues",
-            "product_icon": "check",
-            "product_text": "",
-            "comp1_icon": "partial",
             "comp1_text": "",
             "comp2_icon": "partial",
+            "comp2_text": ""
+          }
+        },
+        "row_kQn96E": {
+          "type": "row",
+          "settings": {
+            "label": "Satisfait ou remboursé",
+            "product_icon": "check",
+            "product_text": "",
+            "comp1_icon": "cross",
+            "comp1_text": "",
+            "comp2_icon": "cross",
             "comp2_text": ""
           }
         }
@@ -846,14 +823,12 @@
         "row_NJFiRn",
         "row_gdGAH9",
         "row_WXCtzd",
-        "row_Nfy6Kg",
-        "row_qmjrhk",
-        "row_ji9hMX"
+        "row_kQn96E"
       ],
       "name": "Tableau Comparatif",
       "settings": {
         "title": "Pourquoi choisir notre produit ?",
-        "product_name": "Huile Anti-Poils LYSA",
+        "product_name": "LYSA",
         "product_image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png",
         "product_bg": "#f9d2e8",
         "product_name_color": "#15803d",
