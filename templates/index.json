@@ -716,8 +716,8 @@
           "type": "step",
           "settings": {
             "day_label": "Semaine 1",
-            "step_title": "La repousse ralentit.",
-            "step_desc": "Les intervalles entre deux épilations s’allongent.",
+            "step_title": "La repousse ralentie",
+            "step_desc": "Dès le premier mois, la repousse devient moins piquante et moins dense. L'huile agit au niveau du follicule, les changements se ressentent avant même de se voir.",
             "image": "shopify://shop_images/semaine_1.webp"
           }
         },
