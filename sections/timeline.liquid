@@ -5,39 +5,61 @@
       <h2 class="tl__title">{{ section.settings.title }}</h2>
     {%- endif -%}
 
-    <div class="tl__track">
+    <!-- Onglets -->
+    <div class="tl__tabs" role="tablist">
       {%- for block in section.blocks -%}
-        <article class="tl__step" {{ block.shopify_attributes }}>
-          <div class="tl__badge">{{ block.settings.day_label }}</div>
-          <h3 class="tl__step-title">{{ block.settings.step_title }}</h3>
-          <p class="tl__step-desc">{{ block.settings.step_desc }}</p>
+        <button
+          class="tl__tab{% if forloop.first %} is-active{% endif %}"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          data-index="{{ forloop.index0 }}"
+        >
+          {{ block.settings.day_label }}
+        </button>
+      {%- endfor -%}
+    </div>
+
+    <!-- Panneaux -->
+    <div class="tl__panels">
+      {%- for block in section.blocks -%}
+        <div
+          class="tl__panel{% if forloop.first %} is-active{% endif %}"
+          role="tabpanel"
+          data-index="{{ forloop.index0 }}"
+          {{ block.shopify_attributes }}
+        >
           {%- if block.settings.image != blank -%}
             <div class="tl__img-wrap">
               <img
-                src="{{ block.settings.image | image_url: width: 700 }}"
+                src="{{ block.settings.image | image_url: width: 800 }}"
                 alt="{{ block.settings.step_title | escape }}"
                 class="tl__img"
                 loading="lazy"
               >
             </div>
           {%- endif -%}
-        </article>
+
+          <div class="tl__panel-content">
+            <p class="tl__panel-label">{{ block.settings.day_label }}</p>
+            <h3 class="tl__panel-title">{{ block.settings.step_title }}</h3>
+            <p class="tl__panel-desc">{{ block.settings.step_desc }}</p>
+          </div>
+        </div>
       {%- endfor -%}
     </div>
 
   </div>
 </section>
 
+
 <style>
   #tl-{{ section.id }} {
-    --badge-w: 92px;
-    --badge-h: 38px;
     background: {{ section.settings.bg_color }};
     padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
   }
 
   #tl-{{ section.id }} .tl__container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 24px;
   }
@@ -48,83 +70,67 @@
     font-weight: 800;
     color: {{ section.settings.title_color }};
     line-height: 1.15;
-    margin: 0 0 52px;
+    margin: 0 0 40px;
   }
 
-  /* ══ TRACK : 1 ligne sur desktop ══ */
-  #tl-{{ section.id }} .tl__track {
+  /* ══ ONGLETS ══ */
+  #tl-{{ section.id }} .tl__tabs {
     display: flex;
-    flex-direction: row;
-    gap: 24px;
-    align-items: flex-start;
     justify-content: center;
-  }
-
-  /* ══ STEP ══ */
-  #tl-{{ section.id }} .tl__step {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
     gap: 10px;
-    opacity: .3;
-    transition: opacity .4s ease;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
   }
 
-  #tl-{{ section.id }} .tl__step.is-active {
-    opacity: 1;
-  }
-
-  /* Badge */
-  #tl-{{ section.id }} .tl__badge {
-    width: var(--badge-w);
-    height: var(--badge-h);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
+  #tl-{{ section.id }} .tl__tab {
+    padding: 9px 20px;
+    border-radius: 999px;
     border: 2px solid {{ section.settings.accent_color }};
-    color: {{ section.settings.accent_color }};
     background: transparent;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
+    color: {{ section.settings.accent_color }};
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
     white-space: nowrap;
-    flex-shrink: 0;
-    transition: background .35s ease, color .35s ease;
-    box-sizing: border-box;
   }
 
-  #tl-{{ section.id }} .tl__step.is-active .tl__badge {
+  #tl-{{ section.id }} .tl__tab:hover {
+    background: {{ section.settings.accent_color }}22;
+  }
+
+  #tl-{{ section.id }} .tl__tab.is-active {
     background: {{ section.settings.accent_color }};
     color: #fff;
   }
 
-  #tl-{{ section.id }} .tl__step-title {
-    margin: 0;
-    font-size: clamp(16px, 1.5vw, 20px);
-    font-weight: 800;
-    color: {{ section.settings.title_color }};
-    line-height: 1.25;
+  /* ══ PANNEAUX ══ */
+  #tl-{{ section.id }} .tl__panels {
+    position: relative;
   }
 
-  #tl-{{ section.id }} .tl__step-desc {
-    margin: 0;
-    font-size: clamp(11px, 1vw, 13px);
-    line-height: 1.65;
-    color: {{ section.settings.desc_color }};
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  #tl-{{ section.id }} .tl__panel {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    animation: tl-fade 0.35s ease;
   }
 
-  /* Image sous le texte, centrée */
+  #tl-{{ section.id }} .tl__panel.is-active {
+    display: flex;
+  }
+
+  @keyframes tl-fade {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   #tl-{{ section.id }} .tl__img-wrap {
-    margin-top: 6px;
-    width: 100%;
+    flex: 0 0 45%;
     aspect-ratio: 1 / 1;
-    border-radius: 14px;
+    border-radius: 18px;
     overflow: hidden;
     background: #eee;
   }
@@ -136,52 +142,99 @@
     display: block;
   }
 
-  /* ══ MOBILE : colonne ══ */
-  @media (max-width: 768px) {
+  #tl-{{ section.id }} .tl__panel-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #tl-{{ section.id }} .tl__panel-label {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: {{ section.settings.accent_color }};
+    margin: 0;
+  }
+
+  #tl-{{ section.id }} .tl__panel-title {
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 800;
+    color: {{ section.settings.title_color }};
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  #tl-{{ section.id }} .tl__panel-desc {
+    font-size: clamp(13px, 1.1vw, 15px);
+    line-height: 1.7;
+    color: {{ section.settings.desc_color }};
+    margin: 0;
+  }
+
+  /* ══ MOBILE ══ */
+  @media (max-width: 640px) {
     #tl-{{ section.id }} .tl__container {
       padding: 0 16px;
     }
 
-    #tl-{{ section.id }} .tl__track {
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
+    #tl-{{ section.id }} .tl__tabs {
+      gap: 8px;
     }
 
-    #tl-{{ section.id }} .tl__step {
+    #tl-{{ section.id }} .tl__tab {
+      font-size: 12px;
+      padding: 7px 14px;
+    }
+
+    #tl-{{ section.id }} .tl__panel {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    #tl-{{ section.id }} .tl__img-wrap {
+      flex: none;
       width: 100%;
-      max-width: 360px;
     }
   }
 </style>
+
 
 <script>
 (function() {
   const root = document.getElementById('tl-{{ section.id }}');
   if (!root) return;
 
-  const steps = Array.from(root.querySelectorAll('.tl__step'));
-  if (!steps.length) return;
+  const tabs   = Array.from(root.querySelectorAll('.tl__tab'));
+  const panels = Array.from(root.querySelectorAll('.tl__panel'));
 
-  function update() {
-    const trigger = window.innerHeight * 0.75;
-    steps.forEach(el => {
-      el.classList.toggle('is-active', el.getBoundingClientRect().top < trigger);
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = tab.dataset.index;
+
+      tabs.forEach(t => {
+        t.classList.remove('is-active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      panels.forEach(p => p.classList.remove('is-active'));
+
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      const panel = panels.find(p => p.dataset.index === idx);
+      if (panel) panel.classList.add('is-active');
     });
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
+  });
 })();
 </script>
+
 
 {% schema %}
 {
   "name": "Timeline Résultats",
   "tag": "section",
   "class": "section-tl-results",
-  "max_blocks": 8,
+  "max_blocks": 12,
   "settings": [
     { "type": "text",  "id": "title",          "label": "Titre",               "default": "Les résultats jour après jour" },
     { "type": "color", "id": "accent_color",   "label": "Couleur accent",      "default": "#2563eb" },
@@ -196,10 +249,10 @@
       "type": "step",
       "name": "Étape",
       "settings": [
-        { "type": "text",         "id": "day_label",  "label": "Badge (ex: JOUR 30)", "default": "JOUR 30" },
-        { "type": "text",         "id": "step_title", "label": "Titre",               "default": "Les premiers résultats sont visibles." },
-        { "type": "textarea",     "id": "step_desc",  "label": "Description",         "default": "La majorité de nos clientes constatent une amélioration en quelques semaines." },
-        { "type": "image_picker", "id": "image",      "label": "Image 1:1 (optionnelle)" }
+        { "type": "text",         "id": "day_label",  "label": "Badge (ex : JOUR 30)" },
+        { "type": "text",         "id": "step_title", "label": "Titre" },
+        { "type": "textarea",     "id": "step_desc",  "label": "Description" },
+        { "type": "image_picker", "id": "image",      "label": "Image (optionnelle)" }
       ]
     }
   ],
@@ -207,10 +260,10 @@
     {
       "name": "Timeline Résultats",
       "blocks": [
-        { "type": "step", "settings": { "day_label": "JOUR 7",  "step_title": "La repousse ralentit.",         "step_desc": "Les intervalles entre deux épilations s'allongent." } },
-        { "type": "step", "settings": { "day_label": "JOUR 21", "step_title": "Moins de poils visibles.",      "step_desc": "La peau paraît plus nette et plus douce." } },
-        { "type": "step", "settings": { "day_label": "JOUR 45", "step_title": "Les poils s'affinent.",         "step_desc": "Le diamètre du poil diminue, la peau est plus homogène." } },
-        { "type": "step", "settings": { "day_label": "JOUR 90", "step_title": "Réduction durable confirmée.", "step_desc": "91 % des utilisatrices rapportent une réduction significative." } }
+        { "type": "step" },
+        { "type": "step" },
+        { "type": "step" },
+        { "type": "step" }
       ]
     }
   ]
