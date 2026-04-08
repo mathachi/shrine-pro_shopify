@@ -709,7 +709,7 @@
         "step_8L7fjp": {
           "type": "step",
           "settings": {
-            "day_label": "JOUR 7",
+            "day_label": "Semaine 1",
             "step_title": "La repousse ralentit.",
             "step_desc": "Les intervalles entre deux épilations s’allongent.",
             "image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png"
@@ -718,7 +718,7 @@
         "step_gwmnH7": {
           "type": "step",
           "settings": {
-            "day_label": "JOUR 21",
+            "day_label": "Semaine 4",
             "step_title": "Moins de poils visibles.",
             "step_desc": "La peau paraît plus nette et plus douce.",
             "image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png"
@@ -727,7 +727,7 @@
         "step_NGtrY7": {
           "type": "step",
           "settings": {
-            "day_label": "JOUR 45",
+            "day_label": "Semaine 8",
             "step_title": "Poils plus fins.",
             "step_desc": "La repousse est moins dense et moins épaisse.",
             "image": "shopify://shop_images/Gemini_Generated_Image_wfpqcvwfpqcvwfpq.png"
