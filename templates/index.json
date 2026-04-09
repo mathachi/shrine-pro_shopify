@@ -576,6 +576,14 @@
             "margin_top": 24,
             "margin_bottom": 24
           }
+        },
+        "payment_badges_BA9Mbq": {
+          "type": "payment_badges",
+          "settings": {
+            "enabled_payment_types": "",
+            "margin_top": 0,
+            "margin_bottom": 15
+          }
         }
       },
       "block_order": [
@@ -586,7 +594,8 @@
         "text_XYNDmW",
         "text_XqQkyH",
         "kaching_bundles_app_block_7TTHcr",
-        "buy_buttons_wxErJT"
+        "buy_buttons_wxErJT",
+        "payment_badges_BA9Mbq"
       ],
       "name": "t:sections.featured-product.presets.name",
       "settings": {
