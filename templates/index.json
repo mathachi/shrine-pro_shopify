@@ -423,91 +423,11 @@
             "margin_bottom": 0
           }
         },
-        "variant_picker_XPR3XB": {
-          "type": "variant_picker",
+        "description_9eRBmn": {
+          "type": "description",
           "settings": {
-            "picker_types": "pills, pills, pills",
-            "custom_labels": "",
-            "disable_prepend": false,
-            "swatches_size": "medium",
-            "swatches_border_radius": 100,
-            "swatches_custom_colors": "disabled",
-            "swatches_custom_colors_list": "#000000, #FFFFFF",
-            "breaks_style": "normal",
-            "breaks_headline": "BUNDLE & SAVE",
-            "breaks_color_scheme": "accent-1",
-            "breaks_badges": "[empty], Most popular, [empty]",
-            "breaks_displayed_images": "variant_images",
-            "breaks_custom_images": "",
-            "breaks_image_width": 70,
-            "breaks_space_images": true,
-            "breaks_labels": "[name], [name], [name]",
-            "breaks_benefits": "[empty], Free Shipping, Free Shipping",
-            "breaks_captions": "Variant 1 caption, Variant 2 caption, Variant 3 caption",
-            "breaks_price_texts": "[price], [price], [price]",
-            "breaks_compare_price_texts": "[compare_price], [compare_price], [compare_price]",
-            "margin_top": 15,
-            "margin_bottom": 15
-          }
-        },
-        "quantity_selector_hUWxyt": {
-          "type": "quantity_selector",
-          "settings": {
-            "full_width_classic": false,
-            "enable_quantity_discounts": false,
-            "style": "normal",
-            "headline": "BUNDLE & SAVE",
-            "preselected": "option_1",
-            "update_prices": false,
-            "enable_variant_selectors": true,
-            "enable_variant_selectors_on_quantity_of_1": false,
-            "hide_pickers_overlay": true,
-            "pickers_label": "",
-            "image_width": 70,
-            "space_images": true,
-            "color_scheme": "accent-1",
-            "option_1_quantity": 1,
-            "option_1_badge": "",
-            "option_1_label": "Buy [quantity]",
-            "option_1_benefit": "",
-            "option_1_caption": "You save [amount_saved]",
-            "option_1_percentage_off_text": "0",
-            "option_1_fixed_amount_off": "0",
-            "option_1_price_text": "[price]",
-            "option_1_compare_price": "compare_price",
-            "option_1_compare_price_text": "[compare_price]",
-            "option_2_quantity": 2,
-            "option_2_badge": "",
-            "option_2_label": "Buy [quantity]",
-            "option_2_benefit": "",
-            "option_2_caption": "You save [amount_saved]",
-            "option_2_percentage_off_text": "0",
-            "option_2_fixed_amount_off": "0",
-            "option_2_price_text": "[price]",
-            "option_2_compare_price": "compare_price",
-            "option_2_compare_price_text": "[compare_price]",
-            "option_3_quantity": 3,
-            "option_3_badge": "",
-            "option_3_label": "Buy [quantity]",
-            "option_3_benefit": "",
-            "option_3_caption": "You save [amount_saved]",
-            "option_3_percentage_off_text": "0",
-            "option_3_fixed_amount_off": "0",
-            "option_3_price_text": "[price]",
-            "option_3_compare_price": "compare_price",
-            "option_3_compare_price_text": "[compare_price]",
-            "option_4_quantity": 4,
-            "option_4_badge": "",
-            "option_4_label": "Buy [quantity]",
-            "option_4_benefit": "",
-            "option_4_caption": "You save [amount_saved]",
-            "option_4_percentage_off_text": "0",
-            "option_4_fixed_amount_off": "0",
-            "option_4_price_text": "[price]",
-            "option_4_compare_price": "compare_price",
-            "option_4_compare_price_text": "[compare_price]",
-            "margin_top": 15,
-            "margin_bottom": 15
+            "margin_top": 24,
+            "margin_bottom": 24
           }
         },
         "kaching_bundles_app_block_7TTHcr": {
@@ -540,8 +460,7 @@
       "block_order": [
         "rating_stars_DEHVyy",
         "title_aWXdXb",
-        "variant_picker_XPR3XB",
-        "quantity_selector_hUWxyt",
+        "description_9eRBmn",
         "kaching_bundles_app_block_7TTHcr",
         "buy_buttons_wxErJT"
       ],
@@ -563,13 +482,6 @@
         "full_media_width": false,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "177305160088d0bc91": {
-      "type": "apps",
-      "settings": {
-        "display_id": false,
-        "include_margins": true
       }
     },
     "ingredients_KRHMj4": {
@@ -870,7 +782,6 @@
     "ugc_gallery_Niq7Yb",
     "testimonials_carousel_GVdPdt",
     "featured_product_hTKVp4",
-    "177305160088d0bc91",
     "ingredients_KRHMj4",
     "zones_TrF4wW",
     "timeline_AJXQLn",
