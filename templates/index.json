@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "cart-drawer": {
+      "type": "cart-drawer",
+      "settings": {}
+    },
     "ss_parallax_banner_YPdgz4": {
       "type": "ss-parallax-banner",
       "name": "SS - Parallax Banner",
@@ -907,6 +911,7 @@
     }
   },
   "order": [
+    "cart-drawer",
     "ss_parallax_banner_YPdgz4",
     "ss_scrolling_logo_cloud_GMaCKN",
     "ss_text_block_pro_jdJKBM",
