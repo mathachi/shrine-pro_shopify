@@ -11,7 +11,19 @@
   "sections": {
     "cart-drawer": {
       "type": "cart-drawer",
-      "settings": {}
+      "settings": {
+        "test_mode": false,
+        "heading_text": "Cart • [count] items",
+        "heading_alignment": "flex-start",
+        "desktop_width": "normal",
+        "mobile_width": "partial",
+        "enable_header_bg": false,
+        "header_bg_color": "#f3f3f3",
+        "enable_body_bg": false,
+        "body_bg_color": "#f3f3f3",
+        "enable_footer_bg": false,
+        "footer_bg_color": "#f3f3f3"
+      }
     },
     "ss_parallax_banner_YPdgz4": {
       "type": "ss-parallax-banner",
@@ -565,7 +577,7 @@
         "buy_buttons_wxErJT": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "skip_cart": false,
             "uppercase_text": true,
             "icon_scale": 120,
