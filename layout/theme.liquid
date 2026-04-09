@@ -422,43 +422,7 @@
       }
     </script>
   </head>
-<script>
-document.addEventListener('submit', function(e) {
-  const form = e.target;
-  // Si c'est un formulaire ATC et qu'on est en mode tiroir
-  if (!form.matches('[action*="/cart/add"]') && !form.querySelector('[name="add"]')) return;
-  
-  const cartDrawer = document.querySelector('cart-drawer');
-  if (!cartDrawer) return;
 
-  // Si le formulaire n'est pas dans un cart-drawer, on force l'ouverture
-  if (!form.closest('cart-drawer')) {
-    e.preventDefault();
-    const formData = new FormData(form);
-    fetch('/cart/add.js', {
-      method: 'POST',
-      body: formData
-    })
-    .then(res => res.json())
-    .then(() => {
-      // Forcer la mise à jour et l'ouverture du tiroir
-      fetch('/?section_id=cart-drawer')
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, 'text/html');
-          const newDrawer = doc.getElementById('CartDrawer');
-          const currentDrawer = document.getElementById('CartDrawer');
-          if (newDrawer && currentDrawer) {
-            currentDrawer.innerHTML = newDrawer.innerHTML;
-          }
-          cartDrawer.open(form);
-        });
-    })
-    .catch(err => console.error('Cart add error:', err));
-  }
-}, true); // capture phase pour intercepter avant le JS du thème
-</script>
   <body class="gradient link-btns--{{ settings.link_btn_hover }} action-btns--{{ settings.action_btn_hover }}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
@@ -548,7 +512,6 @@ document.addEventListener('submit', function(e) {
           const elementsToAnimate = rootElement.querySelectorAll('.animate-section');
           if (elementsToAnimate.length == 0) return;
 
-          
           elementsToAnimate.forEach(element => {
             if (isThemeEditorEvent) {
               element.classList.add('animate--shown');
@@ -609,5 +572,50 @@ document.addEventListener('submit', function(e) {
         })
       </script>
     {% endif %}
+
+    <!-- FIX: ATC Kaching Bundle → Cart Drawer -->
+    <script>
+      document.addEventListener('submit', function(e) {
+        const form = e.target;
+
+        if (!form.querySelector('[name="add"]') && !form.querySelector('[name="id"]')) return;
+
+        // Ignorer les formulaires natifs du thème
+        if (form.closest('cart-drawer') || form.closest('product-form')) return;
+
+        // Ignorer si on est sur la page panier
+        if (window.location.pathname === '/cart') return;
+
+        const cartDrawer = document.querySelector('cart-drawer');
+        if (!cartDrawer) return;
+
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        const formData = new FormData(form);
+        fetch('/cart/add.js', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(() => {
+          fetch('/?section_id=cart-drawer')
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              const newDrawer = doc.getElementById('CartDrawer');
+              const currentDrawer = document.getElementById('CartDrawer');
+              if (newDrawer && currentDrawer) {
+                currentDrawer.innerHTML = newDrawer.innerHTML;
+              }
+              cartDrawer.open(form);
+            });
+        })
+        .catch(err => console.error('Cart add error:', err));
+
+      }, true);
+    </script>
+
   </body>
 </html>
