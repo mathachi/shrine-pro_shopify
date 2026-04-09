@@ -574,7 +574,7 @@
             "secondary_btn_enable_custom_color": false,
             "secondary_btn_custom_color": "#dd1d1d",
             "margin_top": 24,
-            "margin_bottom": 24
+            "margin_bottom": 0
           }
         },
         "payment_badges_BA9Mbq": {
@@ -582,7 +582,7 @@
           "settings": {
             "enabled_payment_types": "",
             "margin_top": 0,
-            "margin_bottom": 15
+            "margin_bottom": 0
           }
         }
       },
