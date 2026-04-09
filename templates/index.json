@@ -398,14 +398,29 @@
     "featured_product_hTKVp4": {
       "type": "featured-product",
       "blocks": {
+        "rating_stars_DEHVyy": {
+          "type": "rating_stars",
+          "settings": {
+            "rating": 4.8,
+            "star_color": "#e33c9d",
+            "bg_stars_style": "full",
+            "bg_star_color": "#ececec",
+            "label": "4.8 basé sur +3000 avis vérifiés",
+            "size": 12,
+            "alignment": "flex-start",
+            "scroll_id": "",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
         "title_aWXdXb": {
           "type": "title",
           "settings": {
-            "text_size": "h1",
+            "text_size": "h2",
             "title_alignment": "left",
             "uppercase_title": false,
             "margin_top": 0,
-            "margin_bottom": 15
+            "margin_bottom": 0
           }
         },
         "variant_picker_XPR3XB": {
@@ -523,6 +538,7 @@
         }
       },
       "block_order": [
+        "rating_stars_DEHVyy",
         "title_aWXdXb",
         "variant_picker_XPR3XB",
         "quantity_selector_hUWxyt",
