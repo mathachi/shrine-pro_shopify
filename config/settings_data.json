@@ -169,7 +169,7 @@
     "scrollbar_width": 9,
     "cart_type": "drawer",
     "cart_icon": "bag_2",
-    "show_vendor": true,
+    "show_vendor": false,
     "show_cart_note": true,
     "cart_drawer_collection": "",
     "display_continue_shopping": true,
