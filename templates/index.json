@@ -427,7 +427,7 @@
           "type": "text",
           "settings": {
             "mobile_text_size": 13,
-            "desktop_text_size": 14,
+            "desktop_text_size": 16,
             "alignment": "left",
             "text_color": "#121212",
             "text_1": "Fini le rasage et les épilations quotidiennes",
