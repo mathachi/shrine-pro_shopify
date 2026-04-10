@@ -929,7 +929,7 @@
         "parallax_mobile": false,
         "banner_height": "fixed_height",
         "banner_fixed_height": 600,
-        "banner_fixed_height_mobile": 600,
+        "banner_fixed_height_mobile": 580,
         "image": "shopify://shop_images/garantie_lysa_2800_x_1000_px.png",
         "image_mobile": "shopify://shop_images/garantie_lysa_1200_x_1600_px_-converti-depuis-png.webp",
         "overlay": 0,
