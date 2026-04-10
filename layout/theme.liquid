@@ -604,34 +604,43 @@
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    // On ajoute sections=cart-drawer pour que Shopify renvoie le HTML du tiroir
-    // directement dans la réponse → c'est ce que renderContents() attend
-    const formData = new FormData(form);
-    formData.append('sections', 'cart-drawer');
-    formData.append('sections_url', window.location.pathname);
-
-    fetch('/cart/add', {
+    // Étape 1 : Ajouter au panier
+    fetch('/cart/add.js', {
       method: 'POST',
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-        'Accept': 'application/javascript'
-      },
-      body: formData
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+      body: new FormData(form)
     })
-    .then(res => res.json())
-    .then(parsedState => {
-      // renderContents reçoit parsedState.sections['cart-drawer'] bien rempli → plus de crash
-      if (typeof cartDrawer.renderContents === 'function') {
-        cartDrawer.renderContents(parsedState);
+    .then(res => {
+      if (!res.ok) throw new Error('Cart add failed');
+      return res.json();
+    })
+    .then(() => {
+      // Étape 2 : Récupérer le HTML à jour du tiroir
+      return fetch(window.location.pathname + '?section_id=cart-drawer');
+    })
+    .then(res => res.text())
+    .then(html => {
+      // Étape 3 : Mettre à jour le DOM SANS appeler renderContents (qui crashe)
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      const newDrawerInner = doc.querySelector('#CartDrawer');
+      const currentDrawerInner = document.getElementById('CartDrawer');
+
+      if (newDrawerInner && currentDrawerInner) {
+        currentDrawerInner.innerHTML = newDrawerInner.innerHTML;
+      } else {
+        // Fallback si #CartDrawer introuvable
+        const newCartDrawer = doc.querySelector('cart-drawer');
+        if (newCartDrawer) cartDrawer.innerHTML = newCartDrawer.innerHTML;
       }
-      // open() après renderContents pour éviter le flash blanc
+
+      // Étape 4 : Ouvrir le tiroir — open() N'appelle PAS renderContents, pas de crash
       if (typeof cartDrawer.open === 'function') {
         cartDrawer.open(form);
       }
     })
-    .catch(function(err) {
-      console.error('[Kaching ATC Fix]', err);
-    });
+    .catch(err => console.error('[Kaching ATC Fix]', err));
 
   }, true);
 
