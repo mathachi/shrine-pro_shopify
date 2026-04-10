@@ -11,6 +11,7 @@
   "sections": {
     "cart-drawer": {
       "type": "cart-drawer",
+      "disabled": true,
       "settings": {
         "test_mode": false,
         "heading_text": "Cart • [count] items",
