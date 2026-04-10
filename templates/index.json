@@ -918,7 +918,7 @@
         "label_color": "#374151",
         "border_color": "#e5e7eb",
         "padding_top": 64,
-        "padding_bottom": 64
+        "padding_bottom": 0
       }
     },
     "ss_parallax_banner_hTiLCR": {
