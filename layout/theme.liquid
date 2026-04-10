@@ -577,74 +577,71 @@
 <script>
 (function() {
 
-  // FIX 1 : Supprimer les tiroirs en double injectés par Kaching
+  // FIX 1 : Supprimer les tiroirs en double
   function deduplicateDrawers() {
     const allDrawers = Array.from(document.querySelectorAll('cart-drawer'));
     if (allDrawers.length <= 1) return;
-    const realDrawer = allDrawers.find(d => typeof d.renderContents === 'function') || allDrawers[0];
+    const realDrawer = allDrawers.find(d => typeof Object.getPrototypeOf(d).renderContents === 'function') || allDrawers[0];
     allDrawers.forEach(d => { if (d !== realDrawer) d.remove(); });
   }
+
+  // FIX 2 : Patcher le PROTOTYPE de renderContents
+  // Kaching appelle renderContents avec un parsedState sans sections → crash getSectionInnerHTML
+  // On intercepte ce cas et on fetch le HTML nous-mêmes
+  function patchCartDrawer() {
+    const cartDrawer = document.querySelector('cart-drawer');
+    if (!cartDrawer) return;
+
+    const proto = Object.getPrototypeOf(cartDrawer);
+    if (!proto || !proto.renderContents || proto.__kachingPatched) return;
+    proto.__kachingPatched = true;
+
+    const originalRenderContents = proto.renderContents;
+
+    proto.renderContents = function(parsedState) {
+      const hasSections = parsedState
+        && parsedState.sections
+        && parsedState.sections['cart-drawer'];
+
+      if (!hasSections) {
+        // parsedState incomplet (venant de Kaching) → on fetch le HTML directement
+        const self = this;
+        fetch(window.location.pathname + '?section_id=cart-drawer')
+          .then(res => res.text())
+          .then(html => {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const newInner = doc.querySelector('#CartDrawer');
+            const currentInner = document.getElementById('CartDrawer');
+            if (newInner && currentInner) {
+              currentInner.innerHTML = newInner.innerHTML;
+            }
+            // Ouvrir le tiroir si pas déjà ouvert
+            // On bloque renderContents pendant open() pour éviter récursion
+            if (!self.hasAttribute('open') && typeof self.open === 'function') {
+              proto.renderContents = function() {};
+              self.open();
+              setTimeout(() => { proto.renderContents = originalRenderContents; proto.__kachingPatched = true; }, 300);
+            }
+          })
+          .catch(err => console.error('[Kaching Fix]', err));
+        return;
+      }
+
+      // parsedState valide (venant du thème) → comportement normal
+      return originalRenderContents.call(this, parsedState);
+    };
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(deduplicateDrawers, 500);
+    setTimeout(function() {
+      deduplicateDrawers();
+      patchCartDrawer();
+    }, 300);
+
     new MutationObserver(function() {
       if (document.querySelectorAll('cart-drawer').length > 1) deduplicateDrawers();
     }).observe(document.body, { childList: true, subtree: true });
   });
-
-  // FIX 2 : Intercepter les formulaires Kaching (data-main="false")
-  document.addEventListener('submit', function(e) {
-    const form = e.target;
-    const parentProductForm = form.closest('product-form');
-    if (!parentProductForm || parentProductForm.dataset.main !== 'false') return;
-    if (form.closest('cart-drawer') || window.location.pathname === '/cart') return;
-
-    const cartDrawer = document.querySelector('cart-drawer');
-    if (!cartDrawer) return;
-
-    e.preventDefault();
-    e.stopImmediatePropagation();
-
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'X-Requested-With': 'XMLHttpRequest' },
-      body: new FormData(form)
-    })
-    .then(res => {
-      if (!res.ok) throw new Error('Cart add failed');
-      return res.json();
-    })
-    .then(() => fetch(window.location.pathname + '?section_id=cart-drawer'))
-    .then(res => res.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-
-      const newDrawerInner = doc.querySelector('#CartDrawer');
-      const currentDrawerInner = document.getElementById('CartDrawer');
-
-      if (newDrawerInner && currentDrawerInner) {
-        currentDrawerInner.innerHTML = newDrawerInner.innerHTML;
-      } else {
-        const newCartDrawer = doc.querySelector('cart-drawer');
-        if (newCartDrawer) cartDrawer.innerHTML = newCartDrawer.innerHTML;
-      }
-
-      if (typeof cartDrawer.open === 'function') {
-        // open() appelle renderContents() en interne → crash quand panier vide
-        // On le neutralise temporairement le temps que open() s'exécute
-        const originalRenderContents = cartDrawer.renderContents;
-        cartDrawer.renderContents = function() {};
-
-        cartDrawer.open(form);
-
-        setTimeout(() => {
-          cartDrawer.renderContents = originalRenderContents;
-        }, 200);
-      }
-    })
-    .catch(err => console.error('[Kaching ATC Fix]', err));
-
-  }, true);
 
 })();
 </script>
