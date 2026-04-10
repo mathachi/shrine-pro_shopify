@@ -578,34 +578,25 @@
 (function() {
 
   // FIX 1 : Supprimer les tiroirs en double injectés par Kaching
-  // (MutationObserver pour attraper même les injections tardives)
   function deduplicateDrawers() {
     const allDrawers = Array.from(document.querySelectorAll('cart-drawer'));
     if (allDrawers.length <= 1) return;
     const realDrawer = allDrawers.find(d => typeof d.renderContents === 'function') || allDrawers[0];
-    allDrawers.forEach(function(d) { if (d !== realDrawer) d.remove(); });
+    allDrawers.forEach(d => { if (d !== realDrawer) d.remove(); });
   }
-
   document.addEventListener('DOMContentLoaded', function() {
     setTimeout(deduplicateDrawers, 500);
-    const observer = new MutationObserver(function() {
+    new MutationObserver(function() {
       if (document.querySelectorAll('cart-drawer').length > 1) deduplicateDrawers();
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
+    }).observe(document.body, { childList: true, subtree: true });
   });
 
-  // FIX 2 : Intercepter uniquement les formulaires Kaching (data-main="false")
+  // FIX 2 : Intercepter les formulaires Kaching (data-main="false")
   document.addEventListener('submit', function(e) {
     const form = e.target;
-
-    // Cibler uniquement les product-form avec data-main="false" (signature Kaching)
     const parentProductForm = form.closest('product-form');
-    if (!parentProductForm) return;
-    if (parentProductForm.dataset.main !== 'false') return;
-
-    // Ignorer si déjà dans un tiroir ou sur la page panier
-    if (form.closest('cart-drawer')) return;
-    if (window.location.pathname === '/cart') return;
+    if (!parentProductForm || parentProductForm.dataset.main !== 'false') return;
+    if (form.closest('cart-drawer') || window.location.pathname === '/cart') return;
 
     const cartDrawer = document.querySelector('cart-drawer');
     if (!cartDrawer) return;
@@ -613,28 +604,34 @@
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    fetch('/cart/add.js', {
+    // On ajoute sections=cart-drawer pour que Shopify renvoie le HTML du tiroir
+    // directement dans la réponse → c'est ce que renderContents() attend
+    const formData = new FormData(form);
+    formData.append('sections', 'cart-drawer');
+    formData.append('sections_url', window.location.pathname);
+
+    fetch('/cart/add', {
       method: 'POST',
-      body: new FormData(form)
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Accept': 'application/javascript'
+      },
+      body: formData
     })
     .then(res => res.json())
-    .then(() => {
-      fetch('/?section_id=cart-drawer')
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, 'text/html');
-          const newDrawer = doc.getElementById('CartDrawer');
-          const currentDrawer = document.getElementById('CartDrawer');
-          if (newDrawer && currentDrawer) {
-            currentDrawer.innerHTML = newDrawer.innerHTML;
-          }
-          if (typeof cartDrawer.open === 'function') {
-            cartDrawer.open(form);
-          }
-        });
+    .then(parsedState => {
+      // renderContents reçoit parsedState.sections['cart-drawer'] bien rempli → plus de crash
+      if (typeof cartDrawer.renderContents === 'function') {
+        cartDrawer.renderContents(parsedState);
+      }
+      // open() après renderContents pour éviter le flash blanc
+      if (typeof cartDrawer.open === 'function') {
+        cartDrawer.open(form);
+      }
     })
-    .catch(err => console.error('Cart add error:', err));
+    .catch(function(err) {
+      console.error('[Kaching ATC Fix]', err);
+    });
 
   }, true);
 
