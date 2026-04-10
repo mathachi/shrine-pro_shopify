@@ -920,6 +920,44 @@
         "padding_top": 64,
         "padding_bottom": 64
       }
+    },
+    "ss_parallax_banner_hTiLCR": {
+      "type": "ss-parallax-banner",
+      "name": "SS - Parallax Banner",
+      "settings": {
+        "parallax": false,
+        "parallax_mobile": false,
+        "banner_height": "fixed_height",
+        "banner_fixed_height": 600,
+        "banner_fixed_height_mobile": 500,
+        "image": "shopify://shop_images/garantie_lysa_2800_x_1000_px.png",
+        "image_mobile": "shopify://shop_images/garantie_lysa_1200_x_1600_px_-converti-depuis-png.webp",
+        "overlay": 0,
+        "content_maxwidth": 65,
+        "content_maxwidth_mobile": 100,
+        "content_horizontal_position": "center",
+        "content_horizontal_position_mobile": "center",
+        "content_vertical_position": "center",
+        "content_vertical_position_mobile": "center",
+        "content_padding_vertical": 32,
+        "content_padding_vertical_mobile": 20,
+        "content_padding_horizontal": 20,
+        "content_padding_horizontal_mobile": 20,
+        "overlay_color": "#000000",
+        "background_color": "#FFFFFF",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": true,
+        "content_width": 120,
+        "border_thickness": 0,
+        "lazy": true
+      }
     }
   },
   "order": [
@@ -935,6 +973,7 @@
     "ingredients_KRHMj4",
     "zones_TrF4wW",
     "timeline_AJXQLn",
-    "container_iyzGBK"
+    "container_iyzGBK",
+    "ss_parallax_banner_hTiLCR"
   ]
 }
