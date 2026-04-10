@@ -933,7 +933,7 @@
         "image": "shopify://shop_images/garantie_lysa_2800_x_1000_px.png",
         "image_mobile": "shopify://shop_images/garantie_lysa_1200_x_1600_px_-converti-depuis-png.webp",
         "overlay": 0,
-        "content_maxwidth": 65,
+        "content_maxwidth": 100,
         "content_maxwidth_mobile": 100,
         "content_horizontal_position": "center",
         "content_horizontal_position_mobile": "center",
