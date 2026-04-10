@@ -575,50 +575,41 @@
 
 <!-- FIX: ATC Kaching Bundle → Cart Drawer -->
 <script>
-document.addEventListener('submit', function(e) {
-  const form = e.target;
+(function() {
+  // Trouve le vrai tiroir du thème (celui qui a getSectionsToRender)
+  function getRealCartDrawer() {
+    const drawers = Array.from(document.querySelectorAll('cart-drawer'));
+    return drawers.find(d => typeof d.getSectionsToRender === 'function') || drawers[0];
+  }
 
-  if (!form.querySelector('[name="add"]') && !form.querySelector('[name="id"]')) return;
+  // FIX 1: Patch closest() → résout le crash stealthpack.js:1143
+  // Le formulaire Kaching (data-main="false") fait this.closest('cart-drawer')
+  // qui retourne null → crash. On lui retourne le vrai tiroir.
+  const _originalClosest = Element.prototype.closest;
+  Element.prototype.closest = function(selector) {
+    const result = _originalClosest.call(this, selector);
+    if (!result && selector === 'cart-drawer') {
+      return getRealCartDrawer() || null;
+    }
+    return result;
+  };
 
-  // Ignorer uniquement le formulaire principal du thème (data-main="true")
-  const parentProductForm = form.closest('product-form');
-  if (parentProductForm && parentProductForm.dataset.main === 'true') return;
-
-  // Ignorer si on est dans le cart-drawer
-  if (form.closest('cart-drawer')) return;
-
-  // Ignorer si on est sur la page panier
-  if (window.location.pathname === '/cart') return;
-
-  const cartDrawer = document.querySelector('cart-drawer');
-  if (!cartDrawer) return;
-
-  e.preventDefault();
-  e.stopImmediatePropagation();
-
-  const formData = new FormData(form);
-  fetch('/cart/add.js', {
-    method: 'POST',
-    body: formData
-  })
-  .then(res => res.json())
-  .then(() => {
-    fetch('/?section_id=cart-drawer')
-      .then(res => res.text())
-      .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const newDrawer = doc.getElementById('CartDrawer');
-        const currentDrawer = document.getElementById('CartDrawer');
-        if (newDrawer && currentDrawer) {
-          currentDrawer.innerHTML = newDrawer.innerHTML;
-        }
-        cartDrawer.open(form);
-      });
-  })
-  .catch(err => console.error('Cart add error:', err));
-
-}, true);
+  // FIX 2: Supprimer les tiroirs en double injectés par Kaching
+  // Attendre que Kaching ait fini d'injecter ses éléments
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      const allDrawers = Array.from(document.querySelectorAll('cart-drawer'));
+      if (allDrawers.length > 1) {
+        const realDrawer = getRealCartDrawer();
+        allDrawers.forEach(function(drawer) {
+          if (drawer !== realDrawer) {
+            drawer.remove();
+          }
+        });
+      }
+    }, 800);
+  });
+})();
 </script>
 
   </body>
