@@ -575,49 +575,50 @@
 
 <!-- FIX: ATC Kaching Bundle → Cart Drawer -->
 <script>
-(function() {
-  // On intercepte fetch pour détecter quand Kaching ajoute au panier
-  const originalFetch = window.fetch;
-  window.fetch = function(...args) {
-    const url = args[0];
-    const isCartAdd = typeof url === 'string' && url.includes('/cart/add');
-    
-    const result = originalFetch.apply(this, args);
-    
-    if (isCartAdd) {
-      result.then(response => {
-        if (response.ok) {
-          const cartDrawer = document.querySelector('cart-drawer');
-          if (!cartDrawer) return;
-          
-          // Attendre un court délai pour que le JS du thème ait le temps de réagir
-          setTimeout(() => {
-            // Si le tiroir n'est pas déjà ouvert, on l'ouvre
-            if (!cartDrawer.classList.contains('active') && 
-                !cartDrawer.classList.contains('is-open') &&
-                !cartDrawer.hasAttribute('open')) {
-              
-              fetch('/?section_id=cart-drawer')
-                .then(res => res.text())
-                .then(html => {
-                  const parser = new DOMParser();
-                  const doc = parser.parseFromString(html, 'text/html');
-                  const newDrawer = doc.getElementById('CartDrawer');
-                  const currentDrawer = document.getElementById('CartDrawer');
-                  if (newDrawer && currentDrawer) {
-                    currentDrawer.innerHTML = newDrawer.innerHTML;
-                  }
-                  cartDrawer.open();
-                });
-            }
-          }, 300);
+document.addEventListener('submit', function(e) {
+  const form = e.target;
+
+  if (!form.querySelector('[name="add"]') && !form.querySelector('[name="id"]')) return;
+
+  // Ignorer uniquement le formulaire principal du thème (data-main="true")
+  const parentProductForm = form.closest('product-form');
+  if (parentProductForm && parentProductForm.dataset.main === 'true') return;
+
+  // Ignorer si on est dans le cart-drawer
+  if (form.closest('cart-drawer')) return;
+
+  // Ignorer si on est sur la page panier
+  if (window.location.pathname === '/cart') return;
+
+  const cartDrawer = document.querySelector('cart-drawer');
+  if (!cartDrawer) return;
+
+  e.preventDefault();
+  e.stopImmediatePropagation();
+
+  const formData = new FormData(form);
+  fetch('/cart/add.js', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.json())
+  .then(() => {
+    fetch('/?section_id=cart-drawer')
+      .then(res => res.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const newDrawer = doc.getElementById('CartDrawer');
+        const currentDrawer = document.getElementById('CartDrawer');
+        if (newDrawer && currentDrawer) {
+          currentDrawer.innerHTML = newDrawer.innerHTML;
         }
-      }).catch(() => {});
-    }
-    
-    return result;
-  };
-})();
+        cartDrawer.open(form);
+      });
+  })
+  .catch(err => console.error('Cart add error:', err));
+
+}, true);
 </script>
 
   </body>
