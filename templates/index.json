@@ -324,7 +324,7 @@
       "settings": {
         "title": "Plus de 15 000 femmes l'ont adopté, et vous ?",
         "border_radius": 16,
-        "bg_color": "#ef95c9",
+        "bg_color": "#ea5eaf",
         "title_color": "#ffffff",
         "padding_top": 32,
         "padding_bottom": 32
@@ -706,7 +706,7 @@
       "settings": {
         "title": "ACTIFS SÉLECTIONNÉS EN LABORATOIRE",
         "border_radius": 16,
-        "bg_color": "#df99c6",
+        "bg_color": "#ea5eaf",
         "title_color": "#ffffff",
         "hint_color": "#ffffff",
         "padding_top": 32,
