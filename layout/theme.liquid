@@ -604,7 +604,6 @@
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    // Étape 1 : Ajouter au panier
     fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'X-Requested-With': 'XMLHttpRequest' },
@@ -614,13 +613,9 @@
       if (!res.ok) throw new Error('Cart add failed');
       return res.json();
     })
-    .then(() => {
-      // Étape 2 : Récupérer le HTML à jour du tiroir
-      return fetch(window.location.pathname + '?section_id=cart-drawer');
-    })
+    .then(() => fetch(window.location.pathname + '?section_id=cart-drawer'))
     .then(res => res.text())
     .then(html => {
-      // Étape 3 : Mettre à jour le DOM SANS appeler renderContents (qui crashe)
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
 
@@ -630,14 +625,21 @@
       if (newDrawerInner && currentDrawerInner) {
         currentDrawerInner.innerHTML = newDrawerInner.innerHTML;
       } else {
-        // Fallback si #CartDrawer introuvable
         const newCartDrawer = doc.querySelector('cart-drawer');
         if (newCartDrawer) cartDrawer.innerHTML = newCartDrawer.innerHTML;
       }
 
-      // Étape 4 : Ouvrir le tiroir — open() N'appelle PAS renderContents, pas de crash
       if (typeof cartDrawer.open === 'function') {
+        // open() appelle renderContents() en interne → crash quand panier vide
+        // On le neutralise temporairement le temps que open() s'exécute
+        const originalRenderContents = cartDrawer.renderContents;
+        cartDrawer.renderContents = function() {};
+
         cartDrawer.open(form);
+
+        setTimeout(() => {
+          cartDrawer.renderContents = originalRenderContents;
+        }, 200);
       }
     })
     .catch(err => console.error('[Kaching ATC Fix]', err));
