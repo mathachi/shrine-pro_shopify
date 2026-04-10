@@ -577,67 +577,48 @@
 <script>
 (function() {
 
-  // FIX 1 : Supprimer les tiroirs en double
+  // SOLUTION FINALE : Intercepter le fetch de Kaching vers /cart/add
+  // et injecter sections=cart-drawer pour que Shopify renvoie le HTML du tiroir
+  // → renderContents reçoit parsedState.sections['cart-drawer'] rempli → plus de crash
+  const originalFetch = window.fetch;
+  window.fetch = function(resource, init) {
+    const url = resource instanceof Request ? resource.url : String(resource);
+    const method = ((init && init.method) || 'GET').toUpperCase();
+
+    if (method === 'POST' && /\/cart\/add/.test(url)) {
+      const newInit = Object.assign({}, init);
+
+      if (newInit.body instanceof FormData) {
+        if (!newInit.body.has('sections')) {
+          // Copier le FormData et ajouter sections
+          const newBody = new FormData();
+          for (const [key, val] of newInit.body.entries()) {
+            newBody.append(key, val);
+          }
+          newBody.append('sections', 'cart-drawer');
+          newBody.append('sections_url', window.location.pathname);
+          newInit.body = newBody;
+        }
+      } else if (typeof newInit.body === 'string' && !newInit.body.includes('sections=')) {
+        newInit.body += '&sections=cart-drawer&sections_url=' + encodeURIComponent(window.location.pathname);
+      }
+
+      return originalFetch.call(this, resource, newInit);
+    }
+
+    return originalFetch.call(this, resource, init);
+  };
+
+  // Supprimer les tiroirs en double injectés par Kaching
   function deduplicateDrawers() {
     const allDrawers = Array.from(document.querySelectorAll('cart-drawer'));
     if (allDrawers.length <= 1) return;
-    const realDrawer = allDrawers.find(d => typeof Object.getPrototypeOf(d).renderContents === 'function') || allDrawers[0];
+    const realDrawer = allDrawers.find(d => typeof d.renderContents === 'function') || allDrawers[0];
     allDrawers.forEach(d => { if (d !== realDrawer) d.remove(); });
   }
 
-  // FIX 2 : Patcher le PROTOTYPE de renderContents
-  // Kaching appelle renderContents avec un parsedState sans sections → crash getSectionInnerHTML
-  // On intercepte ce cas et on fetch le HTML nous-mêmes
-  function patchCartDrawer() {
-    const cartDrawer = document.querySelector('cart-drawer');
-    if (!cartDrawer) return;
-
-    const proto = Object.getPrototypeOf(cartDrawer);
-    if (!proto || !proto.renderContents || proto.__kachingPatched) return;
-    proto.__kachingPatched = true;
-
-    const originalRenderContents = proto.renderContents;
-
-    proto.renderContents = function(parsedState) {
-      const hasSections = parsedState
-        && parsedState.sections
-        && parsedState.sections['cart-drawer'];
-
-      if (!hasSections) {
-        // parsedState incomplet (venant de Kaching) → on fetch le HTML directement
-        const self = this;
-        fetch(window.location.pathname + '?section_id=cart-drawer')
-          .then(res => res.text())
-          .then(html => {
-            const doc = new DOMParser().parseFromString(html, 'text/html');
-            const newInner = doc.querySelector('#CartDrawer');
-            const currentInner = document.getElementById('CartDrawer');
-            if (newInner && currentInner) {
-              currentInner.innerHTML = newInner.innerHTML;
-            }
-            // Ouvrir le tiroir si pas déjà ouvert
-            // On bloque renderContents pendant open() pour éviter récursion
-            if (!self.hasAttribute('open') && typeof self.open === 'function') {
-              proto.renderContents = function() {};
-              self.open();
-              setTimeout(() => { proto.renderContents = originalRenderContents; proto.__kachingPatched = true; }, 300);
-            }
-          })
-          .catch(err => console.error('[Kaching Fix]', err));
-        return;
-      }
-
-      // parsedState valide (venant du thème) → comportement normal
-      return originalRenderContents.call(this, parsedState);
-    };
-  }
-
   document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-      deduplicateDrawers();
-      patchCartDrawer();
-    }, 300);
-
+    setTimeout(deduplicateDrawers, 600);
     new MutationObserver(function() {
       if (document.querySelectorAll('cart-drawer').length > 1) deduplicateDrawers();
     }).observe(document.body, { childList: true, subtree: true });
