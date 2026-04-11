@@ -575,7 +575,7 @@
             "manual_deal_block_id": ""
           }
         },
-        "buy_buttons_wxErJT": {
+        "buy_buttons_dHCXhP": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": false,
@@ -584,14 +584,14 @@
             "icon_scale": 120,
             "icon_spacing": 10,
             "display_price": false,
-            "enable_custom_color": true,
-            "custom_color": "#d31086",
+            "enable_custom_color": false,
+            "custom_color": "#dd1d1d",
             "enable_secondary_btn": false,
             "secondary_btn_label": "Buy It Now",
             "secondary_btn_enable_custom_color": false,
             "secondary_btn_custom_color": "#dd1d1d",
             "margin_top": 24,
-            "margin_bottom": 0
+            "margin_bottom": 24
           }
         },
         "payment_badges_BA9Mbq": {
@@ -611,7 +611,7 @@
         "text_XYNDmW",
         "text_XqQkyH",
         "kaching_bundles_app_block_7TTHcr",
-        "buy_buttons_wxErJT",
+        "buy_buttons_dHCXhP",
         "payment_badges_BA9Mbq"
       ],
       "name": "t:sections.featured-product.presets.name",
