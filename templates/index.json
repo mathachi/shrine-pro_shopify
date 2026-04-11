@@ -11,6 +11,42 @@
   "sections": {
     "cart-drawer": {
       "type": "cart-drawer",
+      "blocks": {
+        "checkpoints_bar_NhfdkN": {
+          "type": "checkpoints_bar",
+          "settings": {
+            "goal_type": "subtotal",
+            "progress_message": "You're [amount] away from [next_goal_lowercase]!",
+            "success_message": "Congrats! You've unlocked all prizes!🎉",
+            "labels_mobile_text_size": 10,
+            "labels_desktop_text_size": 12,
+            "accent_color": "accent-1",
+            "enable_goal_1": true,
+            "goal_1_label": "Free Shipping",
+            "goal_1_text": "FREE shipping",
+            "goal_1_amount": 30,
+            "goal_1_icon": "local_shipping",
+            "goal_1_icon_filled": false,
+            "enable_goal_2": true,
+            "goal_2_label": "20% OFF",
+            "goal_2_text": "a 20% discount",
+            "goal_2_amount": 50,
+            "goal_2_icon": "sell",
+            "goal_2_icon_filled": false,
+            "enable_goal_3": false,
+            "goal_3_label": "Free Gift",
+            "goal_3_text": "a FREE GIFT",
+            "goal_3_amount": 100,
+            "goal_3_icon": "redeem",
+            "goal_3_icon_filled": false,
+            "margin_top": 15,
+            "margin_bottom": 15
+          }
+        }
+      },
+      "block_order": [
+        "checkpoints_bar_NhfdkN"
+      ],
       "settings": {
         "test_mode": false,
         "heading_text": "Cart • [count] items",
