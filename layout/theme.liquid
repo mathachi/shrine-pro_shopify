@@ -573,5 +573,50 @@
         })
       </script>
     {% endif %}
+    <!-- FIX: Kaching renderContents patch -->
+<script>
+(function() {
+  customElements.whenDefined('cart-drawer').then(function() {
+    const drawer = document.querySelector('cart-drawer');
+    if (!drawer) return;
+
+    const proto = Object.getPrototypeOf(drawer);
+    if (!proto.renderContents || proto.__fixed) return;
+    proto.__fixed = true;
+
+    const _orig = proto.renderContents;
+    let _busy = false;
+
+    proto.renderContents = function(state) {
+      // sections présent → comportement natif normal
+      if (state && state.sections) return _orig.call(this, state);
+
+      // sections absent (appel Kaching) → fetch + inject + open
+      if (_busy) return;
+      _busy = true;
+      const self = this;
+
+      fetch('/?section_id=cart-drawer')
+        .then(function(r) { return r.text(); })
+        .then(function(html) {
+          const doc = new DOMParser().parseFromString(html, 'text/html');
+          const newEl = doc.querySelector('#CartDrawer');
+          const curEl = document.getElementById('CartDrawer');
+          if (newEl && curEl) curEl.innerHTML = newEl.innerHTML;
+
+          // Bloquer renderContents pendant open() pour éviter la boucle
+          proto.renderContents = function() {};
+          self.open();
+          requestAnimationFrame(function() {
+            proto.renderContents = _orig;
+            proto.__fixed = true;
+            _busy = false;
+          });
+        })
+        .catch(function() { _busy = false; });
+    };
+  });
+})();
+</script>
   </body>
 </html>
