@@ -481,15 +481,15 @@
       }
     </script>
 
-        <script>
-          const productForm = document.querySelector('product-form[data-main="false"]') || document.querySelector('product-form[data-main="true"]');
-          if (productForm) {
-            document.querySelectorAll('[id^="SectionAtcBtn-"]').forEach(btn => {
-              btn.addEventListener('click', (e) => {
-                productForm.handleSubmit(e);
-              })
-            })
-          }
+    <script>
+      const productForm = document.querySelector('product-form[data-main="true"]');
+      if (productForm) {
+        document.querySelectorAll('[id^="SectionAtcBtn-"]').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            productForm.handleSubmit(e);
+          })
+        })
+      }
 
       {% if settings.enable_load_animations %}
         const stickyAtc = document.querySelector('.sticky-atc');
@@ -512,6 +512,7 @@
           const elementsToAnimate = rootElement.querySelectorAll('.animate-section');
           if (elementsToAnimate.length == 0) return;
 
+          
           elementsToAnimate.forEach(element => {
             if (isThemeEditorEvent) {
               element.classList.add('animate--shown');
@@ -572,7 +573,5 @@
         })
       </script>
     {% endif %}
-
-
   </body>
 </html>
