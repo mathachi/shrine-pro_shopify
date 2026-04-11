@@ -1,5 +1,24 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
+<script>
+  (function() {
+    const originalFetch = window.fetch;
+    window.fetch = function(url, options) {
+      if (typeof url === 'string' && url.includes('/cart/add')) {
+        if (options && options.body) {
+          try {
+            const body = JSON.parse(options.body);
+            if (!body.sections) {
+              body.sections = ['cart-drawer', 'cart-icon-bubble'];
+              options.body = JSON.stringify(body);
+            }
+          } catch(e) {}
+        }
+      }
+      return originalFetch.apply(this, arguments);
+    };
+  })();
+</script>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
