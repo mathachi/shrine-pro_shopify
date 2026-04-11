@@ -573,29 +573,5 @@
         })
       </script>
     {% endif %}
-    
-<!-- FIX: Kaching renderContents patch -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // On attend que TOUS les scripts defer (stealthpack + Kaching) soient chargés
-  // puis on wrape leur fetch pour injecter sections=cart-drawer
-  const _fetch = window.fetch;
-  window.fetch = function(resource, init) {
-    const url = typeof resource === 'string' ? resource : (resource instanceof Request ? resource.url : '');
-    const method = ((init && init.method) || 'GET').toUpperCase();
-
-    if (method === 'POST' && /\/cart\/add/.test(url) && init && init.body instanceof FormData) {
-      if (!init.body.has('sections')) {
-        const newBody = new FormData();
-        for (const [k, v] of init.body.entries()) newBody.append(k, v);
-        newBody.append('sections', 'cart-drawer');
-        newBody.append('sections_url', window.location.pathname);
-        return _fetch.call(this, resource, Object.assign({}, init, { body: newBody }));
-      }
-    }
-    return _fetch.call(this, resource, init);
-  };
-});
-</script>
   </body>
 </html>
