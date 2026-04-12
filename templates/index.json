@@ -33,7 +33,7 @@
         "parallax": false,
         "parallax_mobile": false,
         "banner_height": "fixed_height",
-        "banner_fixed_height": 800,
+        "banner_fixed_height": 1000,
         "banner_fixed_height_mobile": 610,
         "image": "shopify://shop_images/hero_desktop_2_webp.webp",
         "image_mobile": "shopify://shop_images/hero_mobile_2_webp.webp",
