@@ -35,7 +35,7 @@
         "banner_height": "fixed_height",
         "banner_fixed_height": 760,
         "banner_fixed_height_mobile": 610,
-        "image": "shopify://shop_images/hero_desktop_1.webp",
+        "image": "shopify://shop_images/hero_desktop_2_webp.webp",
         "image_mobile": "shopify://shop_images/hero_mobile_2_webp.webp",
         "overlay": 0,
         "content_maxwidth": 100,
