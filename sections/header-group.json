@@ -93,7 +93,7 @@
         "logo_link": "/",
         "logo_position": "middle-left",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "mega",
         "highlight_active_link": false,
         "highlighted_link_color_scheme": "accent-1",
         "products_mega_menu_links": "",
@@ -104,7 +104,7 @@
         "secondary_menu": "",
         "menu_color_scheme": "background-1",
         "mobile_logo_position": "center",
-        "display_search": true,
+        "display_search": false,
         "margin_bottom": 0,
         "padding_top": 20,
         "padding_bottom": 20
