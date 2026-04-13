@@ -399,7 +399,7 @@
       ],
       "name": "Testimonials Carousel",
       "settings": {
-        "badge": "Noté 4.8/5 par plus de 3 000 clientes",
+        "badge": "Noté 4.8/5 par plus de 15 000 clientes",
         "title": "Nos clientes en parlent le mieux",
         "verified_label": "Cliente vérifiée",
         "visible_cards": 4,
@@ -422,7 +422,7 @@
             "star_color": "#e33c9d",
             "bg_stars_style": "full",
             "bg_star_color": "#ececec",
-            "label": "4.8 basé sur +3000 avis vérifiés",
+            "label": "4.8 basé sur +15000 avis vérifiés",
             "size": 12,
             "alignment": "flex-start",
             "scroll_id": "",
