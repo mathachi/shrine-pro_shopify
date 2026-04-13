@@ -1096,7 +1096,7 @@
         "text_size": 20,
         "text_size_mobile": 14,
         "text_height": 130,
-        "text_align": "end",
+        "text_align": "center",
         "text_mt": 16,
         "slider_width": 80,
         "slider_view": 3,
