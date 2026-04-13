@@ -963,6 +963,15 @@
     "ss_testimonial_8_9CRBMa": {
       "type": "ss-testimonial-8",
       "blocks": {
+        "slide_Yaizxt": {
+          "type": "slide",
+          "settings": {
+            "stars_count": 5,
+            "heading": "I love it! 😍",
+            "text": "I was initially hesitant to switch from my usual brand to this new one, but I'm so glad I did! This product has exceeded my expectations. It's not only affordable but also incredibly efficient. The quality is top-notch, and it's user-friendly.",
+            "author_date": "Cathrine"
+          }
+        },
         "slide_ybqVVU": {
           "type": "slide",
           "settings": {
@@ -1006,15 +1015,6 @@
             "heading": "",
             "text": "",
             "author_date": ""
-          }
-        },
-        "slide_Yaizxt": {
-          "type": "slide",
-          "settings": {
-            "stars_count": 5,
-            "heading": "I love it! 😍",
-            "text": "I was initially hesitant to switch from my usual brand to this new one, but I'm so glad I did! This product has exceeded my expectations. It's not only affordable but also incredibly efficient. The quality is top-notch, and it's user-friendly.",
-            "author_date": "Cathrine"
           }
         },
         "slide_E7Ybzw": {
@@ -1064,12 +1064,12 @@
         }
       },
       "block_order": [
+        "slide_Yaizxt",
         "slide_ybqVVU",
         "slide_mEg3T8",
         "slide_iD9XJk",
         "slide_jaRChB",
         "slide_MVpJkG",
-        "slide_Yaizxt",
         "slide_E7Ybzw",
         "slide_eCPCad",
         "slide_pCgGYr",
@@ -1121,29 +1121,29 @@
         "card_radius": 16,
         "card_border_thickness": 0,
         "card_shadow": true,
-        "card_heading_custom": false,
-        "card_heading_font": "josefin_sans_n4",
+        "card_heading_custom": true,
+        "card_heading_font": "poppins_n4",
         "card_heading_size": 24,
-        "card_heading_size_mobile": 20,
+        "card_heading_size_mobile": 16,
         "card_heading_height": 130,
-        "card_heading_align": "center",
+        "card_heading_align": "left",
         "card_heading_mt": 16,
-        "card_text_custom": false,
-        "card_text_font": "josefin_sans_n4",
+        "card_text_custom": true,
+        "card_text_font": "poppins_n4",
         "card_text_size": 14,
-        "card_text_size_mobile": 14,
+        "card_text_size_mobile": 10,
         "card_text_height": 150,
-        "card_text_align": "center",
+        "card_text_align": "left",
         "card_text_mt": 16,
-        "card_text_more": "View More",
-        "card_text_less": "View Less",
-        "card_count_words": 20,
-        "card_author_date_text_custom": false,
-        "card_author_date_text_font": "josefin_sans_n4",
+        "card_text_more": "",
+        "card_text_less": "",
+        "card_count_words": 40,
+        "card_author_date_text_custom": true,
+        "card_author_date_text_font": "poppins_n4",
         "card_author_date_text_size": 16,
         "card_author_date_text_size_mobile": 16,
         "card_author_date_text_height": 130,
-        "card_author_date_text_align": "center",
+        "card_author_date_text_align": "left",
         "card_author_date_text_mt": 16,
         "arrow_size": 50,
         "arrow_size_mobile": 50,
@@ -1151,12 +1151,12 @@
         "arrow_icon_size_mobile": 28,
         "arrow_border_thickness": 0,
         "arrow_show_desktop": true,
-        "arrow_show_mobile": false,
+        "arrow_show_mobile": true,
         "dots_size": 12,
         "dots_size_mobile": 12,
-        "dots_show_desktop": false,
-        "dots_show_mobile": false,
-        "button": "View All",
+        "dots_show_desktop": true,
+        "dots_show_mobile": true,
+        "button": "",
         "button_url": "",
         "button_custom": false,
         "button_font": "josefin_sans_n4",
