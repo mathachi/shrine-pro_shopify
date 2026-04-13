@@ -913,6 +913,7 @@
         "product_bg": "#ea5eaf",
         "product_name_color": "#ffffff",
         "comp1_name": "Rasage",
+        "comp1_image": "shopify://shop_images/logo_rasoir.webp",
         "comp2_name": "Laser",
         "bg_color": "#ffffff",
         "title_color": "#111827",
