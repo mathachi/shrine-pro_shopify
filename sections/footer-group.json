@@ -23,22 +23,19 @@
             "width_mobile": "1"
           }
         },
-        "24f208fd-0898-43eb-af23-d74f8420ab37": {
-          "type": "email_signup",
+        "text_6ARDgc": {
+          "type": "text",
           "settings": {
-            "heading": "Subscribe to our emails",
-            "subtext": "<p>Join our email list for exclusive offers and the latest news.</p>",
-            "button_type": "solid",
-            "button_label": "Sign up",
-            "button_style_secondary": false,
-            "width_desktop": 4,
+            "heading": "Contactez-nous",
+            "subtext": "<p>Si vous avez une question, n'hésitez pas à venir vers notre superbe équipe de support <a href=\"/pages/contact\" title=\"Contact\"><em><strong>ici.</strong></em></a></p>",
+            "width_desktop": 3,
             "width_mobile": "2"
           }
         }
       },
       "block_order": [
         "1c647602-cc00-4009-a058-976435c8ee9e",
-        "24f208fd-0898-43eb-af23-d74f8420ab37"
+        "text_6ARDgc"
       ],
       "settings": {
         "color_scheme": "custom",
