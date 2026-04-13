@@ -1082,7 +1082,7 @@
         "heading_custom": true,
         "heading_font": "poppins_n3",
         "heading_size": 34,
-        "heading_size_mobile": 24,
+        "heading_size_mobile": 32,
         "heading_height": 100,
         "heading_align": "center",
         "rating_text": "Noté",
