@@ -1141,7 +1141,7 @@
         "card_author_date_text_custom": true,
         "card_author_date_text_font": "poppins_n4",
         "card_author_date_text_size": 16,
-        "card_author_date_text_size_mobile": 16,
+        "card_author_date_text_size_mobile": 14,
         "card_author_date_text_height": 130,
         "card_author_date_text_align": "left",
         "card_author_date_text_mt": 16,
