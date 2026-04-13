@@ -922,6 +922,57 @@
         "padding_bottom": 0
       }
     },
+    "image_with_text_HzQLCm": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_QTmJ6Q": {
+          "type": "heading",
+          "settings": {
+            "title": "<strong>Prouvée cliniquement. Recommandée par des professionnels. </strong>",
+            "title_highlight_color": "#000000",
+            "heading_size": "h2"
+          }
+        },
+        "text_ei6aKy": {
+          "type": "text",
+          "settings": {
+            "text": "<h6>Notre formule avancée à base d'huile de Cyperus Rotundus a été étudiée cliniquement pour ses propriétés inhibitrices de la repousse des poils — une étude publiée dans l'<em>Aesthetic Surgery Journal</em>(Oxford, 2014) la reconnaît aussi efficace que le laser Alexandrite. Une alternative naturelle que les professionnels de santé recommandent réellement à leurs patientes.</h6>",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_QTmJ6Q",
+        "text_ei6aKy"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "display_id": false,
+        "visibility": "always-display",
+        "height": "adapt",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "section_color_scheme": "background-1",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_full_media_width": false,
+        "mobile_direction": "normal",
+        "mobile_image_quanlity": "2",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "custom_colors_background": "#2E2A39",
+        "custom_gradient_background": "",
+        "custom_colors_text": "#FFFFFF",
+        "custom_colors_solid_button_background": "#dd1d1d",
+        "custom_colors_solid_button_text": "#ffffff",
+        "custom_colors_outline_button": "#dd1d1d",
+        "custom_section_colors_background": "#FFFFFF",
+        "custom_section_gradient_background": ""
+      }
+    },
     "ss_parallax_banner_hTiLCR": {
       "type": "ss-parallax-banner",
       "name": "SS - Parallax Banner",
@@ -1213,6 +1264,7 @@
     "zones_TrF4wW",
     "timeline_AJXQLn",
     "container_iyzGBK",
+    "image_with_text_HzQLCm",
     "ss_parallax_banner_hTiLCR",
     "ss_testimonial_8_9CRBMa"
   ]
