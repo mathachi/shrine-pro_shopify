@@ -936,7 +936,7 @@
         "text_ei6aKy": {
           "type": "text",
           "settings": {
-            "text": "<h6>Notre formule avancée à base d'huile de Cyperus Rotundus a été étudiée cliniquement pour ses propriétés inhibitrices de la repousse des poils — une étude publiée dans l'<em>Aesthetic Surgery Journal</em>(Oxford, 2014) la reconnaît aussi efficace que le laser Alexandrite. Une alternative naturelle que les professionnels de santé recommandent réellement à leurs patientes.<br/><br/>Contrairement aux produits chimiques agressifs ou aux séances de laser coûteuses, l'Huile Anti-Poils LYSA agit en douceur avec les processus naturels de votre peau pour ralentir progressivement la repousse — sans irritation ni effets secondaires. Des milliers de femmes ont déjà retrouvé une peau plus lisse, avec des intervalles entre les épilations de plus en plus longs.<br/><br/></h6>",
+            "text": "<h6>Notre formule avancée à base d'huile de Cyperus Rotundus a été étudiée cliniquement pour ses propriétés inhibitrices de la repousse des poils — une étude publiée dans l'<em>Aesthetic Surgery Journal</em>(Oxford, 2014) la reconnaît aussi efficace que le laser Alexandrite. Une alternative naturelle que les professionnels de santé recommandent réellement à leurs patientes.<br/><br/>Contrairement aux produits chimiques agressifs ou aux séances de laser coûteuses, l'Huile Anti-Poils LYSA agit en douceur avec les processus naturels de votre peau pour ralentir progressivement la repousse — sans irritation ni effets secondaires. Des milliers de femmes ont déjà retrouvé une peau plus lisse, avec des intervalles entre les épilations de plus en plus longs.</h6>",
             "text_style": "body"
           }
         }
@@ -963,7 +963,7 @@
         "mobile_image_quanlity": "2",
         "mobile_content_alignment": "left",
         "padding_top": 36,
-        "padding_bottom": 36,
+        "padding_bottom": 0,
         "custom_colors_background": "#2E2A39",
         "custom_gradient_background": "",
         "custom_colors_text": "#FFFFFF",
