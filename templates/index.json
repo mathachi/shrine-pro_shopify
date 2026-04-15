@@ -429,7 +429,7 @@
             "bg_stars_style": "full",
             "bg_star_color": "#ececec",
             "label": "4.8 basé sur +15000 avis vérifiés",
-            "size": 12,
+            "size": 13,
             "alignment": "flex-start",
             "scroll_id": "",
             "margin_top": 0,
