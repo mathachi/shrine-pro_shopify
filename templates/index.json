@@ -654,49 +654,49 @@
             "margin_bottom": 0
           }
         },
-        "collapsible_tab_fD4GYy": {
+        "collapsible_tab_ejUVUh": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Collapsible row",
-            "heading_size": "medium",
+            "heading": "Où puis-je l'appliquer ?",
+            "heading_size": "small",
             "icon": "check_box",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "",
+            "content": "<p>Notre huile peut être utilisée en toute sécurité sur toutes les zones du corps, notamment le <strong>visage</strong>, les <strong>aisselles</strong>, le <strong>maillot</strong>, les<strong> jambes</strong> et les <strong>bras</strong>. Pour une utilisation sur le visage, <strong>évitez le contour des yeux</strong>.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
           }
         },
-        "collapsible_tab_wpG4CM": {
+        "collapsible_tab_CVYpUa": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Collapsible row",
-            "heading_size": "medium",
+            "heading": "Expédition et Livraison",
+            "heading_size": "small",
             "icon": "check_box",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "",
+            "content": "<p>Une fois la commande passée, comptez <strong>1 à 3 jours</strong> ouvrés pour l'expédition de votre commande, puis <strong>6 à 10</strong> <strong>jours</strong> pour la livraison.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
           }
         },
-        "collapsible_tab_DQqPG9": {
+        "collapsible_tab_kiAN6E": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Collapsible row",
-            "heading_size": "medium",
+            "heading": "Expédition et Livraison",
+            "heading_size": "small",
             "icon": "check_box",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "",
+            "content": "<p>Une fois la commande passée, comptez <strong>1 à 3 jours</strong> ouvrés pour l'expédition de votre commande, puis <strong>6 à 10</strong> <strong>jours</strong> pour la livraison.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
@@ -717,9 +717,9 @@
         "custom_liquid_fkYJcQ",
         "icon_with_text_FWAndF",
         "collapsible_tab_dfnKMr",
-        "collapsible_tab_fD4GYy",
-        "collapsible_tab_wpG4CM",
-        "collapsible_tab_DQqPG9"
+        "collapsible_tab_ejUVUh",
+        "collapsible_tab_CVYpUa",
+        "collapsible_tab_kiAN6E"
       ],
       "name": "t:sections.featured-product.presets.name",
       "settings": {
