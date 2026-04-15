@@ -608,6 +608,30 @@
             "margin_bottom": 0
           }
         },
+        "icon_with_text_FWAndF": {
+          "type": "icon_with_text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_color": "accent-1",
+            "desktop_icon_size": 36,
+            "desktop_spacing": 2,
+            "desktop_text_size": 14,
+            "mobile_icon_size": 24,
+            "mobile_spacing": 2,
+            "mobile_text_size": 12,
+            "icon_1": "favorite",
+            "icon_1_fill": false,
+            "heading_1": "Approuvé cliniquement",
+            "icon_2": "undo",
+            "icon_2_fill": false,
+            "heading_2": "30j Satisfait ou Remboursé",
+            "icon_3": "local_shipping",
+            "icon_3_fill": false,
+            "heading_3": "Heading",
+            "margin_top": 24,
+            "margin_bottom": 24
+          }
+        },
         "collapsible_tab_dfnKMr": {
           "type": "collapsible_tab",
           "settings": {
@@ -684,6 +708,7 @@
         "kaching_bundles_app_block_3q9eAC",
         "buy_buttons_dHCXhP",
         "payment_badges_BA9Mbq",
+        "icon_with_text_FWAndF",
         "collapsible_tab_dfnKMr",
         "collapsible_tab_fD4GYy",
         "collapsible_tab_wpG4CM",
