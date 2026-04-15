@@ -641,14 +641,14 @@
         "collapsible_tab_dfnKMr": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Collapsible row",
-            "heading_size": "medium",
+            "heading": "Expédition et Livraison",
+            "heading_size": "small",
             "icon": "check_box",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "",
+            "content": "<p>Une fois la commande passée, comptez <strong>1 à 3 jours</strong> ouvrés pour l'expédition de votre commande, puis <strong>6 à 10</strong> <strong>jours</strong> pour la livraison.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
