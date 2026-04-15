@@ -673,14 +673,14 @@
         "collapsible_tab_CVYpUa": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Expédition et Livraison",
+            "heading": "Comment fonctionne l'Huile Anti-Poils ?",
             "heading_size": "small",
             "icon": "check_box",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "<p>Une fois la commande passée, comptez <strong>1 à 3 jours</strong> ouvrés pour l'expédition de votre commande, puis <strong>6 à 10</strong> <strong>jours</strong> pour la livraison.</p>",
+            "content": "<p>Notre huile au Cyperus Rotundus agit directement <strong>sur les follicules pileux</strong> en bloquant localement les androgènes. Ses actifs inhibent l'enzyme 5α-réductase et bloquent les récepteurs androgènes à la racine du poil, <strong>réduisant la production de DHT</strong> et <strong>freinant progressivement la repousse</strong>.</p><p>Cette action fonctionne sur tous les types de poils — y compris <strong>les poils blancs et clairs</strong> que le laser ne peut pas traiter — car elle cible les voies hormonales plutôt que le pigment. La formule agit localement, <strong>sans effets hormonaux systémiques</strong>.</p><p>La repousse ralentit <strong>dès 1 à 2 semaines d'utilisation</strong>, à mesure que les follicules reçoivent moins de signaux de croissance. Avec une utilisation régulière, les poils deviennent progressivement plus fins, plus clairs et moins nombreux<strong> jusqu'à disparaître</strong>.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
@@ -689,14 +689,14 @@
         "collapsible_tab_kiAN6E": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Expédition et Livraison",
+            "heading": "Est-ce que ça fonctionne vraiment ?",
             "heading_size": "small",
             "icon": "check_box",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "<p>Une fois la commande passée, comptez <strong>1 à 3 jours</strong> ouvrés pour l'expédition de votre commande, puis <strong>6 à 10</strong> <strong>jours</strong> pour la livraison.</p>",
+            "content": "<p>Oui. Et la science le confirme.</p><p><strong>Une étude clinique randomisée publiée dans l'</strong> <em><strong>Aesthetic Surgery Journal</strong></em>* <strong>(Oxford, 2014) a comparé l'efficacité de l'huile de Cyperus Rotundus au laser Alexandrite — l'un des lasers épilation les plus utilisés au monde — sur la réduction de la densité pilaire.</strong></p><p>Résultat ? Aucune différence significative entre les deux traitements. Et sur les poils blancs et clairs, <strong>l'huile de Cyperus Rotundus s'est même révélée supérieure au laser</strong> — là où ce dernier est habituellement inefficace.</p><p>La différence ? Le laser coûte 2 800€ en moyenne, nécessite 6 à 8 séances douloureuses, et peut nécessiter des retouches payantes après quelques années.</p><p>Notre huile agit progressivement à domicile, tous les soirs en massage, sans douleur, sans perturbateur endocrinien, et <strong>aucun effet secondaire n'a été détecté</strong> dans l'étude.</p><p>👉 <strong>Des milliers de femmes nous font confiance.</strong></p><p><strong>Les premiers résultats apparaissent dès 3 semaines</strong> : la repousse ralentit, les poils deviennent plus fins et plus clairs. En 3 mois d'utilisation régulière, 75% des poils ont disparu — le reste est devenu si fin qu'il en devient invisible.</p><p><em>Source : Mohammed, G.F. — \"Topical Cyperus rotundus Oil: A New Therapeutic Modality With Comparable Efficacy to Alexandrite Laser Photo-Epilation\" — Aesthetic Surgery Journal, Vol. 34, No. 2, février 2014.</em></p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
