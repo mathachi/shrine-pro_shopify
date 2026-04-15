@@ -612,7 +612,7 @@
           "type": "icon_with_text",
           "settings": {
             "layout": "horizontal",
-            "icon_color": "accent-1",
+            "icon_color": "accent-2",
             "desktop_icon_size": 36,
             "desktop_spacing": 2,
             "desktop_text_size": 14,
@@ -627,7 +627,7 @@
             "heading_2": "30 jours Satisfait ou Remboursé",
             "icon_3": "local_shipping",
             "icon_3_fill": false,
-            "heading_3": "Heading",
+            "heading_3": "Expédié sous 1 à 3 jours ouvrés",
             "margin_top": 24,
             "margin_bottom": 24
           }
