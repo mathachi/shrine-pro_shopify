@@ -415,6 +415,12 @@
     "featured_product_hTKVp4": {
       "type": "featured-product",
       "blocks": {
+        "custom_liquid_E8aTib": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n  .stock-badge {\n    background: #ffcccc;\n    padding: 2px 10px;\n    border-radius: 8px;\n    display: inline-flex;\n    align-items: center;\n    gap: 6px;\n  }\n  .stock-badge__dot {\n    width: 7px;\n    height: 7px;\n    background: #AD0000;\n    border-radius: 50%;\n    animation: blink 1s ease-in-out infinite;\n    flex-shrink: 0;\n  }\n  .stock-badge__text {\n    color: #AD0000;\n    font-weight: 500;\n    font-size: 12px;\n  }\n  @keyframes blink {\n    0%, 100% { opacity: 1; }\n    50% { opacity: 0; }\n  }\n</style>\n\n<div class=\"stock-badge\">\n  <div class=\"stock-badge__dot\"></div>\n  <span class=\"stock-badge__text\">Seulement 12 en stock</span>\n</div>"
+          }
+        },
         "rating_stars_DEHVyy": {
           "type": "rating_stars",
           "settings": {
@@ -601,9 +607,74 @@
             "margin_top": 0,
             "margin_bottom": 0
           }
+        },
+        "collapsible_tab_dfnKMr": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "heading_size": "medium",
+            "icon": "check_box",
+            "filled_icon": false,
+            "collapse_icon": "carret",
+            "display_top_border": true,
+            "open": false,
+            "content": "",
+            "page": "",
+            "margin_top": 24,
+            "margin_bottom": 0
+          }
+        },
+        "collapsible_tab_fD4GYy": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "heading_size": "medium",
+            "icon": "check_box",
+            "filled_icon": false,
+            "collapse_icon": "carret",
+            "display_top_border": true,
+            "open": false,
+            "content": "",
+            "page": "",
+            "margin_top": 24,
+            "margin_bottom": 0
+          }
+        },
+        "collapsible_tab_wpG4CM": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "heading_size": "medium",
+            "icon": "check_box",
+            "filled_icon": false,
+            "collapse_icon": "carret",
+            "display_top_border": true,
+            "open": false,
+            "content": "",
+            "page": "",
+            "margin_top": 24,
+            "margin_bottom": 0
+          }
+        },
+        "collapsible_tab_DQqPG9": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "heading_size": "medium",
+            "icon": "check_box",
+            "filled_icon": false,
+            "collapse_icon": "carret",
+            "display_top_border": true,
+            "open": false,
+            "content": "",
+            "page": "",
+            "margin_top": 24,
+            "margin_bottom": 0
+          }
         }
       },
       "block_order": [
+        "custom_liquid_E8aTib",
         "rating_stars_DEHVyy",
         "title_aWXdXb",
         "text_khLYNP",
@@ -612,7 +683,11 @@
         "text_XqQkyH",
         "kaching_bundles_app_block_3q9eAC",
         "buy_buttons_dHCXhP",
-        "payment_badges_BA9Mbq"
+        "payment_badges_BA9Mbq",
+        "collapsible_tab_dfnKMr",
+        "collapsible_tab_fD4GYy",
+        "collapsible_tab_wpG4CM",
+        "collapsible_tab_DQqPG9"
       ],
       "name": "t:sections.featured-product.presets.name",
       "settings": {
