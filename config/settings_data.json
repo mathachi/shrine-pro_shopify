@@ -168,7 +168,7 @@
     "scrollbar_style": "default",
     "scrollbar_thumb_color": "#555555",
     "scrollbar_width": 9,
-    "cart_type": "page",
+    "cart_type": "drawer",
     "cart_icon": "bag_2",
     "show_vendor": true,
     "show_cart_note": true,
